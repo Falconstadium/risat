@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Navbar from '../components/Navbar'
+import Footer_About from '../components/Footer_About'
 
 export const Route = createFileRoute('/about')({
   component: () => 
@@ -9,5 +10,6 @@ export const Route = createFileRoute('/about')({
       <h4 className='font-medium text-lg'>risat is a platform that provides you with all the tools that we use everyday.</h4>
       <h1 className='font-bold text-3xl font-IBM italic'>Hope you like it.</h1>
     </section>
+    <Footer_About />
   </>
 })

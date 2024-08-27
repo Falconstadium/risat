@@ -1,5 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export const Route = createFileRoute('/')({
   component: () => 
@@ -10,8 +11,9 @@ export const Route = createFileRoute('/')({
         Your favorite <br /><span className='font-edu bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text font-medium'>tools together</span><br /> in one place.
       </h1>
       <button className='bg-blue-500 hover:bg-blue-700 transition-colors duration-300 ease-in-out font-medium text-white py-2 px-5 rounded-md text-sm'>
-        Get Started
+        <Link to='/dashbord'>Get Started</Link>
       </button>
     </section>
+    <Footer />
   </>
 })
