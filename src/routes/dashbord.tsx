@@ -6,9 +6,9 @@ export const Route = createFileRoute('/dashbord')({
   component: () => 
   <>
     <Navbar_dash />
-    <section className='grid place-content-center gap-6 dark:bg-black-500 dark:text-light'>
+    <section className='grid lg:grid-cols-2 place-items-center lg:gap-0 place-content-center gap-6 dark:bg-black-500 dark:text-light'>
       <div className='text-center border border-solid  border-black-500 dark:border-light w-[300px] lg:w-[400px] py-4 lg:py-6 grid gap-4 place-items-center'>
-        <h2 className='text-4xl font-semibold lg:text-6xl'>Todo List</h2>
+        <h2 className='text-4xl font-semibold lg:text-6xl'>TODO List</h2>
         <button className='font-medium text-blue-400 hover:text-blue-600 transition-colors duration-300 ease-in-out'>
           <Link className='flex items-center gap-2 text-lg' to='/todo'>
             Go to 
