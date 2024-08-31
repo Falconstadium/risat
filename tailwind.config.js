@@ -4,14 +4,15 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        IBM: ['IBM Plex Sans', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         edu: ['Edu VIC WA NT Beginner', 'cursive'],
       },
       colors: {
-        "black-500": "#121212",
-        "light": "#f9f9f9"
+        'black-500': '#121212',
+        light: '#f9f9f9',
       },
     },
   },
   plugins: [],
+  darkMode: 'class',
 };

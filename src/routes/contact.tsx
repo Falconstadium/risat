@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import Footer from '../components/Footer';
-import { useEffect, useState } from 'react';
 import risat from '../assets/img/risat (2).svg';
-import Home from '../components/Home';
+import Footer_About from '../components/Footer_About';
+import { useEffect, useState } from 'react';
+import Contact from '../components/Contact';
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/contact')({
   component: () => {
     const darkMode = JSON.parse(localStorage.getItem('mode') || '[]');
     const [dark, setDark] = useState(darkMode);
@@ -24,7 +24,7 @@ export const Route = createFileRoute('/')({
           <div>
             <Link
               to="/"
-              className="flex items-center gap-2 cursor-pointer text-sm tracking-wider">
+              className="flex items-center gap-2 cursor-pointer tracking-wider text-sm">
               <img className="w-4" src={risat} alt="risat-logo" />
               risat
             </Link>
@@ -37,7 +37,7 @@ export const Route = createFileRoute('/')({
             </Link>
             <Link
               to="/contact"
-              className="font-medium text-sm tracking-wide py-1 px-4 rounded-2xl transition-colors duration-200 ease-in-out hover:bg-black-500">
+              className="font-medium text-sm tracking-wide py-1 px-4 rounded-2xl transition-colors duration-200 ease-in-out hover:bg-black-500 [&.active]:bg-black-500">
               Contact
             </Link>
             <button onClick={toggleMode}>
@@ -51,12 +51,13 @@ export const Route = createFileRoute('/')({
             </button>
           </div>
         </header>
-        
+
         {/* hero */}
-        <Home />
+        <Contact />
 
         {/* footer */}
-        <Footer />
+        <Footer_About />
+        
       </main>
     );
   },
