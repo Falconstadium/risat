@@ -3,15 +3,16 @@ import { Link } from "@tanstack/react-router";
 const Home = () => {
   return (
     <>
-      <section className="grid place-content-center lg:place-items-center gap-3 lg:gap-5 dark:bg-black-500 dark:text-light">
-        <h1 className="font-bold text-3xl lg:text-5xl text-center leading-normal lg:leading-normal">
-          Your favorite <br />
-          <span className="font-edu bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text font-medium">
-            tools together
-          </span>
-          <br /> in one place.
-        </h1>
-        <button className="bg-blue-700 hover:bg-blue-600 transition-colors duration-300 ease-in-out font-medium text-white py-2 px-6 rounded-md text-sm">
+      <section className="grid place-content-center gap-3 px-4 dark:bg-black-500 dark:text-light lg:place-items-center lg:gap-5">
+        <div className="grid place-content-center gap-2">
+          <h1 className="text-center text-3xl font-bold leading-normal lg:text-5xl lg:leading-normal">
+            Write, Save locally.
+          </h1>
+          <p className="text-center text-xs font-medium lg:text-sm">
+            Your favorites tools in one place.
+          </p>
+        </div>
+        <button className="rounded-md bg-blue-700 px-6 py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-blue-600">
           <Link to="/dashbord">Get Started</Link>
         </button>
       </section>

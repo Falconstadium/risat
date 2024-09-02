@@ -1,12 +1,12 @@
 const About = () => {
   return (
     <>
-      <section className="text-center grid gap-4 place-content-center px-4 dark:bg-black-500 dark:text-light">
-        <h4 className="font-medium text-lg">
+      <section className="grid place-content-center gap-4 px-4 text-center dark:bg-black-500 dark:text-light">
+        <h4 className="text-lg font-medium">
           risat is a platform that provides you with all the tools that we use
           everyday.
         </h4>
-        <h1 className="font-bold text-3xl font-IBM italic">
+        <h1 className="font-IBM text-3xl font-bold italic">
           Hope you like it.
         </h1>
       </section>
