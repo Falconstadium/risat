@@ -1,0 +1,50 @@
+{
+  "nav":{
+    "about": "à propos",
+    "contact": "Contact"
+  },
+
+  "hero":{
+    "title": "Écrire et enregistrer localement.",
+    "parag": "Vos outils préférés en un seul endroit.",
+    "btn": "Commencer",
+    "explore": "Explorer plus",
+    "text_todo": "Une liste de tâches est un outil utilisé pour organiser les tâches qui doivent être terminées",
+    "text_note": "Une application de notes est un outil numérique conçu pour vous aider à capturer, organiser et gérer vos notes efficacement."
+  },
+
+  "footer":{
+    "right": "Tous droits réservés"
+  },
+
+  "about":{
+    "title": "à propos de",
+    "description": "Bienvenue à risat! Nous sommes dédiés à fournir une expérience transparente en rassemblant tous vos outils préférés en un seul endroit. Que vous écriviez, économisez localement ou exploriez de nouvelles fonctionnalités, risat est là pour rendre vos tâches plus faciles et plus efficaces. Notre mission est de vous donner les meilleurs outils et ressources dans une plateforme pratique."
+  },
+
+  "contact":{
+    "username": "Nom complet",
+    "country": "Pays",
+    "email": "Email",
+    "msg": "Message",
+    "send": "Envoyer message"
+  },
+
+  "dashbord":{
+    "link": "Aller à",
+    "list": "Liste de tâches",
+    "note": "Notes",
+    "btn": "Retour au tableau de bord"
+  },
+
+  "TODO":{
+    "todo_btn": "Ajouter des tâches",
+    "delete_btn": "Supprimer"
+  },
+
+  "Note": {
+    "label": "Description",
+    "note_btn": "ajouter note",
+    "placeholder": "Commencer à taper.."
+  }
+}

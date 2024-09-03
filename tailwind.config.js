@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        edu: ["Edu VIC WA NT Beginner", "cursive"],
+        edu: ["Martian Mono", "monospace"],
       },
       colors: {
         "black-500": "#121212",

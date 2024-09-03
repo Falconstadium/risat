@@ -1,9 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
+import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/todo")({
   component: () => {
+    const { t, i18n } = useTranslation("global");
+    const handleChangeLang = (lang: string) => {
+      i18n.changeLanguage(lang);
+    };
+
     const storedTasks = JSON.parse(localStorage.getItem("task") || "[]");
 
     const [todo, setTodo] = useState<any[]>(storedTasks);
@@ -84,7 +90,7 @@ export const Route = createFileRoute("/todo")({
                 className="transs rounded-md bg-blue-700 px-4 py-1 text-sm font-medium tracking-wide text-light duration-300 ease-in-out hover:bg-blue-600"
                 onClick={addTask}
               >
-                Add Task
+                {t("TODO.todo_btn")}
               </button>
             </div>
             <ul className="grid place-content-center gap-2 pt-6">
@@ -105,7 +111,7 @@ export const Route = createFileRoute("/todo")({
                         className="rounded bg-red-500 px-2 py-[0.1rem] text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-700"
                         onClick={() => deleteTask(index)}
                       >
-                        Delete
+                        {t("TODO.delete_btn")}
                       </button>
                     </div>
                   );
@@ -113,6 +119,20 @@ export const Route = createFileRoute("/todo")({
             </ul>
           </section>
           <Button />
+          <div className="absolute bottom-4 right-4 flex items-center gap-2">
+            <button
+              className="&.active rounded-sm bg-light px-3 py-1 text-xs font-medium text-black-500 hover:bg-black-100 hover:text-light focus:bg-black-100 focus:text-light lg:text-sm"
+              onClick={() => handleChangeLang("en")}
+            >
+              EN
+            </button>
+            <button
+              className="rounded-sm bg-light px-3 py-1 text-xs font-medium text-black-500 hover:bg-black-100 hover:text-light focus:bg-black-100 focus:text-light lg:text-sm"
+              onClick={() => handleChangeLang("fr")}
+            >
+              FR
+            </button>
+          </div>
         </main>
       </main>
     );

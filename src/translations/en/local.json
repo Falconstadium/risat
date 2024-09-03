@@ -1,0 +1,49 @@
+{
+  "nav":{
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero":{
+    "title": "Write and Save locally.",
+    "parag": "Your favorite tools in one place.",
+    "btn": "Get Started",
+    "explore": "Explore more",
+    "text_todo": "A TODO list is a tool used to organize tasks that need to be complete",
+    "text_note": "A note app is a digital tool designed to help you capture, organize, and manage your notes efficiently."
+  },
+
+  "footer":{
+    "right": "All rights reserved"
+  },
+
+  "about":{
+    "title": "About",
+    "description": "Welcome to risat! We are dedicated to providing a seamless experience by bringing all your favourite tools into one place. Whether you’re writing, saving locally, or exploring new features, risat is here to make your tasks easier and more efficient. Our mission is to empower you with the best tools and resources in one convenient platform."
+  },
+
+  "contact":{
+    "username": "Full Name",
+    "country": "Country",
+    "email": "Email",
+    "msg": "Message",
+    "send": "Send Message"
+  },
+
+  "dashbord":{
+    "link": "Go to",
+    "list": "TODO List",
+    "note": "Notes",
+    "btn": "Return to Dashboard"
+  },
+
+  "TODO":{
+    "todo_btn": "Add Todo",
+    "delete_btn":"Delete"
+  },
+
+  "Note": {
+    "label": "Description",
+    "note_btn": "Add Note",
+    "placeholder": "Start typing.."
+  }
+}

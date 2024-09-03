@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation("global");
+
   const formContact = useRef<any>();
 
   const submitForm = (e: any) => {
@@ -36,7 +39,7 @@ const Contact = () => {
         >
           <div className="grid gap-1">
             <label className="text-sm font-medium" htmlFor="username">
-              Full Name:
+              {t("contact.username")}:
             </label>
             <input
               className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
@@ -48,7 +51,7 @@ const Contact = () => {
           </div>
           <div className="grid gap-1">
             <label className="text-sm font-medium" htmlFor="country">
-              Country:
+              {t("contact.country")}:
             </label>
             <input
               className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
@@ -60,7 +63,7 @@ const Contact = () => {
           </div>
           <div className="grid gap-1">
             <label className="text-sm" htmlFor="email">
-              Email:
+              {t("contact.email")}:
             </label>
             <input
               className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
@@ -72,7 +75,7 @@ const Contact = () => {
           </div>
           <div className="grid gap-1">
             <label className="text-sm" htmlFor="message">
-              Message:
+              {t("contact.msg")}:
             </label>
             <textarea
               className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
@@ -84,7 +87,7 @@ const Contact = () => {
             type="submit"
             className="rounded bg-sky-800 px-6 py-1 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-sky-600 lg:mx-auto"
           >
-            Send Message
+            {t("contact.send")}
           </button>
         </form>
       </section>

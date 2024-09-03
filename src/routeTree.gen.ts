@@ -13,7 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as TodoImport } from './routes/todo'
 import { Route as NoteImport } from './routes/note'
-import { Route as DashbordImport } from './routes/dashbord'
+import { Route as DashboardImport } from './routes/dashboard'
 import { Route as ContactImport } from './routes/contact'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
@@ -30,8 +30,8 @@ const NoteRoute = NoteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const DashbordRoute = DashbordImport.update({
-  path: '/dashbord',
+const DashboardRoute = DashboardImport.update({
+  path: '/dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -75,11 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactImport
       parentRoute: typeof rootRoute
     }
-    '/dashbord': {
-      id: '/dashbord'
-      path: '/dashbord'
-      fullPath: '/dashbord'
-      preLoaderRoute: typeof DashbordImport
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardImport
       parentRoute: typeof rootRoute
     }
     '/note': {
@@ -105,7 +105,7 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   AboutRoute,
   ContactRoute,
-  DashbordRoute,
+  DashboardRoute,
   NoteRoute,
   TodoRoute,
 })
@@ -121,7 +121,7 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/about",
         "/contact",
-        "/dashbord",
+        "/dashboard",
         "/note",
         "/todo"
       ]
@@ -135,8 +135,8 @@ export const routeTree = rootRoute.addChildren({
     "/contact": {
       "filePath": "contact.tsx"
     },
-    "/dashbord": {
-      "filePath": "dashbord.tsx"
+    "/dashboard": {
+      "filePath": "dashboard.tsx"
     },
     "/note": {
       "filePath": "note.tsx"
