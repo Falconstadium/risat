@@ -6,6 +6,17 @@ import i18next from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
+import enTranslation from "../src/translations/en/local.json";
+import frTranslation from "../src/translations/fr/local.json";
+
+const resources = {
+  en: {
+    global: enTranslation,
+  },
+  fr: {
+    global: frTranslation,
+  },
+};
 
 i18next
   .use(LanguageDetector)
@@ -14,7 +25,7 @@ i18next
   .init({
     fallbackLng: "en",
     lng: "en",
-
+    resources,
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
