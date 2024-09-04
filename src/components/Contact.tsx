@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
+import { toast, Toaster } from "sonner";
 
 const Contact = () => {
   const { t } = useTranslation("global");
@@ -22,9 +23,11 @@ const Contact = () => {
       .then(
         () => {
           console.log("SUCCESS!");
+          toast.success(`${t("contact.success")}`);
         },
         (error: any) => {
           console.log("FAILED...", error.text);
+          toast.error(`${t("contact.error")}`);
         },
       );
   };
@@ -83,6 +86,7 @@ const Contact = () => {
               id="message"
             ></textarea>
           </div>
+          <Toaster richColors />
           <button
             type="submit"
             className="rounded bg-sky-800 px-6 py-1 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-sky-600 lg:mx-auto"

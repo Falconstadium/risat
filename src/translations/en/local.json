@@ -26,7 +26,9 @@
     "country": "Country",
     "email": "Email",
     "msg": "Message",
-    "send": "Send Message"
+    "send": "Send Message",
+    "success": "Message sent successfully",
+    "error": "Something wrong! Try again"
   },
 
   "dashbord":{

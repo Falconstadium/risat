@@ -27,7 +27,9 @@
     "country": "Pays",
     "email": "Email",
     "msg": "Message",
-    "send": "Envoyer message"
+    "send": "Envoyer message",
+    "success": "Message envoyé avec succès",
+    "error": "Quelque chose ne va pas ! Réessayez"
   },
 
   "dashbord":{
