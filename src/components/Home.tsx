@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="grid h-screen place-content-center gap-3 px-4 dark:bg-black-500 dark:text-light lg:place-items-center lg:gap-5">
+      <section className="grid min-h-[100dvh] place-content-center gap-3 px-4 dark:bg-black-500 dark:text-light lg:place-items-center lg:gap-5">
         <div className="grid place-content-center gap-2">
           <h1 className="text-center text-3xl font-bold leading-normal lg:text-5xl lg:leading-normal">
             {t("hero.title")}

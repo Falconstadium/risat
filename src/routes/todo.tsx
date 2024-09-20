@@ -87,13 +87,13 @@ export const Route = createFileRoute("/todo")({
               />
               <button
                 type="submit"
-                className="transs rounded-md bg-blue-700 px-4 py-1 text-sm font-medium tracking-wide text-light duration-300 ease-in-out hover:bg-blue-600"
+                className="transistion-colors min-w-auto rounded-md bg-blue-700 px-4 py-1 text-sm font-medium tracking-wide text-light duration-300 ease-in-out hover:bg-blue-600"
                 onClick={addTask}
               >
                 {t("TODO.todo_btn")}
               </button>
             </div>
-            <ul className="grid place-content-center gap-2 pt-6">
+            <ul className="mx-auto grid w-full gap-2 pt-6 lg:place-content-center">
               {todo &&
                 todo.map &&
                 todo.map(({ text, completed }, index) => {

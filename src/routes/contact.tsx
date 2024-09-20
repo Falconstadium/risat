@@ -23,12 +23,9 @@ export const Route = createFileRoute("/contact")({
       <main
         className={`${dark && "dark"} grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto]`}
       >
-        <header className="flex items-center justify-between bg-light px-6 py-1 text-black-100 dark:bg-black-100 dark:text-light lg:px-16 lg:py-2">
+        <header className="flex items-center justify-between bg-light px-6 py-1 text-black-100 dark:bg-black-100 dark:text-light lg:justify-around lg:px-0 lg:py-2">
           <div>
-            <Link
-              to="/"
-              className="flex cursor-pointer items-center gap-2 font-edu text-sm tracking-wider"
-            >
+            <Link to="/" className="cursor-pointer text-sm tracking-wider">
               risat.
             </Link>
           </div>

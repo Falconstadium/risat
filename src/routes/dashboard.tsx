@@ -28,7 +28,7 @@ export const Route = createFileRoute("/dashboard")({
       >
         <header className="flex items-center justify-around bg-light px-6 py-2 text-black-100 dark:bg-black-100 dark:text-light lg:px-16 lg:py-3">
           <div>
-            <Link to="/" className="font-edu tracking-wide">
+            <Link to="/" className="tracking-wide">
               risat.
             </Link>
           </div>

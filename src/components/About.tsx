@@ -1,4 +1,4 @@
-import risat from "../assets/img/risat (2).svg";
+import risat from "../assets/img/3d-rendering-letter-r.png";
 import { useTranslation } from "react-i18next";
 
 const About = () => {
@@ -12,11 +12,13 @@ const About = () => {
           src={risat}
           alt="risat-logo"
         />
-        <div className="grid gap-2">
-          <h1 className="text-lg font-bold underline">
-            {t("about.title")} <span className="font-edu">risat</span>
+        <div className="lg:text-md grid gap-2 text-sm">
+          <h1 className="font-bold">
+            {t("about.title")} <span className="">risat :</span>
           </h1>
-          <p className="font-IBM text-justify">{t("about.description")}</p>
+          <p className="font-IBM text-justify leading-5">
+            {t("about.description")}
+          </p>
         </div>
       </section>
     </main>
