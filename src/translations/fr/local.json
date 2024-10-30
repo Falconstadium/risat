@@ -1,6 +1,6 @@
 {
   "nav":{
-    "about": "à propos",
+    "about": "À propos",
     "contact": "Contact"
   },
 
@@ -36,6 +36,8 @@
     "link": "Aller à",
     "list": "Liste de tâches",
     "note": "Notes",
+    "expense": "Suivi des Dépenses",
+    "pass": "Générateur Mot de Passe",
     "btn": "Retour au tableau de bord"
   },
 
@@ -48,5 +50,9 @@
     "label": "Description",
     "note_btn": "ajouter note",
     "placeholder": "Commencer à taper.."
+  },
+
+  "process":{
+    "page": "Page en cours de construction"
   }
 }

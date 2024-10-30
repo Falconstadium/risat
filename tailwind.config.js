@@ -10,7 +10,7 @@ export default {
       colors: {
         "black-500": "#121212",
         "black-100": "#242424",
-        light: "#f9f9f9",
+        light: "#f5f5f5",
       },
     },
   },

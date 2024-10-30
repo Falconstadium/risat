@@ -35,6 +35,8 @@
     "link": "Go to",
     "list": "TODO List",
     "note": "Notes",
+    "expense": "Expense Tracker",
+    "pass": "Password Generator",
     "btn": "Return to Dashboard"
   },
 
@@ -47,5 +49,9 @@
     "label": "Description",
     "note_btn": "Add Note",
     "placeholder": "Start typing.."
+  },
+
+  "process":{
+    "page": "Page in the process of construction"
   }
 }

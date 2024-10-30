@@ -1,14 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
 import { useTranslation } from "react-i18next";
+import NavTodoNote from "../components/NavTodoNote";
+import FooterTodoNote from "../components/FooterTodoNote";
 
 export const Route = createFileRoute("/note")({
   component: () => {
-    const { t, i18n } = useTranslation("global");
-    const handleChangeLang = (lang: string) => {
-      i18n.changeLanguage(lang);
-    };
+    const { t } = useTranslation("global");
 
     const storedNote = JSON.parse(localStorage.getItem("note") || "[]");
 
@@ -49,26 +48,11 @@ export const Route = createFileRoute("/note")({
     }, [dark]);
 
     return (
-      <main
+      <article
         className={`${dark && "dark"} grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto]`}
       >
-        <header className="flex items-center justify-around bg-indigo-700 px-4 py-1 text-white lg:px-3 lg:py-2">
-          <div className="cursor-pointer">
-            <Link to="/" className="font-edu tracking-wider">
-              risat.
-            </Link>
-          </div>
-          <button onClick={toggleMode}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="ml-3 h-[18px] w-[18px] text-black-500 transition-colors duration-300 ease-in-out dark:text-light"
-            >
-              <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z" />
-            </svg>
-          </button>
-        </header>
+        {/* header */}
+        <NavTodoNote toggleMode={toggleMode} />
 
         {/* hero */}
         <main className="place-content-center place-items-center pt-4 dark:bg-black-500 dark:text-light lg:grid">
@@ -90,7 +74,7 @@ export const Route = createFileRoute("/note")({
                 ></textarea>
               </div>
               <button
-                className="mt-2 rounded-md bg-blue-700 px-4 py-1 text-sm font-medium tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-blue-600 lg:mx-auto"
+                className="mt-2 rounded-md bg-blue-700 px-4 py-1 text-sm font-medium capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-blue-600 lg:mx-auto"
                 onClick={addNote}
               >
                 {t("Note.note_btn")}
@@ -101,15 +85,15 @@ export const Route = createFileRoute("/note")({
               {desc.map(({ description }: any, index: any) => {
                 return (
                   <div
-                    key={desc.id}
-                    className="flex items-center justify-between rounded border border-solid border-black-500 p-2 dark:border-light"
+                    key={index}
+                    className="flex items-center justify-between rounded px-3 py-1 shadow-sm shadow-black-500 dark:shadow-light"
                   >
                     <p key={desc.id} className="text-sm">
                       {description}
                     </p>
 
                     <button
-                      className="rounded bg-red-700 px-2 py-[0.1rem] text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-500"
+                      className="rounded bg-red-700 px-2 py-1 font-mono text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-500"
                       onClick={() => deleteNote(index)}
                     >
                       {t("TODO.delete_btn")}
@@ -121,22 +105,10 @@ export const Route = createFileRoute("/note")({
           </section>
 
           <Button />
-          <div className="absolute bottom-4 right-4 flex items-center gap-2">
-            <button
-              className="&.active rounded-sm bg-light px-3 py-1 text-xs font-medium text-black-500 hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light lg:text-sm"
-              onClick={() => handleChangeLang("en")}
-            >
-              EN
-            </button>
-            <button
-              className="rounded-sm bg-light px-3 py-1 text-xs font-medium text-black-500 hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light lg:text-sm"
-              onClick={() => handleChangeLang("fr")}
-            >
-              FR
-            </button>
-          </div>
+
+          <FooterTodoNote />
         </main>
-      </main>
+      </article>
     );
   },
 });

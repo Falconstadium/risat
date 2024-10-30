@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <>
-      <section className="place-content-center dark:bg-black-500 dark:text-light lg:grid">
+      <section className="mx-auto w-full place-content-center bg-white dark:bg-black-500 dark:text-light lg:grid">
         <form
           ref={formContact}
           onSubmit={submitForm}

@@ -11,7 +11,7 @@ const Footerabcnt = () => {
     <>
       <footer className="flex select-none items-center justify-between bg-indigo-700 px-3 py-2 text-center text-sm font-medium tracking-wide text-white lg:justify-around">
         <p>
-          2024 &copy; <span className="font-edu">risat</span>
+          2024 &copy; <span className="font-edu font-semibold">risat</span>
         </p>
 
         <div className="flex items-center gap-2">

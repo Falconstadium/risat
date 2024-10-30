@@ -12,7 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as TodoImport } from './routes/todo'
+import { Route as PassGenerateImport } from './routes/pass-generate'
 import { Route as NoteImport } from './routes/note'
+import { Route as ExpenseImport } from './routes/expense'
 import { Route as DashboardImport } from './routes/dashboard'
 import { Route as ContactImport } from './routes/contact'
 import { Route as AboutImport } from './routes/about'
@@ -25,8 +27,18 @@ const TodoRoute = TodoImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const PassGenerateRoute = PassGenerateImport.update({
+  path: '/pass-generate',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const NoteRoute = NoteImport.update({
   path: '/note',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ExpenseRoute = ExpenseImport.update({
+  path: '/expense',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -82,11 +94,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardImport
       parentRoute: typeof rootRoute
     }
+    '/expense': {
+      id: '/expense'
+      path: '/expense'
+      fullPath: '/expense'
+      preLoaderRoute: typeof ExpenseImport
+      parentRoute: typeof rootRoute
+    }
     '/note': {
       id: '/note'
       path: '/note'
       fullPath: '/note'
       preLoaderRoute: typeof NoteImport
+      parentRoute: typeof rootRoute
+    }
+    '/pass-generate': {
+      id: '/pass-generate'
+      path: '/pass-generate'
+      fullPath: '/pass-generate'
+      preLoaderRoute: typeof PassGenerateImport
       parentRoute: typeof rootRoute
     }
     '/todo': {
@@ -106,7 +132,9 @@ export const routeTree = rootRoute.addChildren({
   AboutRoute,
   ContactRoute,
   DashboardRoute,
+  ExpenseRoute,
   NoteRoute,
+  PassGenerateRoute,
   TodoRoute,
 })
 
@@ -122,7 +150,9 @@ export const routeTree = rootRoute.addChildren({
         "/about",
         "/contact",
         "/dashboard",
+        "/expense",
         "/note",
+        "/pass-generate",
         "/todo"
       ]
     },
@@ -138,8 +168,14 @@ export const routeTree = rootRoute.addChildren({
     "/dashboard": {
       "filePath": "dashboard.tsx"
     },
+    "/expense": {
+      "filePath": "expense.tsx"
+    },
     "/note": {
       "filePath": "note.tsx"
+    },
+    "/pass-generate": {
+      "filePath": "pass-generate.tsx"
     },
     "/todo": {
       "filePath": "todo.tsx"
