@@ -6,7 +6,7 @@ const About = () => {
 
   return (
     <main className="container flex items-center justify-center bg-light dark:bg-black-500 dark:text-white">
-      <section className="container flex flex-col items-center justify-center lg:w-2/4 lg:flex-row lg:gap-4">
+      <section className="container flex flex-col items-center justify-center px-6 lg:w-2/4 lg:flex-row lg:gap-4">
         <img
           className="h-20 w-20 lg:h-32 lg:w-32"
           src={risat}
@@ -16,7 +16,7 @@ const About = () => {
           <h1 className="text-center text-lg font-bold lg:text-2xl">
             {t("about.title")} <span>risat :</span>
           </h1>
-          <p className="font-IBM text-justify text-sm leading-5 lg:text-lg">
+          <p className="text-balance text-center text-sm leading-5 lg:text-justify lg:text-lg">
             {t("about.description")}
           </p>
         </div>
