@@ -5,7 +5,7 @@
   },
 
   "hero":{
-    "title": "Écrire et enregistrer localement.",
+    "title": "Écrire, Enregistrer, Découvrir",
     "parag": "Vos outils préférés en un seul endroit.",
     "btn": "Commencer",
     "explore": "Explorer plus",
@@ -52,7 +52,20 @@
     "placeholder": "Commencer à taper.."
   },
 
-  "process":{
-    "page": "Page en cours de construction"
+  "password":{
+    "btn": "générer mot de passe",
+    "copy": "copier",
+    "length": "longueur",
+    "capital": "Contient lettres majuscule",
+    "lower": "Contient lettres miniscules",
+    "number": "Contient des numéros",
+    "symbol": "Contient des symboles",
+    "success": "copié à la presse-papier",
+    "error": "rien à copier"
+  },
+
+  "expense":{
+    "transaction": "Ajouter une transaction",
+    "description": "Description"
   }
 }

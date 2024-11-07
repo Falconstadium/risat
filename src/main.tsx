@@ -8,6 +8,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 import enTranslation from "../src/translations/en/local.json";
 import frTranslation from "../src/translations/fr/local.json";
+import { Toaster } from "sonner";
 
 const resources = {
   en: {
@@ -51,6 +52,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <I18nextProvider i18n={i18next}>
       <App />
+      <Toaster richColors />
     </I18nextProvider>
   </StrictMode>,
 );

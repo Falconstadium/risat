@@ -1,34 +1,143 @@
 import { createFileRoute } from "@tanstack/react-router";
-import NavTodoNote from "../components/NavTodoNote";
 import { useEffect, useState } from "react";
-import FooterTodoNote from "../components/FooterTodoNote";
+
+import NavbarDash from "../components/NavbarDash";
+import Button from "../components/Button";
 import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/expense")({
   component: () => {
+    const { t } = useTranslation("global");
+
     // darkMode
     const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
+    const storedTrack = JSON.parse(localStorage.getItem("track") || "[]");
+
     const [dark, setDark] = useState(darkMode);
 
     const toggleMode = () => {
       setDark(!dark);
     };
 
+    const [description, setDescription] = useState("");
+    const [amount, setAmount] = useState<number>(0);
+    const [transaction, setTransaction] = useState<any>(storedTrack);
+    const [edit, setEdit] = useState(null);
+
     useEffect(() => {
       localStorage.setItem("mode", JSON.stringify(dark));
-    }, [dark]);
+      localStorage.setItem("track", JSON.stringify(transaction));
+    }, [dark, transaction]);
 
-    const { t } = useTranslation("global");
+    const [load, setLoad] = useState(false);
+    useEffect(() => {
+      setLoad(true);
+      setTimeout(() => {
+        setLoad(false);
+      }, 1500);
+    }, []);
+
+    const submitForm = (e: any) => {
+      e.preventDefault();
+      if (edit) {
+        const newTransaction = transaction.map((item: any) => {
+          item.id === edit ? { id: edit, description, amount } : item;
+        });
+        setTransaction(newTransaction);
+        setEdit(null);
+      } else {
+        setTransaction([
+          ...transaction,
+          { id: Date.now(), description, amount },
+        ]);
+      }
+      setDescription("");
+      setAmount(0);
+    };
+
+    const deleteItem = (item: any) => {
+      const newTransaction = [...transaction];
+      newTransaction.splice(item, 1);
+      setTransaction(newTransaction);
+    };
 
     return (
       <article
-        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr_auto]`}
+        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
       >
-        <NavTodoNote toggleMode={toggleMode} />
-        <h1 className="grid place-content-center place-items-center text-3xl dark:bg-black-500 dark:text-light">
-          {t("process.page")}
-        </h1>
-        <FooterTodoNote />
+        <NavbarDash toggleMode={toggleMode} />
+
+        {load ? (
+          <div className="grid w-full place-content-center bg-white dark:bg-black-500">
+            <div className="flex flex-row gap-2">
+              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700"></div>
+              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
+              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
+            </div>
+          </div>
+        ) : (
+          <main className="flex w-full items-start justify-center bg-white dark:bg-black-500">
+            <section className="container grid w-full animate-fadeIn gap-7 px-8 pt-24 lg:w-1/2">
+              <form onSubmit={submitForm} className="grid gap-2">
+                <input
+                  type="text"
+                  placeholder={t("expense.description")}
+                  onChange={(e) => setDescription(e.target.value)}
+                  value={description || ""}
+                  aria-label="Description"
+                  className="rounded-sm border border-black-500 bg-transparent px-2 py-1 text-sm font-medium outline-none dark:border-light dark:text-light"
+                />
+                <input
+                  type="number"
+                  onChange={(e) => setAmount(Number(e.target.value))}
+                  value={amount || 0}
+                  aria-label="Amount"
+                  className="rounded-sm border border-black-500 bg-transparent px-2 py-1 text-sm font-medium outline-none dark:border-light dark:text-light"
+                />
+                <button
+                  type="submit"
+                  aria-label="Add to Transaction"
+                  className="rounded bg-blue-700 px-3 py-1 text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-blue-600"
+                >
+                  {t("expense.transaction")}
+                </button>
+              </form>
+
+              <section className="relative grid gap-2 px-8">
+                {transaction.map((item: any) => {
+                  return (
+                    <div
+                      className="flex items-center justify-between gap-2"
+                      key={item.id}
+                    >
+                      <div className="flex w-full items-center justify-between rounded-md border border-black-500 px-2 py-1 dark:border-light dark:text-light">
+                        <p className="font-medium capitalize">
+                          {item.description}
+                        </p>
+                        <p className="text-sm font-medium">{item.amount}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(item) => deleteItem(item)}
+                        className="flex justify-end rounded-full bg-red-700 text-light hover:bg-red-600"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="size-5 md:size-6"
+                        >
+                          <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                        </svg>
+                      </button>
+                    </div>
+                  );
+                })}
+              </section>
+            </section>
+            <Button />
+          </main>
+        )}
       </article>
     );
   },

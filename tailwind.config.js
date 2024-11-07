@@ -12,12 +12,28 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        edu: ["Martian Mono", "monospace"],
+        Serif: ["Merriweather", "serif"],
       },
       colors: {
-        "black-500": "#121212",
-        "black-100": "#242424",
-        light: "#f5f5f5",
+        "black-500": "#080202",
+        "black-100": "#101010",
+        light: "#f9f9f9",
+        darker: "#944E6C",
+        pirose: "#906387",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeUp: {
+          "0%": { transform: "translateY(-10px)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn .4s ease-in",
+        fadeUp: "fadeUp .8s ease-in",
       },
     },
   },
@@ -37,7 +53,7 @@ export default {
           }),
           "bg-dot": (value) => ({
             backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`,
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`,
             )}")`,
           }),
         },

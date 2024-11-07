@@ -5,11 +5,11 @@ const Navbar = ({ toggleMode }: any) => {
   const { t } = useTranslation("global");
 
   return (
-    <header className="flex items-center justify-between bg-light px-4 py-2 text-black-100 dark:bg-black-100 dark:text-light lg:justify-around lg:px-0 lg:py-3">
+    <header className="flex items-center justify-between bg-white px-4 py-2 text-black-100 dark:bg-black-100 dark:text-light lg:justify-around lg:px-0 lg:py-4">
       <div>
         <Link
           to="/"
-          className="cursor-pointer text-sm font-semibold tracking-wider"
+          className="text-sm font-semibold tracking-wider md:text-base lg:text-lg lg:tracking-widest"
         >
           risat.
         </Link>
@@ -17,13 +17,13 @@ const Navbar = ({ toggleMode }: any) => {
       <div className="flex items-center gap-1 lg:gap-2">
         <Link
           to="/about"
-          className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-200 ease-in-out hover:bg-black-500 hover:text-light md:text-sm [&.active]:bg-black-500"
+          className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-200 ease-in-out hover:bg-black-500 hover:text-light md:text-sm lg:text-base [&.active]:bg-black-500 [&.active]:text-light"
         >
           {t("nav.about")}
         </Link>
         <Link
           to="/contact"
-          className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-200 ease-in-out hover:bg-black-500 hover:text-light md:text-sm [&.active]:bg-black-500"
+          className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-200 ease-in-out hover:bg-black-500 hover:text-light md:text-sm lg:text-base [&.active]:bg-black-500 [&.active]:text-light"
         >
           {t("nav.contact")}
         </Link>

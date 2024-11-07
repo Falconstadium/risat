@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 
 const Contact = () => {
   const { t } = useTranslation("global");
@@ -34,11 +34,11 @@ const Contact = () => {
 
   return (
     <>
-      <section className="mx-auto w-full place-content-center bg-white dark:bg-black-500 dark:text-light lg:grid">
+      <section className="mx-auto w-full place-content-center bg-light dark:bg-black-500 dark:text-light lg:grid">
         <form
           ref={formContact}
           onSubmit={submitForm}
-          className="grid w-full gap-3 px-4 lg:w-[500px]"
+          className="grid w-full animate-fadeIn gap-3 px-4 lg:w-[500px]"
         >
           <div className="grid gap-1">
             <label className="text-sm font-medium" htmlFor="username">
@@ -86,7 +86,7 @@ const Contact = () => {
               id="message"
             ></textarea>
           </div>
-          <Toaster richColors />
+
           <button
             type="submit"
             className="rounded bg-sky-800 px-6 py-1 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-sky-600 lg:mx-auto"

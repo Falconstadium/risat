@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import About from "../components/About";
-import Footerabcnt from "../components/Footer_about_contact";
 import Navbar from "../components/Navbar";
 
 export const Route = createFileRoute("/about")({
@@ -20,15 +19,12 @@ export const Route = createFileRoute("/about")({
 
     return (
       <main
-        className={`${dark && "dark"} grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto]`}
+        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
       >
         <Navbar toggleMode={toggleMode} />
 
         {/* hero */}
         <About />
-
-        {/* footer */}
-        <Footerabcnt />
       </main>
     );
   },

@@ -2,9 +2,12 @@ import { Link } from "@tanstack/react-router";
 
 const NavbarDash = ({ toggleMode }: any) => {
   return (
-    <header className="flex items-center justify-between bg-light px-6 py-2 text-black-100 dark:bg-black-100 dark:text-light lg:justify-around lg:px-16 lg:py-3">
+    <header className="flex items-center justify-between bg-indigo-700 px-6 py-3 text-light lg:justify-around lg:px-16 lg:py-4">
       <div>
-        <Link to="/" className="font-medium tracking-wide">
+        <Link
+          to="/"
+          className="text-sm font-semibold tracking-wide md:text-base md:tracking-wider"
+        >
           risat.
         </Link>
       </div>

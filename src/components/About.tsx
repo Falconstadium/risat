@@ -5,18 +5,18 @@ const About = () => {
   const { t } = useTranslation("global");
 
   return (
-    <main className="grid w-full place-content-center place-items-center gap-12 px-4 text-center dark:bg-black-500 dark:text-white">
-      <section className="container mx-auto grid place-items-center gap-4 lg:w-[700px]">
+    <main className="container flex items-center justify-center bg-light dark:bg-black-500 dark:text-white">
+      <section className="container flex flex-col items-center justify-center lg:w-2/4 lg:flex-row lg:gap-4">
         <img
-          className="h-20 w-20 lg:h-[120px] lg:w-[120px]"
+          className="h-20 w-20 lg:h-32 lg:w-32"
           src={risat}
           alt="risat-logo"
         />
-        <div className="lg:text-md grid gap-2 text-sm">
-          <h1 className="font-bold">
-            {t("about.title")} <span className="">risat :</span>
+        <div className="grid gap-2">
+          <h1 className="text-center text-lg font-bold lg:text-2xl">
+            {t("about.title")} <span>risat :</span>
           </h1>
-          <p className="font-IBM text-justify leading-5">
+          <p className="font-IBM text-justify text-sm leading-5 lg:text-lg">
             {t("about.description")}
           </p>
         </div>

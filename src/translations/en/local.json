@@ -4,7 +4,7 @@
     "contact": "Contact"
   },
   "hero":{
-    "title": "Write and Save locally.",
+    "title": "Write, Save, Discover",
     "parag": "Your favorite tools in one place.",
     "btn": "Get Started",
     "explore": "Explore more",
@@ -51,7 +51,20 @@
     "placeholder": "Start typing.."
   },
 
-  "process":{
-    "page": "Page in the process of construction"
+  "password":{
+    "btn": "generate password",
+    "copy": "copy",
+    "length": "length",
+    "capital": "Include uppercase letters",
+    "lower": "Include lowercase letters",
+    "number": "Include numbers",
+    "symbol": "Include symbols",
+    "success": "copy to clipboard",
+    "error": "nothing to copy"
+  },
+
+  "expense":{
+    "transaction": "Add transaction",
+    "description": "Description"
   }
 }

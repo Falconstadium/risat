@@ -2,8 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
 import { useTranslation } from "react-i18next";
-import NavTodoNote from "../components/NavTodoNote";
-import FooterTodoNote from "../components/FooterTodoNote";
+import NavbarDash from "../components/NavbarDash";
 
 export const Route = createFileRoute("/todo")({
   component: () => {
@@ -50,62 +49,79 @@ export const Route = createFileRoute("/todo")({
       localStorage.setItem("mode", JSON.stringify(dark));
     }, [dark]);
 
+    //animation
+    const [load, setLoad] = useState(false);
+    useEffect(() => {
+      setLoad(true);
+      setTimeout(() => {
+        setLoad(false);
+      }, 1500);
+    }, []);
+
     return (
       <article
         className={`${dark && "dark"} grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto]`}
       >
         {/* header */}
-        <NavTodoNote toggleMode={toggleMode} />
+        <NavbarDash toggleMode={toggleMode} />
 
         {/* main */}
-        <main className="place-content-center dark:bg-black-500 dark:text-light lg:grid">
-          <section className="w-full break-words px-4 lg:w-[500px]">
-            <div className="flex flex-col items-center justify-center gap-2 lg:flex-row">
-              <input
-                ref={inputRef}
-                type="text"
-                className="w-full flex-1 rounded border border-solid border-black-500 bg-light px-2 py-1 font-medium focus:outline-none dark:border-light dark:bg-black-500 dark:text-light lg:text-sm"
-                required
-              />
-              <button
-                type="submit"
-                className="transistion-colors min-w-auto rounded-md bg-blue-700 px-4 py-1 text-sm font-medium tracking-wide text-light duration-300 ease-in-out hover:bg-blue-600"
-                onClick={addTask}
-              >
-                {t("TODO.todo_btn")}
-              </button>
+        {load ? (
+          <div className="grid w-full place-content-center bg-white dark:bg-black-500">
+            <div className="flex flex-row gap-2">
+              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700"></div>
+              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
+              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
             </div>
-            <ul className="mx-auto grid w-full gap-2 pt-6 md:gap-3 lg:place-content-center">
-              {todo &&
-                todo.map &&
-                todo.map(({ text, completed }, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="flex cursor-pointer items-center justify-between break-words rounded px-2 py-2 font-medium shadow-sm shadow-black-500 dark:shadow-light lg:w-[450px] lg:text-sm"
-                    >
-                      <li
-                        id={text.id}
-                        className={completed ? "line-through" : ""}
-                        onClick={() => completTask(index)}
+          </div>
+        ) : (
+          <main className="place-content-center bg-white dark:bg-black-500 dark:text-light lg:grid">
+            <section className="w-full animate-fadeIn break-words px-4 lg:w-[500px]">
+              <div className="flex flex-col items-center justify-center gap-2 lg:flex-row">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  className="w-full flex-1 rounded border border-solid border-black-500 bg-light px-2 py-1 text-sm font-medium focus:outline-none dark:border-light dark:bg-black-500 dark:text-light lg:text-base"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="transistion-colors min-w-auto rounded-md bg-blue-700 px-4 py-1 text-sm font-medium tracking-wide text-light duration-300 ease-in-out hover:bg-blue-600"
+                  onClick={addTask}
+                >
+                  {t("TODO.todo_btn")}
+                </button>
+              </div>
+              <ul className="mx-auto grid w-full gap-2 pt-6 md:gap-3 lg:place-content-center">
+                {todo &&
+                  todo.map &&
+                  todo.map(({ text, completed }, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="flex cursor-pointer items-center justify-between break-words rounded px-2 py-2 font-medium shadow-sm shadow-black-500 dark:shadow-light lg:w-[450px] lg:text-sm"
                       >
-                        {text}
-                      </li>
-                      <button
-                        className="rounded bg-red-700 px-2 py-[0.1rem] text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-600"
-                        onClick={() => deleteTask(index)}
-                      >
-                        {t("TODO.delete_btn")}
-                      </button>
-                    </div>
-                  );
-                })}
-            </ul>
-          </section>
-          <Button />
-
-          <FooterTodoNote />
-        </main>
+                        <li
+                          id={text.id}
+                          className={completed ? "line-through" : ""}
+                          onClick={() => completTask(index)}
+                        >
+                          {text}
+                        </li>
+                        <button
+                          className="rounded bg-red-700 px-2 py-[0.1rem] text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-600"
+                          onClick={() => deleteTask(index)}
+                        >
+                          {t("TODO.delete_btn")}
+                        </button>
+                      </div>
+                    );
+                  })}
+              </ul>
+            </section>
+            <Button />
+          </main>
+        )}
       </article>
     );
   },
