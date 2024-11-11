@@ -65,6 +65,7 @@
 
   "expense":{
     "transaction": "Add transaction",
-    "description": "Description"
+    "description": "Description",
+    "link": "For more clarity, Checkout this link"
   }
 }

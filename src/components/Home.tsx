@@ -33,7 +33,7 @@ const Home = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ delay: 0.1, ease: "easeInOut" }}
             >
-              <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Serif text-4xl font-extrabold text-transparent dark:from-neutral-500 dark:to-neutral-600 md:text-6xl lg:py-2">
+              <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Serif text-4xl font-black text-transparent dark:from-neutral-500 dark:to-neutral-600 md:text-6xl lg:py-2 lg:text-7xl">
                 {t("hero.title")}
                 <span className="text-blue-700">.</span>
               </h1>

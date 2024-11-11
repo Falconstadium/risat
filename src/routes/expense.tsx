@@ -136,6 +136,17 @@ export const Route = createFileRoute("/expense")({
               </section>
             </section>
             <Button />
+            <div className="absolute bottom-6 right-4 flex items-center justify-center gap-2 dark:text-light md:bottom-8 md:right-8 lg:bottom-10 lg:right-9">
+              <p>{t("expense.link")}</p>
+              <a
+                className="text-sm font-semibold underline hover:text-indigo-700"
+                href="https://fundstruck.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Expense
+              </a>
+            </div>
           </main>
         )}
       </article>
