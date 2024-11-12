@@ -27,17 +27,16 @@ const Home = () => {
       ) : (
         <div className="relative flex w-full items-center justify-center bg-light bg-dot-black/[0.2] dark:bg-black dark:bg-dot-white/[0.2]">
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
-          <section className="container z-20 grid animate-fadeIn gap-6 px-8 lg:place-items-center lg:gap-8">
+          <section className="container z-20 grid animate-fadeIn gap-6 px-8 lg:place-items-center">
             <motion.div
               initial={{ y: 0 }}
               whileHover={{ scale: 1.05 }}
               transition={{ delay: 0.1, ease: "easeInOut" }}
             >
-              <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Serif text-4xl font-black text-transparent dark:from-neutral-500 dark:to-neutral-600 md:text-6xl lg:py-2 lg:text-7xl">
+              <h1 className="font-Fancy bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center text-5xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 md:text-6xl lg:py-2 lg:text-7xl">
                 {t("hero.title")}
-                <span className="text-blue-700">.</span>
               </h1>
-              <p className="z-30 text-center text-sm font-medium text-neutral-700 dark:text-neutral-400 lg:text-base">
+              <p className="z-30 text-center font-mono font-semibold text-neutral-700 dark:text-neutral-400 lg:text-xl">
                 {t("hero.parag")}
               </p>
             </motion.div>

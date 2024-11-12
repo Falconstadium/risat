@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         Serif: ["Merriweather", "serif"],
+        Fancy: ["Charm", "cursive"],
       },
       colors: {
         "black-500": "#080202",
