@@ -13,10 +13,10 @@ const About = () => {
           alt="risat-logo"
         />
         <div className="grid gap-2">
-          <h1 className="text-center text-lg font-bold lg:text-2xl">
+          <h1 className="text-center text-lg font-bold lg:text-xl">
             {t("about.title")} <span>risat :</span>
           </h1>
-          <p className="text-balance text-center text-sm leading-5 lg:text-justify lg:text-lg">
+          <p className="text-balance text-center text-sm leading-5 lg:text-justify lg:text-base">
             {t("about.description")}
           </p>
         </div>

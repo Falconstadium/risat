@@ -60,7 +60,7 @@ export const Route = createFileRoute("/todo")({
 
     return (
       <article
-        className={`${dark && "dark"} grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto]`}
+        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
       >
         {/* header */}
         <NavbarDash toggleMode={toggleMode} />
@@ -69,15 +69,15 @@ export const Route = createFileRoute("/todo")({
         {load ? (
           <div className="grid w-full place-content-center bg-white dark:bg-black-500">
             <div className="flex flex-row gap-2">
-              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700"></div>
-              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
-              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
+              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700"></div>
+              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
+              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
             </div>
           </div>
         ) : (
-          <main className="place-content-center bg-white dark:bg-black-500 dark:text-light lg:grid">
-            <section className="w-full animate-fadeIn break-words px-4 lg:w-[500px]">
-              <div className="flex flex-col items-center justify-center gap-2 lg:flex-row">
+          <main className="place-content-center place-items-center bg-white dark:bg-black-500 dark:text-light lg:grid">
+            <section className="container w-full animate-fadeIn break-words px-4 lg:w-[500px]">
+              <div className="grid gap-2">
                 <input
                   ref={inputRef}
                   type="text"
@@ -86,7 +86,7 @@ export const Route = createFileRoute("/todo")({
                 />
                 <button
                   type="submit"
-                  className="transistion-colors min-w-auto rounded-md bg-blue-700 px-4 py-1 text-sm font-medium tracking-wide text-light duration-300 ease-in-out hover:bg-blue-600"
+                  className="transistion-colors min-w-auto rounded-md bg-blue-700 px-4 py-1 text-xs font-medium tracking-wide text-light duration-300 ease-in-out hover:bg-blue-600 lg:mx-auto"
                   onClick={addTask}
                 >
                   {t("TODO.todo_btn")}
@@ -99,17 +99,17 @@ export const Route = createFileRoute("/todo")({
                     return (
                       <div
                         key={index}
-                        className="flex cursor-pointer items-center justify-between break-words rounded px-2 py-2 font-medium shadow-sm shadow-black-500 dark:shadow-light lg:w-[450px] lg:text-sm"
+                        className="flex cursor-pointer items-center justify-between break-words rounded px-2 py-2 font-medium shadow-sm shadow-black-500 dark:shadow-light lg:w-[450px]"
                       >
                         <li
                           id={text.id}
-                          className={completed ? "line-through" : ""}
+                          className={`text-xs md:text-sm ${completed ? "text-neutral-600 line-through transition-colors duration-150 ease-in-out dark:text-neutral-300" : ""}`}
                           onClick={() => completTask(index)}
                         >
                           {text}
                         </li>
                         <button
-                          className="rounded bg-red-700 px-2 py-[0.1rem] text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-600"
+                          className="rounded bg-red-700 px-2 py-[0.1rem] text-xs font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-600"
                           onClick={() => deleteTask(index)}
                         >
                           {t("TODO.delete_btn")}

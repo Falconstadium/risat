@@ -70,9 +70,9 @@ export const Route = createFileRoute("/expense")({
         {load ? (
           <div className="grid w-full place-content-center bg-white dark:bg-black-500">
             <div className="flex flex-row gap-2">
-              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700"></div>
-              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
-              <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
+              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700"></div>
+              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
+              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
             </div>
           </div>
         ) : (
@@ -97,7 +97,7 @@ export const Route = createFileRoute("/expense")({
                 <button
                   type="submit"
                   aria-label="Add to Transaction"
-                  className="rounded bg-blue-700 px-3 py-1 text-sm font-medium text-light transition-colors duration-300 ease-in-out hover:bg-blue-600"
+                  className="rounded bg-blue-700 px-3 py-1 text-xs font-medium text-light transition-colors duration-300 ease-in-out hover:bg-blue-600 md:text-sm"
                 >
                   {t("expense.transaction")}
                 </button>
@@ -110,7 +110,7 @@ export const Route = createFileRoute("/expense")({
                       className="flex items-center justify-between gap-2"
                       key={item.id}
                     >
-                      <div className="flex w-full items-center justify-between rounded-md border border-black-500 px-2 py-1 dark:border-light dark:text-light">
+                      <div className="flex w-full items-center justify-between rounded-md border border-black-500 px-2 py-1 text-sm dark:border-light dark:text-light">
                         <p className="font-medium capitalize">
                           {item.description}
                         </p>
@@ -136,7 +136,7 @@ export const Route = createFileRoute("/expense")({
               </section>
             </section>
             <Button />
-            <div className="absolute bottom-6 right-4 flex items-center justify-center gap-2 dark:text-light md:bottom-8 md:right-8 lg:bottom-10 lg:right-9">
+            <div className="absolute bottom-6 right-4 flex items-center justify-center gap-2 text-sm dark:text-light md:bottom-8 md:right-8 md:text-base lg:bottom-10 lg:right-9">
               <p>{t("expense.link")}</p>
               <a
                 className="text-sm font-semibold underline hover:text-indigo-700"

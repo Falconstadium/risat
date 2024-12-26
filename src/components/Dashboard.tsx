@@ -48,7 +48,7 @@ const Dashbord = () => {
                 className="animate-fadeLeft grid w-full place-items-center gap-4 rounded-xl bg-light px-4 py-3 text-center dark:bg-black-100 md:py-6 lg:px-6 lg:py-8"
                 key={tool.id}
               >
-                <h2 className="animate-fadeUp bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-center text-3xl font-semibold text-transparent dark:from-neutral-200 dark:to-neutral-400 md:text-4xl lg:text-5xl">
+                <h2 className="animate-fadeUp bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-center text-2xl font-semibold text-transparent dark:from-neutral-200 dark:to-neutral-400 md:text-3xl">
                   {tool.title}
                 </h2>
                 <button className="font-medium text-blue-600 transition-colors duration-200 ease-in-out hover:text-blue-400">

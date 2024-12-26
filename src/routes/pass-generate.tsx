@@ -123,9 +123,9 @@ export const Route = createFileRoute("/pass-generate")({
           {load ? (
             <div className="grid w-full place-content-center bg-white dark:bg-black-500">
               <div className="flex flex-row gap-2">
-                <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700"></div>
-                <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
-                <div className="h-4 w-4 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
+                <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700"></div>
+                <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
+                <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
               </div>
             </div>
           ) : (
@@ -163,7 +163,7 @@ export const Route = createFileRoute("/pass-generate")({
                           key={item.id}
                         >
                           <label
-                            className="font-medium text-gray-700 dark:text-gray-400"
+                            className="text-sm font-medium text-gray-700 dark:text-gray-400"
                             htmlFor={item.htmlId}
                           >
                             {item.label}
@@ -183,13 +183,13 @@ export const Route = createFileRoute("/pass-generate")({
                   <div className="flex w-full items-center justify-center gap-2">
                     <button
                       type="submit"
-                      className="rounded bg-green-700 px-4 py-1 font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-green-600"
+                      className="rounded bg-green-700 px-4 py-1 text-xs font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-green-600 md:text-sm"
                     >
                       {t("password.btn")}
                     </button>
                     <span
                       onClick={copyBtn}
-                      className="cursor-pointer rounded bg-darker px-4 py-1 font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-pirose"
+                      className="cursor-pointer rounded bg-darker px-4 py-1 text-xs font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-pirose md:text-sm"
                     >
                       {t("password.copy")}
                     </span>

@@ -38,14 +38,14 @@ const Contact = () => {
         <form
           ref={formContact}
           onSubmit={submitForm}
-          className="grid w-full animate-fadeIn gap-3 px-4 lg:w-[500px]"
+          className="grid w-full animate-fadeIn gap-5 px-4 lg:w-[500px]"
         >
           <div className="grid gap-1">
             <label className="text-sm font-medium" htmlFor="username">
               {t("contact.username")}:
             </label>
             <input
-              className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
+              className="rounded-sm border border-solid border-black-500 bg-light px-2 py-[2px] text-sm font-medium text-black-500 focus:outline-none dark:border-light dark:bg-black-100 dark:text-light"
               type="text"
               name="username"
               id="username"
@@ -57,7 +57,7 @@ const Contact = () => {
               {t("contact.country")}:
             </label>
             <input
-              className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
+              className="rounded-sm border border-solid border-black-500 bg-light px-2 py-[2px] text-sm font-medium text-black-500 focus:outline-none dark:border-light dark:bg-black-100 dark:text-light"
               type="text"
               name="country"
               id="country"
@@ -69,7 +69,7 @@ const Contact = () => {
               {t("contact.email")}:
             </label>
             <input
-              className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
+              className="rounded-sm border border-solid border-black-500 bg-light px-2 py-[2px] text-sm font-medium text-black-500 focus:outline-none dark:border-light dark:bg-black-100 dark:text-light"
               type="email"
               name="email"
               id="email"
@@ -81,7 +81,7 @@ const Contact = () => {
               {t("contact.msg")}:
             </label>
             <textarea
-              className="rounded-sm border border-solid border-black px-2 py-[2px] text-sm font-medium text-black focus:outline-none"
+              className="rounded-sm border border-solid border-black-500 bg-light px-2 py-[2px] text-sm font-medium text-black-500 focus:outline-none dark:border-light dark:bg-black-100 dark:text-light"
               name="message"
               id="message"
             ></textarea>

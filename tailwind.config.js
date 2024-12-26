@@ -12,11 +12,10 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        Serif: ["Merriweather", "serif"],
         Fancy: ["Charm", "cursive"],
       },
       colors: {
-        "black-500": "#080202",
+        "black-500": "#0c0c0c",
         "black-100": "#101010",
         light: "#f7f7f7",
         darker: "#944E6C",

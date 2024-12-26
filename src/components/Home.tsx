@@ -28,14 +28,14 @@ const Home = () => {
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
           <section className="container z-20 grid animate-fadeIn gap-6 px-8 lg:place-items-center">
             <div>
-              <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Fancy text-5xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 md:text-6xl lg:py-2 lg:text-7xl xl:text-8xl">
+              <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Fancy text-4xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 lg:text-6xl">
                 {t("hero.title")}
               </h1>
-              <p className="z-30 text-center font-mono font-semibold text-neutral-700 dark:text-neutral-400 lg:text-xl xl:text-2xl">
+              <p className="z-30 text-center font-mono font-semibold text-neutral-700 dark:text-neutral-400 lg:text-lg">
                 {t("hero.parag")}
               </p>
             </div>
-            <button className="rounded-md bg-indigo-700 px-6 py-2 text-sm font-medium tracking-wide text-white transition-colors duration-300 ease-in-out hover:bg-indigo-600 lg:text-base">
+            <button className="rounded-md bg-indigo-700 px-6 py-2 text-xs font-medium tracking-wide text-white transition-colors duration-300 ease-in-out hover:bg-indigo-600 lg:text-sm">
               <Link to="/dashboard">{t("hero.btn")}</Link>
             </button>
           </section>
