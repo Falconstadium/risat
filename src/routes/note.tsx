@@ -117,7 +117,7 @@ export const Route = createFileRoute("/note")({
                       </p>
 
                       <button
-                        className="rounded bg-red-700 px-2 py-1 text-xs font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-500"
+                        className="rounded bg-red-700 p-1 font-medium text-light transition-colors duration-300 ease-in-out hover:bg-red-500"
                         aria-label="Delete Note"
                         title={t("TODO.delete_btn")}
                         onClick={() => deleteNote(index)}

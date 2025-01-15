@@ -114,7 +114,7 @@ export const Route = createFileRoute("/todo")({
 
                         <button
                           type="button"
-                          className="rounded bg-red-700 p-1 transition-colors duration-300 ease-in-out hover:bg-red-600"
+                          className="rounded bg-red-700 p-1 text-light transition-colors duration-300 ease-in-out hover:bg-red-600"
                           aria-label="Delete Todo"
                           title={t("TODO.delete_btn")}
                           onClick={() => deleteTask(index)}
@@ -123,7 +123,7 @@ export const Route = createFileRoute("/todo")({
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
-                            strokeWidth={2}
+                            strokeWidth={2.5}
                             stroke="currentColor"
                             className="size-4"
                           >
