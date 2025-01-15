@@ -6,7 +6,10 @@ const Button = () => {
 
   return (
     <>
-      <button className="fixed left-2 top-16 lg:left-4 lg:top-[4.5rem]">
+      <button
+        className="fixed left-2 top-16 lg:left-4 lg:top-[4.5rem]"
+        aria-label="return to dashbord"
+      >
         <Link
           to="/dashboard"
           className="flex items-center gap-2 rounded-md bg-black-500 px-4 py-2 text-[12px] font-medium text-light transition-colors duration-300 ease-in-out hover:bg-gray-700 dark:bg-light dark:text-black-500 dark:hover:bg-gray-300"

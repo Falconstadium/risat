@@ -14,7 +14,9 @@
   },
 
   "footer":{
-    "right": "Tous droits réservés"
+    "right": "Tous droits réservés",
+    "lang": "Choisir ta Langue:",
+    "default": "Par Défaut"
   },
 
   "about":{
@@ -43,13 +45,17 @@
 
   "TODO":{
     "todo_btn": "Ajouter des tâches",
-    "delete_btn": "Supprimer"
+    "delete_btn": "Supprimer",
+    "toast": "Todo créée",
+    "toast_delete": "Todo supprimée"
   },
 
   "Note": {
     "label": "Description",
     "note_btn": "ajouter note",
-    "placeholder": "Commencer à taper.."
+    "placeholder": "Commencer à taper..",
+    "toast": "Note créée",
+    "toast_delete": "Note supprimée"
   },
 
   "password":{
@@ -61,7 +67,8 @@
     "number": "Contient des numéros",
     "symbol": "Contient des symboles",
     "success": "copié à la presse-papier",
-    "error": "rien à copier"
+    "error": "rien à copier",
+    "less": "inférieur ou égal à 16"
   },
 
   "expense":{

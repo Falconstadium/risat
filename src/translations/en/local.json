@@ -13,7 +13,9 @@
   },
 
   "footer":{
-    "right": "All rights reserved"
+    "right": "All rights reserved",
+    "lang": "Select your Language:",
+    "default": "By Default"
   },
 
   "about":{
@@ -42,13 +44,17 @@
 
   "TODO":{
     "todo_btn": "Add Todo",
-    "delete_btn":"Delete"
+    "delete_btn":"Delete",
+    "toast": "Todo created",
+    "toast_delete": "Todo deleted"
   },
 
   "Note": {
     "label": "Description",
     "note_btn": "Add Note",
-    "placeholder": "Start typing.."
+    "placeholder": "Start typing..",
+    "toast": "Note created",
+    "toast_delete": "Note deleted"
   },
 
   "password":{
@@ -60,7 +66,8 @@
     "number": "Include numbers",
     "symbol": "Include symbols",
     "success": "copy to clipboard",
-    "error": "nothing to copy"
+    "error": "nothing to copy",
+    "less": "less or equal to 16"
   },
 
   "expense":{

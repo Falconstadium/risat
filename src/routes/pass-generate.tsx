@@ -113,6 +113,14 @@ export const Route = createFileRoute("/pass-generate")({
       },
     ];
 
+    const [show, setShow] = useState<any>(false);
+    const showText = () => {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 3000);
+    };
+
     return (
       <>
         <article
@@ -142,6 +150,16 @@ export const Route = createFileRoute("/pass-generate")({
                     className="w-full rounded-sm border border-solid border-slate-900 bg-transparent px-2 py-1 text-sm font-medium tracking-wider text-black-500 focus:outline-none dark:border-light dark:text-light md:text-base"
                   />
                   <div className="flex items-center justify-center gap-4">
+                    <div className="grid place-items-center gap-1">
+                      <p className="font-mono font-semibold capitalize text-gray-700 dark:text-gray-400">
+                        {t("password.length")}
+                      </p>
+                      {show && (
+                        <p className="text-xs font-medium text-red-600 transition-all duration-100 ease-in-out">
+                          {t("password.less")}
+                        </p>
+                      )}
+                    </div>
                     <input
                       type="number"
                       min={8}
@@ -149,11 +167,9 @@ export const Route = createFileRoute("/pass-generate")({
                       name="length"
                       value={val.length}
                       onChange={setVal}
-                      className="w-16 rounded-md border border-solid border-slate-900 bg-transparent px-2 py-1 font-medium tracking-wider text-black-500 focus:outline-none dark:border-light dark:text-light"
+                      onClick={showText}
+                      className="w-16 rounded-md border border-solid border-slate-900 bg-transparent px-2 py-1 text-sm font-medium tracking-wider text-black-500 focus:outline-none dark:border-light dark:text-light"
                     />
-                    <p className="-order-1 font-mono font-semibold capitalize text-gray-700 dark:text-gray-400">
-                      {t("password.length")}
-                    </p>
                   </div>
                   <div className="grid gap-4">
                     {labels.map((item) => {
@@ -184,12 +200,14 @@ export const Route = createFileRoute("/pass-generate")({
                     <button
                       type="submit"
                       className="rounded bg-green-700 px-4 py-1 text-xs font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-green-600 md:text-sm"
+                      aria-label="Generate Password"
                     >
                       {t("password.btn")}
                     </button>
                     <span
                       onClick={copyBtn}
                       className="cursor-pointer rounded bg-darker px-4 py-1 text-xs font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-pirose md:text-sm"
+                      aria-label="Copy Password"
                     >
                       {t("password.copy")}
                     </span>

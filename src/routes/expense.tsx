@@ -120,6 +120,7 @@ export const Route = createFileRoute("/expense")({
                         type="button"
                         onClick={(item) => deleteItem(item)}
                         className="flex justify-end rounded-full bg-red-700 text-light hover:bg-red-600"
+                        aria-label="Delete Transaction"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
