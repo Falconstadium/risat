@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import Dashbord from "../components/Dashboard";
+
 import NavbarDash from "../components/NavbarDash";
+import Dashbord from "../components/Dashboard";
 
 export const Route = createFileRoute("/dashboard")({
   component: () => {

@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
+import { toast, Toaster } from "sonner";
 import { useTranslation } from "react-i18next";
-import { useForm } from "../components/password/UseForm";
+
 import { getRandomChar, getSpecialChar } from "../components/password/utils";
-import { toast } from "sonner";
+import { useForm } from "../components/password/UseForm";
 import NavbarDash from "../components/NavbarDash";
+import AnimationLoading from "../components/AnimationLoading";
+import Button from "../components/Button";
 
 export const Route = createFileRoute("/pass-generate")({
   component: () => {
@@ -129,13 +131,7 @@ export const Route = createFileRoute("/pass-generate")({
           <NavbarDash toggleMode={toggleMode} />
 
           {load ? (
-            <div className="grid w-full place-content-center bg-white dark:bg-black-500">
-              <div className="flex flex-row gap-2">
-                <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700"></div>
-                <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
-                <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
-              </div>
-            </div>
+            <AnimationLoading />
           ) : (
             <>
               <main className="flex items-center justify-center bg-white dark:bg-black-500">
@@ -214,6 +210,7 @@ export const Route = createFileRoute("/pass-generate")({
                   </div>
                 </form>
                 <Button />
+                <Toaster richColors />
               </main>
             </>
           )}

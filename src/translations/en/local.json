@@ -43,18 +43,18 @@
   },
 
   "TODO":{
-    "todo_btn": "Add Todo",
+    "todo_btn": "Enter a Todo...",
     "delete_btn":"Delete",
-    "toast": "Todo created",
-    "toast_delete": "Todo deleted"
+    "toast": "Todo Created",
+    "toast_edit": "Todo Edited",
+    "toast_delete": "Todo Deleted"
   },
 
   "Note": {
-    "label": "Description",
-    "note_btn": "Add Note",
-    "placeholder": "Start typing..",
-    "toast": "Note created",
-    "toast_delete": "Note deleted"
+    "note_btn": "Add Note...",
+    "toast": "Note Created",
+    "toast_edit": "Note Edited",
+    "toast_delete": "Note Deleted"
   },
 
   "password":{

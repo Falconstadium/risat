@@ -44,18 +44,17 @@
   },
 
   "TODO":{
-    "todo_btn": "Ajouter des tâches",
-    "delete_btn": "Supprimer",
+    "todo_btn": "Ajouter une tâche...",
     "toast": "Todo créée",
+    "toast_edit": "Todo éditée",
     "toast_delete": "Todo supprimée"
   },
 
   "Note": {
-    "label": "Description",
-    "note_btn": "ajouter note",
-    "placeholder": "Commencer à taper..",
-    "toast": "Note créée",
-    "toast_delete": "Note supprimée"
+    "note_btn": "Ajouter Note...",
+    "toast": "Note Créée",
+    "toast_edit": "Note éditée",
+    "toast_delete": "Note Supprimée"
   },
 
   "password":{

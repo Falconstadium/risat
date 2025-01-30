@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import NavbarDash from "../components/NavbarDash";
+import AnimationLoading from "../components/AnimationLoading";
 import Button from "../components/Button";
-import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/expense")({
   component: () => {
@@ -68,13 +69,7 @@ export const Route = createFileRoute("/expense")({
         <NavbarDash toggleMode={toggleMode} />
 
         {load ? (
-          <div className="grid w-full place-content-center bg-white dark:bg-black-500">
-            <div className="flex flex-row gap-2">
-              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700"></div>
-              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.3s]"></div>
-              <div className="h-3 w-3 animate-bounce rounded-full bg-indigo-700 [animation-delay:-.5s]"></div>
-            </div>
-          </div>
+          <AnimationLoading />
         ) : (
           <main className="flex w-full items-start justify-center bg-white dark:bg-black-500">
             <section className="container grid w-full animate-fadeIn gap-7 px-8 pt-24 lg:w-1/2">

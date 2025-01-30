@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import About from "../components/About";
+
 import Navbar from "../components/Navbar";
+import About from "../components/About";
 
 export const Route = createFileRoute("/about")({
   component: () => {
