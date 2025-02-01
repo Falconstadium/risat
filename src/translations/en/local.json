@@ -47,6 +47,7 @@
     "delete_btn":"Delete",
     "toast": "Todo Created",
     "toast_edit": "Todo Edited",
+    "todo_modify": "Edit Todo...",
     "toast_delete": "Todo Deleted"
   },
 
@@ -54,6 +55,7 @@
     "note_btn": "Add Note...",
     "toast": "Note Created",
     "toast_edit": "Note Edited",
+    "note_modify": "Edit Note...",
     "toast_delete": "Note Deleted"
   },
 

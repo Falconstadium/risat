@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const EditForm = ({ modifyEdit, editedTodo, closeEditForm }: any) => {
   const [editTodo, setEditTodo] = useState(editedTodo.name);
@@ -8,11 +9,13 @@ const EditForm = ({ modifyEdit, editedTodo, closeEditForm }: any) => {
     modifyEdit({ ...editedTodo, name: editTodo });
   };
 
+  const { t } = useTranslation("global");
+
   return (
-    <main className="absolute left-0 top-0 z-50 flex min-h-dvh w-full items-center justify-center backdrop-blur-sm">
+    <main className="absolute left-0 top-0 z-50 flex min-h-dvh w-full items-center justify-center px-8 backdrop-blur-sm">
       <button
         type="button"
-        className="transi absolute right-2 top-2 rounded-full bg-slate-900 p-1 duration-200 ease-in-out hover:bg-slate-800 lg:right-1/4 lg:top-40 lg:p-3"
+        className="transi absolute right-4 top-56 rounded-full bg-slate-900 p-1 duration-200 ease-in-out hover:bg-slate-800 lg:right-1/4 lg:top-40 lg:p-3"
         onClick={closeEditForm}
       >
         <svg
@@ -30,7 +33,8 @@ const EditForm = ({ modifyEdit, editedTodo, closeEditForm }: any) => {
       >
         <input
           type="text"
-          className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-4"
+          className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-2"
+          placeholder={t("TODO.todo_modify")}
           value={editTodo}
           onInput={(e: any) => setEditTodo(e.target.value)}
           autoFocus

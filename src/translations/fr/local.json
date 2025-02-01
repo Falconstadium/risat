@@ -44,16 +44,18 @@
   },
 
   "TODO":{
-    "todo_btn": "Ajouter une tâche...",
-    "toast": "Todo créée",
-    "toast_edit": "Todo éditée",
-    "toast_delete": "Todo supprimée"
+    "todo_btn": "Ajouter une Tâche...",
+    "toast": "Tâche créée",
+    "toast_edit": "Tâche modifiée",
+    "todo_modify": "Modifier Tâche...",
+    "toast_delete": "Tâche supprimée"
   },
 
   "Note": {
-    "note_btn": "Ajouter Note...",
+    "note_btn": "Ajouter une Note...",
     "toast": "Note Créée",
-    "toast_edit": "Note éditée",
+    "toast_edit": "Note modifiée",
+    "note_modify": "Modifier Note...",
     "toast_delete": "Note Supprimée"
   },
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const EditNote = ({ modifyEdit, editedNote, closeEditForm }: any) => {
   const [editNote, setEditNote] = useState(editedNote.name);
@@ -7,6 +8,8 @@ const EditNote = ({ modifyEdit, editedNote, closeEditForm }: any) => {
     e.preventDefault();
     modifyEdit({ ...editedNote, name: editNote });
   };
+
+  const { t } = useTranslation("global");
 
   return (
     <main className="absolute left-0 top-0 z-50 flex min-h-dvh w-full items-center justify-center px-8 backdrop-blur-sm">
@@ -30,7 +33,8 @@ const EditNote = ({ modifyEdit, editedNote, closeEditForm }: any) => {
       >
         <input
           type="text"
-          className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-4"
+          className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-2"
+          placeholder={t("Note.note_modify")}
           value={editNote}
           onInput={(e: any) => setEditNote(e.target.value)}
           autoFocus

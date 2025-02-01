@@ -20,7 +20,7 @@ const TodoItem = ({ task, deleteTodo, updateTodo, showEditForm }: any) => {
         />
         <label
           htmlFor={task.id}
-          className={`cursor-pointer text-base first-letter:capitalize ${done ? "text-neutral-500 line-through dark:text-neutral-400" : ""}`}
+          className={`cursor-pointer text-base ${done ? "text-neutral-500 line-through dark:text-neutral-400" : ""}`}
         >
           {task.name}
         </label>
