@@ -39,7 +39,8 @@
     "note": "Notes",
     "expense": "Expense Tracker",
     "pass": "Password Generator",
-    "btn": "Return to Dashboard"
+    "btn": "Return to Dashboard",
+    "title": "Dashboard"
   },
 
   "TODO":{

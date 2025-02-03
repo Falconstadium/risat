@@ -27,7 +27,7 @@ const FooterLang = () => {
         <div className="absolute bottom-0 left-0 grid h-28 w-full place-content-center place-items-center gap-4 backdrop-blur lg:h-44">
           <button
             type="button"
-            className="absolute right-2 top-2 rounded-full bg-neutral-400 p-1 transition-colors duration-300 ease-in-out hover:bg-neutral-600 lg:right-4 lg:top-3"
+            className="absolute right-4 top-2 rounded-full bg-neutral-400 p-1 transition-colors duration-300 ease-in-out hover:bg-neutral-600 lg:right-4 lg:top-3"
             onClick={hideFooter}
           >
             <svg

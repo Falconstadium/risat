@@ -13,6 +13,7 @@ import Button from "../components/Button";
 export const Route = createFileRoute("/note")({
   component: () => {
     const { t } = useTranslation("global");
+    document.title = `risat | ${t("dashbord.note")}`;
 
     const storedNote = JSON.parse(localStorage.getItem("note") || "[]");
 

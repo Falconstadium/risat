@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 
 import NavbarDash from "../components/NavbarDash";
 import Dashbord from "../components/Dashboard";
+import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/dashboard")({
   component: () => {
+    const { t } = useTranslation("global");
+    document.title = `risat | ${t("dashbord.title")}`;
+
     const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
     const [dark, setDark] = useState(darkMode);
 

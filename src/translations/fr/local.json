@@ -40,7 +40,8 @@
     "note": "Notes",
     "expense": "Suivi des Dépenses",
     "pass": "Générateur Mot de Passe",
-    "btn": "Retour au tableau de bord"
+    "btn": "Retour au Tableau de bord",
+    "title": "Tableau de bord"
   },
 
   "TODO":{

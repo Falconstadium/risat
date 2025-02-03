@@ -9,6 +9,7 @@ import Button from "../components/Button";
 export const Route = createFileRoute("/expense")({
   component: () => {
     const { t } = useTranslation("global");
+    document.title = `risat | ${t("dashbord.expense")}`;
 
     // darkMode
     const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");

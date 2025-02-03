@@ -11,6 +11,9 @@ import Button from "../components/Button";
 
 export const Route = createFileRoute("/pass-generate")({
   component: () => {
+    const { t } = useTranslation("global");
+    document.title = `risat | ${t("dashbord.pass")}`;
+
     // darkMode
     const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
     const [dark, setDark] = useState(darkMode);
@@ -22,8 +25,6 @@ export const Route = createFileRoute("/pass-generate")({
     useEffect(() => {
       localStorage.setItem("mode", JSON.stringify(dark));
     }, [dark]);
-
-    const { t } = useTranslation("global");
 
     const [load, setLoad] = useState(false);
     useEffect(() => {

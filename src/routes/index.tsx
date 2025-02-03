@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 export const Route = createFileRoute("/")({
   component: () => {
+    document.title = "risat";
     //dark
     const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
     const [dark, setDark] = useState(darkMode);

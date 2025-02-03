@@ -12,7 +12,10 @@ import Button from "../components/Button";
 
 export const Route = createFileRoute("/todo")({
   component: () => {
+    //translation
     const { t } = useTranslation("global");
+
+    document.title = `risat | ${t("dashbord.list")}`;
 
     //localStorage
     const storedTasks = JSON.parse(localStorage.getItem("task") || "[]");
