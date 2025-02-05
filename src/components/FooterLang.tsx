@@ -1,19 +1,14 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-
 import english from "../assets/img/british.png";
 import french from "../assets/img/france.png";
+import { useState } from "react";
 
 const FooterLang = () => {
   const { t, i18n } = useTranslation("global");
 
   const changeLang = (lang: string) => {
     i18n.changeLanguage(lang);
-  };
-
-  const [hide, setHide] = useState(true);
-  const hideFooter = () => {
-    setHide(false);
+    setHover(false);
   };
 
   const langBtns = [
@@ -21,48 +16,72 @@ const FooterLang = () => {
     { id: 2, lang: "Français", value: "fr", img: french },
   ];
 
+  const [hover, setHover] = useState(false);
+  const hoverBtn = () => {
+    setHover(!hover);
+  };
+
   return (
-    <>
-      {hide && (
-        <div className="absolute bottom-0 left-0 grid h-28 w-full place-content-center place-items-center gap-4 backdrop-blur lg:h-44">
-          <button
-            type="button"
-            className="absolute right-4 top-2 rounded-full bg-neutral-400 p-1 transition-colors duration-300 ease-in-out hover:bg-neutral-600 lg:right-4 lg:top-3"
-            onClick={hideFooter}
+    <div className="relative">
+      <button
+        type="button"
+        className={`flex animate-fadeIn items-center gap-1 rounded bg-light px-1 py-1 text-xs font-medium italic transition-all duration-300 ease-in-out hover:bg-slate-200 ${hover && "hidden"}`}
+        title={t("footer.lang")}
+        onClick={hoverBtn}
+      >
+        语A
+        {hover ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-5 transition-all duration-300 ease-in"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2.5}
-              stroke="currentColor"
-              className="size-4 lg:size-5"
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m4.5 15.75 7.5-7.5 7.5 7.5"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-5 transition-all duration-300 ease-out"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        )}
+      </button>
+
+      {hover && (
+        <div className="flex animate-fadeIn items-center gap-2">
+          {langBtns.map((btn) => (
+            <button
+              key={btn.id}
+              className="flex items-center gap-1 text-nowrap rounded bg-neutral-200 px-2 py-1 text-xs font-medium text-black-500 transition-colors duration-300 ease-in-out hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light lg:gap-2 lg:px-3"
+              onClick={() => changeLang(btn.value)}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18 18 6M6 6l12 12"
+              {btn.lang}
+              <img
+                src={btn.img}
+                alt={btn.img}
+                className="hidden w-6 object-cover lg:block"
               />
-            </svg>
-          </button>
-          <p className="text-sm font-medium dark:text-light lg:text-base">
-            {t("footer.lang")}
-          </p>
-          <div className="flex items-center gap-2">
-            {langBtns.map((btn) => (
-              <button
-                key={btn.id}
-                className="flex items-center gap-2 text-nowrap rounded bg-neutral-200 px-3 py-1 text-xs font-medium text-black-500 transition-colors duration-300 ease-in-out hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light"
-                onClick={() => changeLang(btn.value)}
-              >
-                {btn.lang}
-                <img src={btn.img} alt={btn.img} className="w-6 object-cover" />
-              </button>
-            ))}
-          </div>
+            </button>
+          ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -15,7 +15,7 @@ const EditNote = ({ modifyEdit, editedNote, closeEditForm }: any) => {
     <main className="absolute left-0 top-0 z-50 flex min-h-dvh w-full items-center justify-center px-8 backdrop-blur-sm">
       <button
         type="button"
-        className="transi absolute right-4 top-56 rounded-full bg-slate-900 p-1 duration-200 ease-in-out hover:bg-slate-800 lg:right-72 lg:top-48 lg:p-2"
+        className="transi absolute right-4 top-48 rounded-full bg-slate-900 p-1 duration-200 ease-in-out hover:bg-slate-800 lg:right-72 lg:p-2"
         onClick={closeEditForm}
       >
         <svg

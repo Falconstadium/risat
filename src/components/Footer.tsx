@@ -5,7 +5,7 @@ const Footer = () => {
   const { t } = useTranslation("global");
 
   return (
-    <footer className="flex flex-col items-center justify-center gap-3 bg-[#30475e] py-4 lg:flex-row lg:justify-around">
+    <footer className="flex items-center justify-between gap-2 bg-[#30475e] px-2 py-3 lg:justify-around lg:px-0">
       <p className="text-xs font-medium capitalize tracking-wide text-light lg:text-sm">
         {t("footer.right")}
         <span className="text-sm font-semibold lowercase lg:text-base">

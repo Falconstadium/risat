@@ -12,17 +12,17 @@ const EditForm = ({ modifyEdit, editedTodo, closeEditForm }: any) => {
   const { t } = useTranslation("global");
 
   return (
-    <main className="absolute left-0 top-0 z-50 flex min-h-dvh w-full items-center justify-center px-8 backdrop-blur-sm">
+    <main className="absolute left-0 top-0 z-50 flex min-h-dvh w-full items-center justify-center px-8 backdrop-blur">
       <button
         type="button"
-        className="transi absolute right-4 top-56 rounded-full bg-slate-900 p-1 duration-200 ease-in-out hover:bg-slate-800 lg:right-72 lg:top-48 lg:p-2"
+        className="transi absolute right-4 top-48 rounded-full bg-slate-900 p-1 duration-200 ease-in-out hover:bg-slate-800 lg:right-72 lg:p-2"
         onClick={closeEditForm}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="size-6 text-white lg:size-7"
+          className="size-7 text-white"
         >
           <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
         </svg>

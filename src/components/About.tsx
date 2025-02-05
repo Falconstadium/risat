@@ -6,7 +6,7 @@ const About = () => {
 
   return (
     <main className="container flex items-center justify-center bg-light dark:bg-black-500 dark:text-white">
-      <section className="container flex flex-col items-center justify-center px-6 lg:w-2/4 lg:flex-row lg:gap-4">
+      <section className="container flex animate-fadeIn flex-col items-center justify-center px-6 lg:w-2/4 lg:flex-row lg:gap-4">
         <img
           className="h-20 w-20 lg:h-36 lg:w-36"
           src={risat}
