@@ -84,6 +84,7 @@ const Contact = () => {
               className="rounded-sm border border-solid border-black-500 bg-light px-2 py-[2px] text-sm font-medium text-black-500 focus:outline-none dark:border-light dark:bg-black-100 dark:text-light"
               name="message"
               id="message"
+              required
             ></textarea>
           </div>
 
