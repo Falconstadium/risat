@@ -1,3 +1,3 @@
-risat is my personal project, it's a website contains some different tools that we need everyday.
+risat is my personal project, it's a website containing some different tools that we need every day.
 
-[!](./screenshot.jpeg)
+![image alt](./screenshot.jpeg)
