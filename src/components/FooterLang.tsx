@@ -67,24 +67,20 @@ const FooterLang = () => {
       <AnimatePresence>
         {hover && (
           <motion.div
-            className="absolute bottom-8 right-0 grid animate-fadeIn place-content-center gap-2 rounded-sm bg-white/95 px-3 py-2 text-black"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            className="absolute bottom-8 right-0 grid origin-bottom-right place-content-center gap-2 rounded-sm bg-white/95 px-4 py-2 text-black"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.2 }}
           >
             {langBtns.map((btn) => (
               <button
                 key={btn.id}
-                className="flex items-center gap-1 text-nowrap rounded bg-neutral-200 px-2 py-1 text-xs font-medium text-black-500 transition-colors duration-300 ease-in-out hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light lg:gap-2 lg:px-3"
+                className="flex w-24 items-center gap-1 text-nowrap rounded bg-neutral-200 px-3 py-1 text-xs font-medium text-black-500 transition-colors duration-300 ease-in-out hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light lg:gap-2"
                 onClick={() => changeLang(btn.value)}
               >
                 {btn.lang}
-                <img
-                  src={btn.img}
-                  alt={btn.img}
-                  className="hidden w-6 object-cover lg:block"
-                />
+                <img src={btn.img} alt={btn.img} className="w-6 object-cover" />
               </button>
             ))}
           </motion.div>

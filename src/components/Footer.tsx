@@ -12,7 +12,7 @@ const Footer = () => {
           {" "}
           risat
         </span>{" "}
-        &copy; 2024
+        &copy; {new Date().getFullYear()}
       </p>
       <FooterLang />
     </footer>
