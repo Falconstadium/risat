@@ -30,15 +30,33 @@ const FooterLang = () => {
         title={t("footer.lang")}
         onClick={hoverBtn}
       >
-        语A
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-languages"
+        >
+          <path d="m5 8 6 6" />
+          <path d="m4 14 6-6 2-3" />
+          <path d="M2 5h12" />
+          <path d="M7 2h1" />
+          <path d="m22 22-5-10-5 10" />
+          <path d="M14 18h6" />
+        </svg>
         {hover ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
+            strokeWidth={2}
             stroke="currentColor"
-            className="size-5 transition-all duration-300 ease-in"
+            className="size-3 transition-all duration-300 ease-in"
           >
             <path
               strokeLinecap="round"
@@ -51,9 +69,9 @@ const FooterLang = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
+            strokeWidth={2}
             stroke="currentColor"
-            className="size-5 transition-all duration-300 ease-out"
+            className="size-3 transition-all duration-300 ease-out"
           >
             <path
               strokeLinecap="round"
