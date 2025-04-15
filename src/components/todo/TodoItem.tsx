@@ -9,7 +9,7 @@ const TodoItem = ({ task, deleteTodo, updateTodo, showEditForm }: any) => {
   };
 
   return (
-    <li className="mx-auto flex w-full items-center justify-between rounded px-2 py-1 text-sm font-medium shadow-[0_0_12px_-4px] shadow-slate-700 dark:shadow-slate-500 lg:max-w-lg">
+    <li className="mx-auto flex w-full items-center justify-between rounded px-2 py-1 text-sm font-medium shadow-dark dark:shadow-lightWhite lg:max-w-lg">
       <div className="flex items-center gap-2">
         <input
           type="checkbox"

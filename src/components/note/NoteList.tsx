@@ -2,7 +2,7 @@ import NoteItem from "./NoteItem";
 
 const NoteList = ({ note, deleteNote, showEditForm }: any) => {
   return (
-    <ul className="grid gap-3 pt-6 dark:text-light lg:gap-4">
+    <ul className="grid gap-4 pt-6 dark:text-light lg:gap-5">
       {note
         .sort((a: any, b: any) => b.time - a.time)
         .map((takeNote: any) => (

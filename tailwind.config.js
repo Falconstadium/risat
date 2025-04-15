@@ -18,8 +18,8 @@ export default {
         "black-500": "#0c0c0c",
         "black-100": "#121212",
         light: "#f5f5f5",
-        darker: "#944E6C",
-        pirose: "#906387",
+        darker: "#CF0F47",
+        pirose: "#FF0B55",
       },
       keyframes: {
         fadeIn: {
@@ -36,8 +36,8 @@ export default {
         fadeUp: "fadeUp .8s ease-in",
       },
       boxShadow: {
-        dark: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-        lightWhite: "rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;",
+        dark: "rgba(100, 100, 111, 0.2) 0px 5px 24px 0px;",
+        lightWhite: "rgba(255, 255, 255, 0.1) 0px 5px 24px 0px;",
       },
     },
   },
