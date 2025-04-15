@@ -5,7 +5,7 @@ const Navbar = ({ toggleMode }: any) => {
   const { t } = useTranslation("global");
 
   return (
-    <header className="flex items-center justify-between bg-white px-6 py-3 text-black-100 shadow dark:bg-black-100 dark:text-light lg:justify-around lg:px-0">
+    <header className="flex items-center justify-between bg-white px-6 py-4 text-black-100 dark:bg-black-500 dark:text-light lg:justify-around lg:px-0 lg:py-5">
       <div>
         <Link
           to="/"

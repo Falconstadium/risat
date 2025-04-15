@@ -16,8 +16,8 @@ export default {
       },
       colors: {
         "black-500": "#0c0c0c",
-        "black-100": "#101010",
-        light: "#f7f7f7",
+        "black-100": "#121212",
+        light: "#f5f5f5",
         darker: "#944E6C",
         pirose: "#906387",
       },
@@ -34,6 +34,10 @@ export default {
       animation: {
         fadeIn: "fadeIn .4s ease-in",
         fadeUp: "fadeUp .8s ease-in",
+      },
+      boxShadow: {
+        dark: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+        lightWhite: "rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;",
       },
     },
   },

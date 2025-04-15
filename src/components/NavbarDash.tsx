@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 const NavbarDash = ({ toggleMode }: any) => {
   return (
-    <header className="flex items-center justify-between bg-indigo-700 px-6 py-3 text-light lg:justify-around lg:px-16 lg:py-4">
+    <header className="flex items-center justify-between bg-indigo-700 px-6 py-3 text-light lg:justify-around lg:px-16 lg:py-5">
       <div>
         <Link
           to="/"
