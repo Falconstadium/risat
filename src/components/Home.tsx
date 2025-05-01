@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Faq from "./Faq";
 
 const Home = () => {
   const { t } = useTranslation("global");
@@ -24,9 +25,9 @@ const Home = () => {
           </div>
         </section>
       ) : (
-        <div className="relative flex w-full items-center justify-center bg-light bg-dot-black/[0.3] dark:bg-black-500 dark:bg-dot-white/[0.25]">
+        <div className="relative grid w-full place-content-center bg-light bg-dot-black/[0.3] dark:bg-black-500 dark:bg-dot-white/[0.25]">
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black-500"></div>
-          <section className="container z-20 grid animate-fadeIn gap-6 px-8 lg:place-items-center">
+          <section className="container z-20 mx-auto grid min-h-dvh animate-fadeIn place-content-center gap-6 px-8 lg:place-items-center">
             <div>
               <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Fancy text-4xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 lg:text-6xl xl:text-7xl">
                 {t("hero.title")}
@@ -41,6 +42,39 @@ const Home = () => {
             >
               {t("hero.btn")}
             </Link>
+          </section>
+
+          {/* faq */}
+          <section className="container z-10 mx-auto min-h-dvh justify-center px-6 md:px-0">
+            <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Fancy text-4xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 lg:text-5xl">
+              fàq
+            </h1>
+            <div className="grid gap-4 pt-10">
+              <div className="rounded shadow-dark backdrop-blur dark:text-light">
+                <Faq
+                  title="How do I get started with Risat?"
+                  content="To get started, simply visit our website, you don't need to create an account to use the website."
+                />
+              </div>
+              <div className="rounded shadow-dark backdrop-blur dark:text-light">
+                <Faq
+                  title="What tools are available on Risat?"
+                  content="Risat brings together various tools in one place to make your workflow seamless. We offer several tools such as TodoList, Notes, and others."
+                />
+              </div>
+              <div className="rounded shadow-dark backdrop-blur dark:text-light">
+                <Faq
+                  title="How does Risat works?"
+                  content="Everything you write will be saved to your local storage."
+                />
+              </div>
+              <div className="rounded shadow-dark backdrop-blur dark:text-light">
+                <Faq
+                  title="Is Risat free to use?"
+                  content="Risat is totaly free."
+                />
+              </div>
+            </div>
           </section>
         </div>
       )}
