@@ -19,18 +19,52 @@ export const Route = createFileRoute("/")({
       setDark(!dark);
     };
 
+    //load
+    const [load, setLoad] = useState(false);
+    useEffect(() => {
+      setLoad(true);
+      setTimeout(() => {
+        setLoad(false);
+      }, 2000);
+    }, []);
+
     return (
-      <article
-        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr_auto]`}
-      >
-        <Navbar toggleMode={toggleMode} />
+      <>
+        {load ? (
+          <div className="flex min-h-dvh items-center justify-center">
+            <div className="relative">
+              <div className="relative h-32 w-32">
+                <div
+                  className="absolute h-full w-full animate-spin rounded-full border-[3px] border-gray-100/10 border-b-indigo-700 border-r-indigo-700"
+                  style={{ animationDuration: "3s" }}
+                ></div>
 
-        {/* hero */}
-        <Home />
+                <div
+                  className="absolute h-full w-full animate-spin rounded-full border-[3px] border-gray-100/10 border-t-indigo-700"
+                  style={{
+                    animationDuration: "2s",
+                    animationDirection: "reverse",
+                  }}
+                ></div>
+              </div>
 
-        {/* footer */}
-        <Footer />
-      </article>
+              <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-tr from-indigo-700/10 via-transparent to-indigo-700/5 blur-sm"></div>
+            </div>
+          </div>
+        ) : (
+          <article
+            className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[1fr_auto]`}
+          >
+            <Navbar toggleMode={toggleMode} />
+
+            {/* hero */}
+            <Home />
+
+            {/* footer */}
+            <Footer />
+          </article>
+        )}
+      </>
     );
   },
 });

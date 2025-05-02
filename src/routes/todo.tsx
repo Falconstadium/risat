@@ -36,6 +36,11 @@ export const Route = createFileRoute("/todo")({
       toast.success(t("TODO.toast_delete"));
     };
 
+    const deleteAll = (id: any) => {
+      setTodos((prevTask: any) => prevTask.filter((t: any) => t.id === id));
+      toast.success(t("TODO.allTodos"));
+    };
+
     const updateTodo = (id: any) => {
       setTodos((prevTask: any) =>
         prevTask.map((t: any) =>
@@ -85,38 +90,46 @@ export const Route = createFileRoute("/todo")({
     }, []);
 
     return (
-      <article
-        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
-      >
-        <NavbarDash toggleMode={toggleMode} />
+      <>
         {load ? (
           <AnimationLoading />
         ) : (
-          <main className="bg-white dark:bg-black-500">
-            <section className="w-full px-4 pt-20">
-              {isEdited && (
-                <EditForm
-                  modifyEdit={modifyEdit}
-                  editedTodo={editedTodo}
-                  closeEditForm={closeEditForm}
-                />
-              )}
-              <TodoForm addTodo={addTodo} />
-              {todos && (
-                <TodoList
-                  todos={todos}
-                  deleteTodo={deleteTodo}
-                  updateTodo={updateTodo}
-                  showEditForm={showEditForm}
-                />
-              )}
-            </section>
-            <Button />
+          <article
+            className={`${dark && "dark"} grid min-h-dvh w-full animate-fadeIn grid-rows-[auto_1fr]`}
+          >
+            <NavbarDash toggleMode={toggleMode} />
 
-            <Toaster richColors />
-          </main>
+            <main className="bg-white dark:bg-black-500">
+              <section className="container mx-auto w-full px-2 pt-20">
+                {isEdited && (
+                  <EditForm
+                    modifyEdit={modifyEdit}
+                    editedTodo={editedTodo}
+                    closeEditForm={closeEditForm}
+                  />
+                )}
+
+                <TodoForm
+                  todos={todos}
+                  addTodo={addTodo}
+                  deleteAll={deleteAll}
+                />
+                {todos && (
+                  <TodoList
+                    todos={todos}
+                    deleteTodo={deleteTodo}
+                    updateTodo={updateTodo}
+                    showEditForm={showEditForm}
+                  />
+                )}
+              </section>
+              <Button />
+
+              <Toaster richColors />
+            </main>
+          </article>
         )}
-      </article>
+      </>
     );
   },
 });

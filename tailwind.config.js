@@ -23,17 +23,22 @@ export default {
       },
       keyframes: {
         fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
         fadeUp: {
           "0%": { transform: "translateY(-10px)" },
           "100%": { transform: "translateY(0)" },
         },
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0, visibility: "hidden" },
+        },
       },
       animation: {
         fadeIn: "fadeIn .4s ease-in",
         fadeUp: "fadeUp .8s ease-in",
+        fadeOut: "fadeOut .5s ease-out",
       },
       boxShadow: {
         dark: "rgba(100, 100, 111, 0.2) 0px 5px 24px 0px;",

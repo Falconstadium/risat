@@ -51,7 +51,8 @@
     "expense": "Expense Tracker",
     "pass": "Password Generator",
     "btn": "Return to Dashboard",
-    "title": "Dashboard"
+    "title": "Dashboard",
+    "deleteAll": "Delete All"
   },
 
   "TODO":{
@@ -60,7 +61,8 @@
     "toast": "Todo Created",
     "toast_edit": "Todo Edited",
     "todo_modify": "Edit Todo...",
-    "toast_delete": "Todo Deleted"
+    "toast_delete": "Todo Deleted",
+    "allTodos": "All the Todos in this list has been deleted"
   },
 
   "Note": {

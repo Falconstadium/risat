@@ -60,51 +60,53 @@ export const Route = createFileRoute("/note")({
       setDark(!dark);
     };
 
+    const [load, setLoad] = useState(false);
+
     useEffect(() => {
       localStorage.setItem("note", JSON.stringify(note));
       localStorage.setItem("mode", JSON.stringify(dark));
-    }, [note, dark]);
-
-    const [load, setLoad] = useState(false);
-    useEffect(() => {
+      //animation
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
       }, 1500);
-    }, []);
+    }, [note, dark]);
 
     return (
-      <article
-        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
-      >
-        <NavbarDash toggleMode={toggleMode} />
+      <>
         {load ? (
           <AnimationLoading />
         ) : (
-          <main className="bg-white dark:bg-black-500">
-            <section className="w-full px-4 pt-20">
-              {isEdited && (
-                <EditNote
-                  modifyEdit={modifyEdit}
-                  editedNote={editedNote}
-                  closeEditForm={closeEditForm}
-                />
-              )}
-              <NoteForm addNote={addNote} />
-              {note && (
-                <NoteList
-                  note={note}
-                  deleteNote={deleteNote}
-                  showEditForm={showEditForm}
-                />
-              )}
-            </section>
-            <Button />
+          <article
+            className={`${dark && "dark"} grid min-h-dvh w-full animate-fadeIn grid-rows-[auto_1fr]`}
+          >
+            <NavbarDash toggleMode={toggleMode} />
 
-            <Toaster richColors />
-          </main>
+            <main className="bg-white dark:bg-black-500">
+              <section className="w-full px-4 pt-20">
+                {isEdited && (
+                  <EditNote
+                    modifyEdit={modifyEdit}
+                    editedNote={editedNote}
+                    closeEditForm={closeEditForm}
+                  />
+                )}
+                <NoteForm addNote={addNote} />
+                {note && (
+                  <NoteList
+                    note={note}
+                    deleteNote={deleteNote}
+                    showEditForm={showEditForm}
+                  />
+                )}
+              </section>
+              <Button />
+
+              <Toaster richColors />
+            </main>
+          </article>
         )}
-      </article>
+      </>
     );
   },
 });

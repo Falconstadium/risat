@@ -22,17 +22,16 @@ export const Route = createFileRoute("/pass-generate")({
       setDark(!dark);
     };
 
+    const [load, setLoad] = useState(false);
+
     useEffect(() => {
       localStorage.setItem("mode", JSON.stringify(dark));
-    }, [dark]);
-
-    const [load, setLoad] = useState(false);
-    useEffect(() => {
+      //animation
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
       }, 1500);
-    }, []);
+    }, [dark]);
 
     const [val, setVal] = useForm({
       length: 8,
@@ -126,14 +125,14 @@ export const Route = createFileRoute("/pass-generate")({
 
     return (
       <>
-        <article
-          className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
-        >
-          <NavbarDash toggleMode={toggleMode} />
+        {load ? (
+          <AnimationLoading />
+        ) : (
+          <article
+            className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
+          >
+            <NavbarDash toggleMode={toggleMode} />
 
-          {load ? (
-            <AnimationLoading />
-          ) : (
             <>
               <main className="flex items-center justify-center bg-white dark:bg-black-500">
                 <form
@@ -214,8 +213,8 @@ export const Route = createFileRoute("/pass-generate")({
                 <Toaster richColors />
               </main>
             </>
-          )}
-        </article>
+          </article>
+        )}
       </>
     );
   },

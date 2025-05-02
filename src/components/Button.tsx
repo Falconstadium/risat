@@ -7,7 +7,7 @@ const Button = () => {
   return (
     <>
       <button
-        className="fixed left-2 top-16 lg:left-4 lg:top-[4.5rem]"
+        className="fixed left-2 top-16 shadow-dark dark:shadow-lightWhite lg:left-4 lg:top-[4.5rem]"
         aria-label="return to dashbord"
       >
         <Link

@@ -2,7 +2,7 @@ import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, deleteTodo, updateTodo, showEditForm }: any) => {
   return (
-    <ul className="grid gap-4 pt-8 dark:text-light lg:gap-5">
+    <ul className="grid gap-2 pt-8 dark:text-light lg:gap-3">
       {todos
         .sort((a: any, b: any) => b.time - a.time)
         .map((task: any) => (

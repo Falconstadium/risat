@@ -52,7 +52,8 @@
     "expense": "Suivi des Dépenses",
     "pass": "Générateur Mot de Passe",
     "btn": "Retour au Tableau de bord",
-    "title": "Tableau de bord"
+    "title": "Tableau de bord",
+    "deleteAll": "Supprimer tous"
   },
 
   "TODO":{
@@ -60,7 +61,9 @@
     "toast": "Tâche créée",
     "toast_edit": "Tâche modifiée",
     "todo_modify": "Modifier Tâche...",
-    "toast_delete": "Tâche supprimée"
+    "toast_delete": "Tâche supprimée",
+    "allTodos": "Tous les Tâches de cette liste ont été supprimés"
+
   },
 
   "Note": {

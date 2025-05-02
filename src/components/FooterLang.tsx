@@ -68,44 +68,28 @@ const FooterLang = () => {
           <path d="m22 22-5-10-5 10" />
           <path d="M14 18h6" />
         </svg>
-        {hover ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="size-3 transition-all duration-300 ease-in"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4.5 15.75 7.5-7.5 7.5 7.5"
-            />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="size-3 transition-all duration-300 ease-out"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-            />
-          </svg>
-        )}
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className={`size-3 transition-all duration-300 ease-in-out ${hover ? "rotate-180" : ""}`}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
       </button>
 
       <AnimatePresence>
         {hover && (
           <motion.div
             ref={menuRef}
-            className="absolute bottom-8 right-0 grid origin-bottom-right place-content-center gap-2 rounded-sm bg-white/95 px-4 py-2 text-black"
+            className="absolute bottom-10 right-0 z-10 grid origin-bottom-right place-content-center gap-4 rounded bg-white/95 p-5 text-black shadow-dark backdrop-blur dark:shadow-lightWhite"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
@@ -114,11 +98,11 @@ const FooterLang = () => {
             {langBtns.map((btn) => (
               <button
                 key={btn.id}
-                className="flex w-24 items-center gap-1 text-nowrap rounded bg-neutral-200 px-3 py-1 text-xs font-medium text-black-500 transition-colors duration-300 ease-in-out hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light lg:gap-2"
+                className="flex w-32 items-center justify-center gap-1 text-nowrap rounded bg-neutral-100 px-3 py-2 text-sm font-medium text-black-500 transition-colors duration-300 ease-in-out hover:bg-black-100 hover:text-light focus:bg-black-500 focus:text-light dark:bg-neutral-300 lg:gap-2"
                 onClick={() => changeLang(btn.value)}
               >
                 {btn.lang}
-                <img src={btn.img} alt={btn.img} className="w-6 object-cover" />
+                <img src={btn.img} alt={btn.img} className="w-7 object-cover" />
               </button>
             ))}
           </motion.div>

@@ -59,7 +59,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 
   return (
     <li
-      className="rounded border-b border-gray-800 px-4 py-2 dark:border-light dark:text-light"
+      className="rounded border-b border-gray-800 px-4 py-2 font-medium backdrop-blur-md dark:border-light dark:text-light"
       {...props}
     >
       <header

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const TodoForm = ({ addTodo }: any) => {
+const TodoForm = ({ todos, addTodo, deleteAll }: any) => {
   const { t } = useTranslation("global");
 
   const [todo, setTodo] = useState("");
@@ -20,7 +20,7 @@ const TodoForm = ({ addTodo }: any) => {
   return (
     <form
       onSubmit={formSubmit}
-      className="mx-auto flex flex-1 items-center justify-center gap-2 lg:max-w-md"
+      className="mx-auto flex flex-1 items-center justify-center gap-2 lg:max-w-lg"
     >
       <input
         type="text"
@@ -51,6 +51,32 @@ const TodoForm = ({ addTodo }: any) => {
           />
         </svg>
       </button>
+      {todos != 0 ? (
+        <button
+          type="button"
+          onClick={deleteAll}
+          title={t("dashbord.deleteAll")}
+          className="flex items-center gap-1 rounded bg-red-700 p-1 text-xs text-light transition-colors duration-200 ease-in-out hover:bg-red-600"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-trash-icon lucide-trash"
+          >
+            <path d="M3 6h18" />
+            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+          </svg>
+          <span>({todos.length})</span>
+        </button>
+      ) : null}
     </form>
   );
 };
