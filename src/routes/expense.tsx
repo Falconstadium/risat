@@ -27,15 +27,16 @@ export const Route = createFileRoute("/expense")({
     const [edit, setEdit] = useState(null);
 
     const [load, setLoad] = useState(false);
-
     useEffect(() => {
-      localStorage.setItem("mode", JSON.stringify(dark));
-      localStorage.setItem("track", JSON.stringify(transaction));
-      //animation
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
       }, 1500);
+    }, []);
+
+    useEffect(() => {
+      localStorage.setItem("mode", JSON.stringify(dark));
+      localStorage.setItem("track", JSON.stringify(transaction));
     }, [dark, transaction]);
 
     const submitForm = (e: any) => {

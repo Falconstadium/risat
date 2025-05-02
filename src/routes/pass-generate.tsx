@@ -23,14 +23,15 @@ export const Route = createFileRoute("/pass-generate")({
     };
 
     const [load, setLoad] = useState(false);
-
     useEffect(() => {
-      localStorage.setItem("mode", JSON.stringify(dark));
-      //animation
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
       }, 1500);
+    }, []);
+
+    useEffect(() => {
+      localStorage.setItem("mode", JSON.stringify(dark));
     }, [dark]);
 
     const [val, setVal] = useForm({

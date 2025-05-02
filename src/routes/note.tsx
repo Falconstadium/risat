@@ -60,17 +60,18 @@ export const Route = createFileRoute("/note")({
       setDark(!dark);
     };
 
-    const [load, setLoad] = useState(false);
-
     useEffect(() => {
       localStorage.setItem("note", JSON.stringify(note));
       localStorage.setItem("mode", JSON.stringify(dark));
-      //animation
+    }, [note, dark]);
+
+    const [load, setLoad] = useState(false);
+    useEffect(() => {
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
       }, 1500);
-    }, [note, dark]);
+    }, []);
 
     return (
       <>
