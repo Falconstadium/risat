@@ -37,7 +37,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   const [selected, setSelected] = useState<string | null>(value);
 
   return (
-    <ul {...props} className="grid w-full gap-4">
+    <ul {...props} className="mx-auto grid w-full gap-4 md:w-2/4">
       <AccordionContext.Provider value={{ selected, setSelected }}>
         {children}
       </AccordionContext.Provider>
@@ -59,7 +59,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 
   return (
     <li
-      className="rounded bg-gray-200 px-2 py-2 dark:bg-gray-900 dark:text-light"
+      className="rounded border-b border-gray-800 px-4 py-2 dark:border-light dark:text-light"
       {...props}
     >
       <header
@@ -87,7 +87,10 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
         className="overflow-y-hidden transition-all duration-300 ease-in-out"
         style={{ height: open ? ref.current?.offsetHeight || 0 : 0 }}
       >
-        <div className="py-3 text-sm" ref={ref}>
+        <div
+          className="py-3 pr-4 text-sm text-neutral-700 dark:text-neutral-300"
+          ref={ref}
+        >
           {children}
         </div>
       </div>

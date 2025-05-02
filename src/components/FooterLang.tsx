@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import english from "../assets/img/british.png";
 import french from "../assets/img/france.png";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const FooterLang = () => {
@@ -18,9 +18,27 @@ const FooterLang = () => {
   ];
 
   const [hover, setHover] = useState(false);
-  const hoverBtn = () => {
-    setHover(!hover);
-  };
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setHover(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="relative">
@@ -28,7 +46,8 @@ const FooterLang = () => {
         type="button"
         className={`flex animate-fadeIn items-center gap-1 rounded bg-light px-1 py-1 text-xs font-medium italic transition-all duration-300 ease-in-out hover:bg-slate-200`}
         title={t("footer.lang")}
-        onClick={hoverBtn}
+        ref={buttonRef}
+        onClick={() => setHover((prev) => !prev)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -85,11 +104,12 @@ const FooterLang = () => {
       <AnimatePresence>
         {hover && (
           <motion.div
+            ref={menuRef}
             className="absolute bottom-8 right-0 grid origin-bottom-right place-content-center gap-2 rounded-sm bg-white/95 px-4 py-2 text-black"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             {langBtns.map((btn) => (
               <button

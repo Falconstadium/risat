@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 
     return (
       <main
-        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
+        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[1fr]`}
       >
         <Navbar toggleMode={toggleMode} />
 
