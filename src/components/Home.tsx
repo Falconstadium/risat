@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Faq from "./Faq";
+import { Fàq } from "./Accordion/Fàq";
 
 const Home = () => {
   const { t } = useTranslation("global");
@@ -50,30 +50,7 @@ const Home = () => {
               fàq
             </h1>
             <div className="grid gap-4 pt-10">
-              <div className="rounded shadow-dark backdrop-blur dark:text-light">
-                <Faq
-                  title="How do I get started with Risat?"
-                  content="To get started, simply visit our website, you don't need to create an account to use the website."
-                />
-              </div>
-              <div className="rounded shadow-dark backdrop-blur dark:text-light">
-                <Faq
-                  title="What tools are available on Risat?"
-                  content="Risat brings together various tools in one place to make your workflow seamless. We offer several tools such as TodoList, Notes, and others."
-                />
-              </div>
-              <div className="rounded shadow-dark backdrop-blur dark:text-light">
-                <Faq
-                  title="How does Risat works?"
-                  content="Everything you write will be saved to your local storage."
-                />
-              </div>
-              <div className="rounded shadow-dark backdrop-blur dark:text-light">
-                <Faq
-                  title="Is Risat free to use?"
-                  content="Risat is totaly free."
-                />
-              </div>
+              <Fàq />
             </div>
           </section>
         </div>
