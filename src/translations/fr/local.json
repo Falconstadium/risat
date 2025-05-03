@@ -32,7 +32,7 @@
 
   "about":{
     "title": "À propos de",
-    "description": "Bienvenue à risat! Nous sommes dédiés à fournir une expérience transparente en rassemblant tous vos outils préférés en un seul endroit. Que vous écriviez, économisez localement ou exploriez de nouvelles fonctionnalités, risat est là pour rendre vos tâches plus faciles et plus efficaces. Notre mission est de vous donner les meilleurs outils et ressources dans une plateforme pratique."
+    "description": "Bienvenue à Risat! Nous sommes dédiés à fournir une expérience transparente en rassemblant tous vos outils préférés en un seul endroit. Que vous écriviez, économisez localement ou exploriez de nouvelles fonctionnalités, risat est là pour rendre vos tâches plus faciles et plus efficaces. Notre mission est de vous donner les meilleurs outils et ressources dans une plateforme pratique."
   },
 
   "contact":{
@@ -71,7 +71,8 @@
     "toast": "Note Créée",
     "toast_edit": "Note modifiée",
     "note_modify": "Modifier Note...",
-    "toast_delete": "Note Supprimée"
+    "toast_delete": "Note Supprimée",
+    "allNotes": "Tous les Notes de cette page ont été supprimés"
   },
 
   "password":{

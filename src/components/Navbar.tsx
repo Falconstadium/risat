@@ -22,19 +22,19 @@ const Navbar = ({ toggleMode }: any) => {
             to="/"
             className="text-sm font-semibold tracking-wider md:text-base md:tracking-widest"
           >
-            risat.
+            Risat.
           </Link>
         </div>
         <div className="flex items-center gap-1 lg:gap-2">
           <Link
             to="/about"
-            className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-200 ease-in-out hover:bg-black-500 hover:text-light md:text-sm [&.active]:bg-black-500 [&.active]:text-light"
+            className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-300 ease-in-out hover:bg-black-500 hover:text-light dark:hover:bg-light dark:hover:text-black-500 md:text-sm [&.active]:bg-black-500 [&.active]:text-light"
           >
             {t("nav.about")}
           </Link>
           <Link
             to="/contact"
-            className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-200 ease-in-out hover:bg-black-500 hover:text-light md:text-sm [&.active]:bg-black-500 [&.active]:text-light"
+            className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-300 ease-in-out hover:bg-black-500 hover:text-light dark:hover:bg-light dark:hover:text-black-500 md:text-sm [&.active]:bg-black-500 [&.active]:text-light"
           >
             {t("nav.contact")}
           </Link>

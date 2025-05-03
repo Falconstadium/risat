@@ -21,30 +21,30 @@ export const Route = createFileRoute("/dashboard")({
 
     useEffect(() => {
       localStorage.setItem("mode", JSON.stringify(dark));
-      //animation
+    }, [dark]);
+
+    useEffect(() => {
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
-      }, 1500);
-    }, [dark]);
+      }, 1000);
+    }, []);
 
     return (
-      <>
+      <main className={`${dark && "dark"}`}>
         {load ? (
-          <div className="min-h-dvh place-content-center place-items-center">
+          <div className="flex min-h-dvh items-center justify-center dark:bg-black-500">
             <div className="h-20 w-20 animate-spin place-content-center rounded-full border-4 border-gray-300 border-t-blue-500"></div>
           </div>
         ) : (
-          <main
-            className={`${dark && "dark"} grid min-h-[100dvh] w-full grid-rows-[auto_1fr]`}
-          >
+          <article className="grid min-h-[100dvh] w-full grid-rows-[auto_1fr]">
             <NavbarDash toggleMode={toggleMode} />
 
             {/* hero */}
             <Dashbord />
-          </main>
+          </article>
         )}
-      </>
+      </main>
     );
   },
 });

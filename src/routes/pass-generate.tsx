@@ -27,7 +27,7 @@ export const Route = createFileRoute("/pass-generate")({
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
-      }, 1500);
+      }, 1000);
     }, []);
 
     useEffect(() => {
@@ -125,13 +125,11 @@ export const Route = createFileRoute("/pass-generate")({
     };
 
     return (
-      <>
+      <main className={`${dark && "dark"}`}>
         {load ? (
-          <AnimationLoading />
+          <AnimationLoading dark={dark} />
         ) : (
-          <article
-            className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
-          >
+          <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
             <NavbarDash toggleMode={toggleMode} />
 
             <>
@@ -216,7 +214,7 @@ export const Route = createFileRoute("/pass-generate")({
             </>
           </article>
         )}
-      </>
+      </main>
     );
   },
 });

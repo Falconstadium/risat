@@ -13,7 +13,6 @@ import Button from "../components/Button";
 export const Route = createFileRoute("/note")({
   component: () => {
     const { t } = useTranslation("global");
-    document.title = `risat | ${t("dashbord.note")}`;
 
     const storedNote = JSON.parse(localStorage.getItem("note") || "[]");
 
@@ -23,19 +22,28 @@ export const Route = createFileRoute("/note")({
     //Edit Todo:
     const [editedNote, setEditedNote] = useState(null);
 
-    const addNote = (takeNote: any) => {
+    const addNote = (takeNote: string) => {
       setNote((prevTask: any) => [...prevTask, takeNote]);
       toast.success(t("Note.toast"));
     };
 
-    const deleteNote = (id: any) => {
-      setNote((prevTask: any) => prevTask.filter((t: any) => t.id !== id));
+    const deleteNote = (id: string) => {
+      setNote((prevTask: any) =>
+        prevTask.filter((t: { id: string }) => t.id !== id),
+      );
       toast.success(t("Note.toast_delete"));
     };
 
-    const modifyEdit = (takeNote: any) => {
+    const deleteAll = (id: string) => {
       setNote((prevTask: any) =>
-        prevTask.map((t: any) =>
+        prevTask.filter((t: { id: string }) => t.id === id),
+      );
+      toast.success(t("Note.allNotes"));
+    };
+
+    const modifyEdit = (takeNote: string | any) => {
+      setNote((prevTask: { id: string }[]) =>
+        prevTask.map((t: { id: string }) =>
           t.id === takeNote.id ? { ...t, name: takeNote.name } : t,
         ),
       );
@@ -47,7 +55,7 @@ export const Route = createFileRoute("/note")({
       setIsEdited(false);
     };
 
-    const showEditForm = (task: any) => {
+    const showEditForm = (task: string | any) => {
       setEditedNote(task);
       setIsEdited(true);
     };
@@ -70,17 +78,15 @@ export const Route = createFileRoute("/note")({
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
-      }, 1500);
+      }, 1000);
     }, []);
 
     return (
-      <>
+      <main className={`${dark && "dark"}`}>
         {load ? (
-          <AnimationLoading />
+          <AnimationLoading dark={dark} />
         ) : (
-          <article
-            className={`${dark && "dark"} grid min-h-dvh w-full animate-fadeIn grid-rows-[auto_1fr]`}
-          >
+          <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
             <NavbarDash toggleMode={toggleMode} />
 
             <main className="bg-white dark:bg-black-500">
@@ -92,7 +98,7 @@ export const Route = createFileRoute("/note")({
                     closeEditForm={closeEditForm}
                   />
                 )}
-                <NoteForm addNote={addNote} />
+                <NoteForm note={note} addNote={addNote} deleteAll={deleteAll} />
                 {note && (
                   <NoteList
                     note={note}
@@ -107,7 +113,7 @@ export const Route = createFileRoute("/note")({
             </main>
           </article>
         )}
-      </>
+      </main>
     );
   },
 });

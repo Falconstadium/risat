@@ -31,7 +31,7 @@
 
   "about":{
     "title": "About",
-    "description": "Welcome to risat! We are dedicated to providing a seamless experience by bringing all your favourite tools into one place. Whether you’re writing, saving locally, or exploring new features, risat is here to make your tasks easier and more efficient. Our mission is to empower you with the best tools and resources in one convenient platform."
+    "description": "Welcome to Risat! We are dedicated to providing a seamless experience by bringing all your favourite tools into one place. Whether you’re writing, saving locally, or exploring new features, risat is here to make your tasks easier and more efficient. Our mission is to empower you with the best tools and resources in one convenient platform."
   },
 
   "contact":{
@@ -70,7 +70,8 @@
     "toast": "Note Created",
     "toast_edit": "Note Edited",
     "note_modify": "Edit Note...",
-    "toast_delete": "Note Deleted"
+    "toast_delete": "Note Deleted",
+    "allNotes": "All the Notes in this page has been deleted"
   },
 
   "password":{

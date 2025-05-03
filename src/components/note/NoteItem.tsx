@@ -1,6 +1,6 @@
 const NoteItem = ({ takeNote, deleteNote, showEditForm }: any) => {
   return (
-    <li className="mx-auto flex w-full items-center justify-between gap-7 rounded px-2 py-1 text-sm font-medium shadow-dark dark:shadow-lightWhite lg:max-w-lg">
+    <li className="mx-auto flex w-full animate-fadeIn items-center justify-between gap-7 rounded px-2 py-1 text-sm font-medium shadow-dark dark:shadow-lightWhite lg:max-w-lg">
       <div className="flex items-center gap-2">
         <label
           htmlFor={takeNote.id}

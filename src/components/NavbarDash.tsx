@@ -9,7 +9,7 @@ const NavbarDash = ({ toggleMode }: any) => {
             to="/"
             className="text-sm font-semibold tracking-wide md:text-base md:tracking-wider"
           >
-            risat.
+            Risat.
           </Link>
         </div>
         <button onClick={toggleMode}>

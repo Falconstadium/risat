@@ -15,8 +15,6 @@ export const Route = createFileRoute("/todo")({
     //translation
     const { t } = useTranslation("global");
 
-    document.title = `risat | ${t("dashbord.list")}`;
-
     //localStorage
     const storedTasks = JSON.parse(localStorage.getItem("task") || "[]");
 
@@ -26,34 +24,36 @@ export const Route = createFileRoute("/todo")({
     //Edit Todo:
     const [editedTodo, setEditedTodo] = useState(null);
 
-    const addTodo = (task: any) => {
+    const addTodo = (task: string) => {
       setTodos((prevTask: any) => [...prevTask, task]);
       toast.success(t("TODO.toast"));
     };
 
-    const deleteTodo = (id: any) => {
-      setTodos((prevTask: any) => prevTask.filter((t: any) => t.id !== id));
+    const deleteTodo = (id: string) => {
+      setTodos((prevTask: string | any) =>
+        prevTask.filter((t: { id: string }) => t.id !== id),
+      );
       toast.success(t("TODO.toast_delete"));
     };
 
-    const deleteAll = (id: any) => {
-      setTodos((prevTask: any) => prevTask.filter((t: any) => t.id === id));
+    const deleteAll = (id: string) => {
+      setTodos((prevTask: string | any) =>
+        prevTask.filter((t: { id: string }) => t.id === id),
+      );
       toast.success(t("TODO.allTodos"));
     };
 
-    const updateTodo = (id: any) => {
-      setTodos((prevTask: any) =>
-        prevTask.map((t: any) =>
+    const updateTodo = (id: string) => {
+      setTodos((prevTask: string | any) =>
+        prevTask.map((t: { id: string; checked: unknown }) =>
           t.id === id ? { ...t, checked: !t.checked } : t,
         ),
       );
     };
 
-    const modifyEdit = (task: any) => {
-      setTodos((prevTask: any) =>
-        prevTask.map((t: any) =>
-          t.id === task.id ? { ...t, name: task.name } : t,
-        ),
+    const modifyEdit = (task: string | any) => {
+      setTodos((prevTask: any[]) =>
+        prevTask.map((t) => (t.id === task.id ? { ...t, name: task.name } : t)),
       );
       closeEditForm();
       toast.success(t("TODO.toast_edit"));
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/todo")({
       setIsEdited(false);
     };
 
-    const showEditForm = (task: any) => {
+    const showEditForm = (task: string | any) => {
       setEditedTodo(task);
       setIsEdited(true);
     };
@@ -86,17 +86,15 @@ export const Route = createFileRoute("/todo")({
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
-      }, 1500);
+      }, 1000);
     }, []);
 
     return (
-      <>
+      <main className={`${dark && "dark"}`}>
         {load ? (
-          <AnimationLoading />
+          <AnimationLoading dark={dark} />
         ) : (
-          <article
-            className={`${dark && "dark"} grid min-h-dvh w-full animate-fadeIn grid-rows-[auto_1fr]`}
-          >
+          <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
             <NavbarDash toggleMode={toggleMode} />
 
             <main className="bg-white dark:bg-black-500">
@@ -129,7 +127,7 @@ export const Route = createFileRoute("/todo")({
             </main>
           </article>
         )}
-      </>
+      </main>
     );
   },
 });

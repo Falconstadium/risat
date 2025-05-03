@@ -8,7 +8,7 @@ const About = () => {
       <section className="container animate-fadeIn px-5 md:max-w-lg">
         <div className="grid gap-2">
           <h1 className="text-center text-lg font-bold lg:text-xl">
-            {t("about.title")} <span className="italic">risat :</span>
+            {t("about.title")} <span className="italic">Risat :</span>
           </h1>
           <p className="text-balance text-justify text-sm leading-5">
             {t("about.description")}

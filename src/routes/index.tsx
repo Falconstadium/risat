@@ -29,18 +29,18 @@ export const Route = createFileRoute("/")({
     }, []);
 
     return (
-      <>
+      <main className={`${dark && "dark"}`}>
         {load ? (
-          <div className="flex min-h-dvh items-center justify-center">
+          <div className="flex min-h-dvh items-center justify-center dark:bg-black-500">
             <div className="relative">
               <div className="relative h-32 w-32">
                 <div
-                  className="absolute h-full w-full animate-spin rounded-full border-[3px] border-gray-100/10 border-b-indigo-700 border-r-indigo-700"
+                  className="absolute h-full w-full animate-spin rounded-full border-[4px] border-gray-100/10 border-b-indigo-700 border-r-indigo-700"
                   style={{ animationDuration: "3s" }}
                 ></div>
 
                 <div
-                  className="absolute h-full w-full animate-spin rounded-full border-[3px] border-gray-100/10 border-t-indigo-700"
+                  className="absolute h-full w-full animate-spin rounded-full border-[4px] border-gray-100/10 border-t-indigo-700"
                   style={{
                     animationDuration: "2s",
                     animationDirection: "reverse",
@@ -52,9 +52,7 @@ export const Route = createFileRoute("/")({
             </div>
           </div>
         ) : (
-          <article
-            className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[1fr_auto]`}
-          >
+          <article className="grid min-h-dvh w-full grid-rows-[1fr_auto]">
             <Navbar toggleMode={toggleMode} />
 
             {/* hero */}
@@ -64,7 +62,7 @@ export const Route = createFileRoute("/")({
             <Footer />
           </article>
         )}
-      </>
+      </main>
     );
   },
 });

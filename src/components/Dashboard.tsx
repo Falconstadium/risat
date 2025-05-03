@@ -41,7 +41,7 @@ const Dashbord = () => {
         {tools.map((tool) => {
           return (
             <div
-              className="animate-fadeLeft flex w-full items-center gap-4 overflow-hidden rounded-xl shadow-dark dark:shadow-lightWhite"
+              className="animate-fadeLeft flex w-full items-center overflow-hidden rounded-xl shadow-dark dark:shadow-lightWhite"
               key={tool.id}
             >
               <img
