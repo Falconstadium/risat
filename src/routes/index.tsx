@@ -1,23 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/")({
   component: () => {
     document.title = "risat";
     //dark
-    const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
-    const [dark, setDark] = useState(darkMode);
-
-    useEffect(() => {
-      localStorage.setItem("mode", JSON.stringify(dark));
-    }, [dark]);
-
-    const toggleMode = () => {
-      setDark(!dark);
-    };
+    const { theme, toggleTheme } = useContext(themeContext);
 
     //load
     const [load, setLoad] = useState(false);
@@ -29,7 +21,7 @@ export const Route = createFileRoute("/")({
     }, []);
 
     return (
-      <main className={`${dark && "dark"}`}>
+      <main className={`${theme && "dark"}`}>
         {load ? (
           <div className="flex min-h-dvh items-center justify-center dark:bg-black-500">
             <div className="relative">
@@ -53,7 +45,7 @@ export const Route = createFileRoute("/")({
           </div>
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[1fr_auto]">
-            <Navbar toggleMode={toggleMode} />
+            <Navbar toggleTheme={toggleTheme} />
 
             {/* hero */}
             <Home />

@@ -1,28 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 
 import Navbar from "../components/Navbar";
 import About from "../components/About";
+import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/about")({
   component: () => {
     //dark
-    const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
-    const [dark, setDark] = useState(darkMode);
-
-    const toggleMode = () => {
-      setDark(!dark);
-    };
-
-    useEffect(() => {
-      localStorage.setItem("mode", JSON.stringify(dark));
-    }, [dark]);
+    const { theme, toggleTheme } = useContext(themeContext);
 
     return (
       <main
-        className={`${dark && "dark"} grid min-h-dvh w-full grid-rows-[1fr]`}
+        className={`${theme && "dark"} grid min-h-dvh w-full grid-rows-[1fr]`}
       >
-        <Navbar toggleMode={toggleMode} />
+        <Navbar toggleTheme={toggleTheme} />
 
         {/* hero */}
         <About />

@@ -1,29 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import NavbarDash from "../components/NavbarDash";
 import AnimationLoading from "../components/AnimationLoading";
 import Button from "../components/Button";
+import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/expense")({
   component: () => {
     const { t } = useTranslation("global");
-    document.title = `risat | ${t("dashbord.expense")}`;
 
     // darkMode
-    const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
+    const { theme, toggleTheme } = useContext(themeContext);
+
     const storedTrack = JSON.parse(localStorage.getItem("track") || "[]");
-
-    const [dark, setDark] = useState(darkMode);
-
-    const toggleMode = () => {
-      setDark(!dark);
-    };
 
     const [description, setDescription] = useState("");
     const [amount, setAmount] = useState<number>(0);
-    const [transaction, setTransaction] = useState<any>(storedTrack);
+    const [transaction, setTransaction] = useState(storedTrack);
     const [edit, setEdit] = useState(null);
 
     const [load, setLoad] = useState(false);
@@ -35,9 +30,8 @@ export const Route = createFileRoute("/expense")({
     }, []);
 
     useEffect(() => {
-      localStorage.setItem("mode", JSON.stringify(dark));
       localStorage.setItem("track", JSON.stringify(transaction));
-    }, [dark, transaction]);
+    }, [transaction]);
 
     const submitForm = (e: any) => {
       e.preventDefault();
@@ -64,12 +58,12 @@ export const Route = createFileRoute("/expense")({
     };
 
     return (
-      <main className={`${dark && "dark"}`}>
+      <main className={`${theme && "dark"}`}>
         {load ? (
-          <AnimationLoading dark={dark} />
+          <AnimationLoading theme={theme} />
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleMode={toggleMode} />
+            <NavbarDash toggleTheme={toggleTheme} />
 
             <main className="flex w-full items-start justify-center bg-white dark:bg-black-500">
               <section className="container grid w-full animate-fadeIn gap-7 px-8 pt-24 lg:w-1/2">

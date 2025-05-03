@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast, Toaster } from "sonner";
 import { useTranslation } from "react-i18next";
 
@@ -8,20 +8,16 @@ import { useForm } from "../components/password/UseForm";
 import NavbarDash from "../components/NavbarDash";
 import AnimationLoading from "../components/AnimationLoading";
 import Button from "../components/Button";
+import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/pass-generate")({
   component: () => {
     const { t } = useTranslation("global");
-    document.title = `risat | ${t("dashbord.pass")}`;
 
     // darkMode
-    const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
-    const [dark, setDark] = useState(darkMode);
+    const { theme, toggleTheme } = useContext(themeContext);
 
-    const toggleMode = () => {
-      setDark(!dark);
-    };
-
+    //animation
     const [load, setLoad] = useState(false);
     useEffect(() => {
       setLoad(true);
@@ -29,10 +25,6 @@ export const Route = createFileRoute("/pass-generate")({
         setLoad(false);
       }, 1000);
     }, []);
-
-    useEffect(() => {
-      localStorage.setItem("mode", JSON.stringify(dark));
-    }, [dark]);
 
     const [val, setVal] = useForm({
       length: 8,
@@ -125,12 +117,12 @@ export const Route = createFileRoute("/pass-generate")({
     };
 
     return (
-      <main className={`${dark && "dark"}`}>
+      <main className={`${theme && "dark"}`}>
         {load ? (
-          <AnimationLoading dark={dark} />
+          <AnimationLoading theme={theme} />
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleMode={toggleMode} />
+            <NavbarDash toggleTheme={toggleTheme} />
 
             <>
               <main className="flex items-center justify-center bg-white dark:bg-black-500">

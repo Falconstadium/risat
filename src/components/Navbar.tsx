@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const Navbar = ({ toggleMode }: any) => {
+const Navbar = ({ toggleTheme }: any) => {
   const { t } = useTranslation("global");
 
   //bg-sticky
@@ -38,7 +38,7 @@ const Navbar = ({ toggleMode }: any) => {
           >
             {t("nav.contact")}
           </Link>
-          <button onClick={toggleMode}>
+          <button onClick={toggleTheme}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"

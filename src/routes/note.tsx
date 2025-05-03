@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast, Toaster } from "sonner";
 import { useTranslation } from "react-i18next";
 
@@ -9,6 +9,7 @@ import NoteForm from "../components/note/NoteForm";
 import NoteList from "../components/note/NoteList";
 import EditNote from "../components/note/EditNote";
 import Button from "../components/Button";
+import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/note")({
   component: () => {
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/note")({
 
     const storedNote = JSON.parse(localStorage.getItem("note") || "[]");
 
-    const [note, setNote] = useState<any>(storedNote);
+    const [note, setNote] = useState(storedNote);
     //Open Editing Form:
     const [isEdited, setIsEdited] = useState(false);
     //Edit Todo:
@@ -60,19 +61,14 @@ export const Route = createFileRoute("/note")({
       setIsEdited(true);
     };
 
-    // darkMode
-    const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
-    const [dark, setDark] = useState(darkMode);
-
-    const toggleMode = () => {
-      setDark(!dark);
-    };
-
     useEffect(() => {
       localStorage.setItem("note", JSON.stringify(note));
-      localStorage.setItem("mode", JSON.stringify(dark));
-    }, [note, dark]);
+    }, [note]);
 
+    // darkMode
+    const { theme, toggleTheme } = useContext(themeContext);
+
+    //animation
     const [load, setLoad] = useState(false);
     useEffect(() => {
       setLoad(true);
@@ -82,12 +78,12 @@ export const Route = createFileRoute("/note")({
     }, []);
 
     return (
-      <main className={`${dark && "dark"}`}>
+      <main className={`${theme && "dark"}`}>
         {load ? (
-          <AnimationLoading dark={dark} />
+          <AnimationLoading theme={theme} />
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleMode={toggleMode} />
+            <NavbarDash toggleTheme={toggleTheme} />
 
             <main className="bg-white dark:bg-black-500">
               <section className="w-full px-4 pt-20">

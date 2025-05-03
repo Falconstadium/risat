@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast, Toaster } from "sonner";
 import { useTranslation } from "react-i18next";
 
@@ -9,6 +9,7 @@ import TodoForm from "../components/todo/TodoForm";
 import TodoList from "../components/todo/TodoList";
 import EditForm from "../components/todo/EditForm";
 import Button from "../components/Button";
+import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/todo")({
   component: () => {
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/todo")({
     //localStorage
     const storedTasks = JSON.parse(localStorage.getItem("task") || "[]");
 
-    const [todos, setTodos] = useState<any>(storedTasks);
+    const [todos, setTodos] = useState(storedTasks);
     //Open Editing Form:
     const [isEdited, setIsEdited] = useState(false);
     //Edit Todo:
@@ -68,19 +69,14 @@ export const Route = createFileRoute("/todo")({
       setIsEdited(true);
     };
 
-    // darkMode
-    const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
-    const [dark, setDark] = useState(darkMode);
-
-    const toggleMode = () => {
-      setDark(!dark);
-    };
-
     useEffect(() => {
       localStorage.setItem("task", JSON.stringify(todos));
-      localStorage.setItem("mode", JSON.stringify(dark));
-    }, [todos, dark]);
+    }, [todos]);
 
+    // darkMode
+    const { theme, toggleTheme } = useContext(themeContext);
+
+    //animation
     const [load, setLoad] = useState(false);
     useEffect(() => {
       setLoad(true);
@@ -90,12 +86,12 @@ export const Route = createFileRoute("/todo")({
     }, []);
 
     return (
-      <main className={`${dark && "dark"}`}>
+      <main className={`${theme && "dark"}`}>
         {load ? (
-          <AnimationLoading dark={dark} />
+          <AnimationLoading theme={theme} />
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleMode={toggleMode} />
+            <NavbarDash toggleTheme={toggleTheme} />
 
             <main className="bg-white dark:bg-black-500">
               <section className="container mx-auto w-full px-2 pt-20">

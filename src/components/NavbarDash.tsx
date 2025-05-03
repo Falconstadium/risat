@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-const NavbarDash = ({ toggleMode }: any) => {
+const NavbarDash = ({ toggleTheme }: any) => {
   return (
     <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-6 py-3 text-light">
       <nav className="container mx-auto flex items-center justify-between">
@@ -12,7 +12,7 @@ const NavbarDash = ({ toggleMode }: any) => {
             Risat.
           </Link>
         </div>
-        <button onClick={toggleMode}>
+        <button onClick={toggleTheme}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
