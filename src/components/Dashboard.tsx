@@ -11,25 +11,25 @@ const Dashbord = () => {
   const tools = [
     {
       id: 1,
-      title: `${t("dashbord.list")}`,
+      title: `${t("dashboard.list")}`,
       href: "/todo",
       img: todoImg,
     },
     {
       id: 2,
-      title: `${t("dashbord.note")}`,
+      title: `${t("dashboard.note")}`,
       href: "/note",
       img: noteImg,
     },
     {
       id: 3,
-      title: `${t("dashbord.expense")}`,
+      title: `${t("dashboard.expense")}`,
       href: "/expense",
       img: expenseImg,
     },
     {
       id: 4,
-      title: `${t("dashbord.pass")}`,
+      title: `${t("dashboard.pass")}`,
       href: "/pass-generate",
       img: passImg,
     },
@@ -49,7 +49,7 @@ const Dashbord = () => {
                 alt={tool.img}
                 className="w-1/2 object-cover"
               />
-              <div className="grid w-1/2 place-items-center gap-2">
+              <div className="grid w-1/2 place-items-center gap-2 px-2">
                 <h2 className="animate-fadeUp bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-center text-2xl font-semibold text-transparent dark:from-neutral-200 dark:to-neutral-400 md:text-3xl">
                   {tool.title}
                 </h2>
@@ -58,7 +58,7 @@ const Dashbord = () => {
                   className="flex items-center gap-2 text-sm font-medium text-blue-700 transition-colors duration-200 ease-in-out hover:text-blue-600 lg:text-base"
                   to={tool.href}
                 >
-                  {t("dashbord.link")}
+                  {t("dashboard.link")}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

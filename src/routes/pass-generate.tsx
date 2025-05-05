@@ -1,21 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useContext, useEffect, useState } from "react";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
 import { getRandomChar, getSpecialChar } from "../components/password/utils";
 import { useForm } from "../components/password/UseForm";
-import NavbarDash from "../components/NavbarDash";
 import AnimationLoading from "../components/AnimationLoading";
 import Button from "../components/Button";
 import { themeContext } from "../context/theme";
+import { Sun } from "../components/Sun";
 
 export const Route = createFileRoute("/pass-generate")({
   component: () => {
-    const { t } = useTranslation("global");
-
     // darkMode
-    const { theme, toggleTheme } = useContext(themeContext);
+    const { theme } = useContext(themeContext);
 
     //animation
     const [load, setLoad] = useState(false);
@@ -77,6 +75,8 @@ export const Route = createFileRoute("/pass-generate")({
       }
     };
 
+    const { t } = useTranslation("global");
+
     const labels = [
       {
         id: 1,
@@ -122,7 +122,15 @@ export const Route = createFileRoute("/pass-generate")({
           <AnimationLoading theme={theme} />
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleTheme={toggleTheme} />
+            {/* Navbar */}
+            <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-6 py-3 text-light">
+              <nav className="container mx-auto flex items-center justify-between">
+                <h3 className="text-sm font-semibold tracking-wide md:text-base">
+                  {t("dashboard.pass")}
+                </h3>
+                <Sun />
+              </nav>
+            </header>
 
             <>
               <main className="flex items-center justify-center bg-white dark:bg-black-500">
@@ -201,7 +209,6 @@ export const Route = createFileRoute("/pass-generate")({
                   </div>
                 </form>
                 <Button />
-                <Toaster richColors />
               </main>
             </>
           </article>

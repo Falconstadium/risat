@@ -1,14 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useContext, useEffect, useState } from "react";
 
-import NavbarDash from "../components/NavbarDash";
 import Dashbord from "../components/Dashboard";
 import { themeContext } from "../context/theme";
+import { Sun } from "../components/Sun";
+import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/dashboard")({
   component: () => {
-    const { theme, toggleTheme } = useContext(themeContext);
+    const { theme } = useContext(themeContext);
 
+    //animation
     const [load, setLoad] = useState(false);
     useEffect(() => {
       setLoad(true);
@@ -16,6 +18,8 @@ export const Route = createFileRoute("/dashboard")({
         setLoad(false);
       }, 1000);
     }, []);
+
+    const { t } = useTranslation("global");
 
     return (
       <main className={`${theme && "dark"}`}>
@@ -25,7 +29,15 @@ export const Route = createFileRoute("/dashboard")({
           </div>
         ) : (
           <article className="grid min-h-[100dvh] w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleTheme={toggleTheme} />
+            {/* Navbar */}
+            <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-6 py-3 text-light">
+              <nav className="container mx-auto flex items-center justify-between">
+                <h3 className="text-sm font-semibold tracking-wide md:text-base md:tracking-wider">
+                  {t("dashboard.title")}
+                </h3>
+                <Sun />
+              </nav>
+            </header>
 
             {/* hero */}
             <Dashbord />

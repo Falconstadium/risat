@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { todoNote } from "../../context/TodoNote";
 
-const EditNote = ({ modifyEdit, editedNote, closeEditForm }: any) => {
-  const [editNote, setEditNote] = useState(editedNote.name);
+const EditNote = () => {
+  const { editedText, modifyEdit, closeEditForm } = useContext(todoNote);
+
+  const [editNote, setEditNote] = useState(editedText.name);
 
   const formSubmit = (e: any) => {
     e.preventDefault();
-    modifyEdit({ ...editedNote, name: editNote });
+    modifyEdit({ ...editedText, name: editNote });
   };
 
   const { t } = useTranslation("global");

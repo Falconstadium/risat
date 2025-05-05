@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useContext, useEffect, useState } from "react";
+
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -8,16 +9,16 @@ import { themeContext } from "../context/theme";
 export const Route = createFileRoute("/")({
   component: () => {
     document.title = "risat";
-    //dark
+    //darkMode
     const { theme, toggleTheme } = useContext(themeContext);
 
-    //load
+    //animation
     const [load, setLoad] = useState(false);
     useEffect(() => {
       setLoad(true);
       setTimeout(() => {
         setLoad(false);
-      }, 2000);
+      }, 1000);
     }, []);
 
     return (

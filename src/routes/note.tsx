@@ -1,72 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useContext, useEffect, useState } from "react";
-import { toast, Toaster } from "sonner";
-import { useTranslation } from "react-i18next";
 
-import NavbarDash from "../components/NavbarDash";
 import AnimationLoading from "../components/AnimationLoading";
 import NoteForm from "../components/note/NoteForm";
 import NoteList from "../components/note/NoteList";
 import EditNote from "../components/note/EditNote";
 import Button from "../components/Button";
 import { themeContext } from "../context/theme";
+import { todoNote } from "../context/TodoNote";
+import { useTranslation } from "react-i18next";
+import { Sun } from "../components/Sun";
 
 export const Route = createFileRoute("/note")({
   component: () => {
-    const { t } = useTranslation("global");
-
-    const storedNote = JSON.parse(localStorage.getItem("note") || "[]");
-
-    const [note, setNote] = useState(storedNote);
-    //Open Editing Form:
-    const [isEdited, setIsEdited] = useState(false);
-    //Edit Todo:
-    const [editedNote, setEditedNote] = useState(null);
-
-    const addNote = (takeNote: string) => {
-      setNote((prevTask: any) => [...prevTask, takeNote]);
-      toast.success(t("Note.toast"));
-    };
-
-    const deleteNote = (id: string) => {
-      setNote((prevTask: any) =>
-        prevTask.filter((t: { id: string }) => t.id !== id),
-      );
-      toast.success(t("Note.toast_delete"));
-    };
-
-    const deleteAll = (id: string) => {
-      setNote((prevTask: any) =>
-        prevTask.filter((t: { id: string }) => t.id === id),
-      );
-      toast.success(t("Note.allNotes"));
-    };
-
-    const modifyEdit = (takeNote: string | any) => {
-      setNote((prevTask: { id: string }[]) =>
-        prevTask.map((t: { id: string }) =>
-          t.id === takeNote.id ? { ...t, name: takeNote.name } : t,
-        ),
-      );
-      closeEditForm();
-      toast.success(t("Note.toast_edit"));
-    };
-
-    const closeEditForm = () => {
-      setIsEdited(false);
-    };
-
-    const showEditForm = (task: string | any) => {
-      setEditedNote(task);
-      setIsEdited(true);
-    };
-
-    useEffect(() => {
-      localStorage.setItem("note", JSON.stringify(note));
-    }, [note]);
+    const { text, isEdited } = useContext(todoNote);
 
     // darkMode
-    const { theme, toggleTheme } = useContext(themeContext);
+    const { theme } = useContext(themeContext);
 
     //animation
     const [load, setLoad] = useState(false);
@@ -77,35 +27,31 @@ export const Route = createFileRoute("/note")({
       }, 1000);
     }, []);
 
+    const { t } = useTranslation("global");
+
     return (
       <main className={`${theme && "dark"}`}>
         {load ? (
           <AnimationLoading theme={theme} />
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleTheme={toggleTheme} />
+            {/* Navbar */}
+            <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-6 py-3 text-light">
+              <nav className="container mx-auto flex items-center justify-between">
+                <h3 className="text-sm font-semibold tracking-wide md:text-base">
+                  {t("dashboard.note")}
+                </h3>
+                <Sun />
+              </nav>
+            </header>
 
             <main className="bg-white dark:bg-black-500">
               <section className="w-full px-4 pt-20">
-                {isEdited && (
-                  <EditNote
-                    modifyEdit={modifyEdit}
-                    editedNote={editedNote}
-                    closeEditForm={closeEditForm}
-                  />
-                )}
-                <NoteForm note={note} addNote={addNote} deleteAll={deleteAll} />
-                {note && (
-                  <NoteList
-                    note={note}
-                    deleteNote={deleteNote}
-                    showEditForm={showEditForm}
-                  />
-                )}
+                {isEdited && <EditNote />}
+                <NoteForm />
+                {text && <NoteList />}
               </section>
               <Button />
-
-              <Toaster richColors />
             </main>
           </article>
         )}

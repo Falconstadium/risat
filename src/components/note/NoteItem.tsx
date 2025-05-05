@@ -1,4 +1,9 @@
-const NoteItem = ({ takeNote, deleteNote, showEditForm }: any) => {
+import { useContext } from "react";
+import { todoNote } from "../../context/TodoNote";
+
+const NoteItem = ({ takeNote }: any) => {
+  const { showEditForm, deleteText } = useContext(todoNote);
+
   return (
     <li className="mx-auto flex w-full animate-fadeIn items-center justify-between gap-7 rounded px-2 py-1 text-sm font-medium shadow-dark dark:shadow-lightWhite lg:max-w-lg">
       <div className="flex items-center gap-2">
@@ -37,7 +42,7 @@ const NoteItem = ({ takeNote, deleteNote, showEditForm }: any) => {
           className="rounded bg-red-700 p-1 transition-colors duration-200 ease-in-out hover:bg-red-600"
           title="Delete"
           aria-label={`delete ${takeNote.name}`}
-          onClick={() => deleteNote(takeNote.id)}
+          onClick={() => deleteText(takeNote.id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { todoNote } from "../../context/TodoNote";
 
-const NoteForm = ({ note, addNote, deleteAll }: any) => {
+const NoteForm = () => {
   const { t } = useTranslation("global");
+
+  const { text, addText, deleteAll } = useContext(todoNote);
 
   const [memo, setMemo] = useState("");
 
   const formSubmit = (e: any) => {
     e.preventDefault();
-    addNote({
+    addText({
       name: memo,
       id: crypto.randomUUID(),
       time: Date.now(),
@@ -21,15 +24,14 @@ const NoteForm = ({ note, addNote, deleteAll }: any) => {
       onSubmit={formSubmit}
       className="mx-auto flex flex-1 items-center justify-center gap-2 lg:max-w-md"
     >
-      <input
-        type="text"
+      <textarea
         placeholder={t("Note.note_btn")}
         className="w-3/4 rounded bg-light px-2 py-1 text-sm font-medium shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in first-letter:capitalize focus:shadow-[0_0_8px] focus:outline-none dark:bg-black-100 dark:text-light"
         value={memo}
         onChange={(e) => setMemo(e.target.value)}
         autoFocus
         required
-      />
+      ></textarea>
       <button
         className="rounded bg-blue-700 p-1 text-light transition-colors duration-200 ease-in-out hover:bg-blue-600"
         type="submit"
@@ -50,7 +52,7 @@ const NoteForm = ({ note, addNote, deleteAll }: any) => {
           />
         </svg>
       </button>
-      {note != 0 ? (
+      {text != 0 ? (
         <button
           type="button"
           onClick={deleteAll}
@@ -73,7 +75,7 @@ const NoteForm = ({ note, addNote, deleteAll }: any) => {
             <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
             <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
           </svg>
-          <span>({note.length})</span>
+          <span>({text.length})</span>
         </button>
       ) : null}
     </form>

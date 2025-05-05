@@ -44,7 +44,7 @@
     "error": "Something wrong! Try again"
   },
 
-  "dashbord":{
+  "dashboard":{
     "link": "Go to",
     "list": "TODO List",
     "note": "Notes",

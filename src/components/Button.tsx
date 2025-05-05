@@ -29,7 +29,7 @@ const Button = () => {
             />
           </svg>
 
-          {t("dashbord.btn")}
+          {t("dashboard.btn")}
         </Link>
       </button>
     </>

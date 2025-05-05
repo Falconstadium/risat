@@ -2,17 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import NavbarDash from "../components/NavbarDash";
 import AnimationLoading from "../components/AnimationLoading";
 import Button from "../components/Button";
 import { themeContext } from "../context/theme";
+import { Sun } from "../components/Sun";
 
 export const Route = createFileRoute("/expense")({
   component: () => {
-    const { t } = useTranslation("global");
-
     // darkMode
-    const { theme, toggleTheme } = useContext(themeContext);
+    const { theme } = useContext(themeContext);
 
     const storedTrack = JSON.parse(localStorage.getItem("track") || "[]");
 
@@ -57,13 +55,23 @@ export const Route = createFileRoute("/expense")({
       setTransaction(newTransaction);
     };
 
+    const { t } = useTranslation("global");
+
     return (
       <main className={`${theme && "dark"}`}>
         {load ? (
           <AnimationLoading theme={theme} />
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-            <NavbarDash toggleTheme={toggleTheme} />
+            {/* Navbar */}
+            <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-6 py-3 text-light">
+              <nav className="container mx-auto flex items-center justify-between">
+                <h3 className="text-sm font-semibold tracking-wide md:text-base">
+                  {t("dashboard.expense")}
+                </h3>
+                <Sun />
+              </nav>
+            </header>
 
             <main className="flex w-full items-start justify-center bg-white dark:bg-black-500">
               <section className="container grid w-full animate-fadeIn gap-7 px-8 pt-24 lg:w-1/2">

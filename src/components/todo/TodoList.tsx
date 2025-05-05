@@ -1,18 +1,16 @@
+import { useContext } from "react";
 import TodoItem from "./TodoItem";
+import { todoNote } from "../../context/TodoNote";
 
-const TodoList = ({ todos, deleteTodo, updateTodo, showEditForm }: any) => {
+const TodoList = () => {
+  const { text } = useContext(todoNote);
+
   return (
     <ul className="grid gap-2 pt-8 dark:text-light lg:gap-3">
-      {todos
+      {text
         .sort((a: any, b: any) => b.time - a.time)
         .map((task: any) => (
-          <TodoItem
-            key={task.id}
-            task={task}
-            deleteTodo={deleteTodo}
-            updateTodo={updateTodo}
-            showEditForm={showEditForm}
-          />
+          <TodoItem key={task.id} task={task} />
         ))}
     </ul>
   );

@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { todoNote } from "../../context/TodoNote";
 
-const TodoItem = ({ task, deleteTodo, updateTodo, showEditForm }: any) => {
+const TodoItem = ({ task }: any) => {
+  const { updateText, showEditForm, deleteTodo } = useContext(todoNote);
+
   const [done, setDone] = useState(task.checked);
 
   const isComplete = () => {
     setDone(!done);
-    updateTodo(task.id);
+    updateText(task.id);
   };
 
   return (
