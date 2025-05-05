@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
   component: () => {
     document.title = "risat";
     //darkMode
-    const { theme, toggleTheme } = useContext(themeContext);
+    const { theme } = useContext(themeContext);
 
     //animation
     const [load, setLoad] = useState(false);
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
           </div>
         ) : (
           <article className="grid min-h-dvh w-full grid-rows-[1fr_auto]">
-            <Navbar toggleTheme={toggleTheme} />
+            <Navbar />
 
             {/* hero */}
             <Home />

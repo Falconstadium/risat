@@ -8,13 +8,13 @@ import { themeContext } from "../context/theme";
 export const Route = createFileRoute("/about")({
   component: () => {
     //dark
-    const { theme, toggleTheme } = useContext(themeContext);
+    const { theme } = useContext(themeContext);
 
     return (
       <main
         className={`${theme && "dark"} grid min-h-dvh w-full grid-rows-[1fr]`}
       >
-        <Navbar toggleTheme={toggleTheme} />
+        <Navbar />
 
         {/* hero */}
         <About />
