@@ -57,9 +57,11 @@ export const Route = createFileRoute("/note")({
                       </clipPath>
                     </defs>
                   </svg>
-                  <h3 className="font-Fancy text-lg font-semibold tracking-wide md:tracking-wider">
-                    {t("dashboard.note")}
-                  </h3>
+                  <div className="relative">
+                    <h3 className="font-Fancy text-lg font-semibold tracking-wide transition-all duration-200 ease-in-out after:absolute after:-bottom-1 after:left-0 after:right-0 after:mx-auto after:h-1 after:w-0 after:rounded-md after:bg-white hover:after:w-16 md:tracking-wider">
+                      {t("dashboard.note")}
+                    </h3>
+                  </div>
                 </Link>
                 <Sun />
               </nav>

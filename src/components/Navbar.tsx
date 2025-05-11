@@ -35,7 +35,7 @@ const Navbar = () => {
           </Link>
           <Link
             to="/contact"
-            className="mr-7 rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-300 ease-in-out hover:bg-black-500 hover:text-light dark:hover:bg-light dark:hover:text-black-500 md:text-sm [&.active]:bg-black-500 [&.active]:text-light"
+            className="rounded-2xl px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-300 ease-in-out hover:bg-black-500 hover:text-light dark:hover:bg-light dark:hover:text-black-500 md:mr-5 md:text-sm [&.active]:bg-black-500 [&.active]:text-light"
           >
             {t("nav.contact")}
           </Link>
