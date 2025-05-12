@@ -4,7 +4,7 @@ const About = () => {
   const { t } = useTranslation("global");
 
   return (
-    <main className="flex w-full items-center justify-center">
+    <main className="flex w-full items-center justify-center dark:bg-black-500 dark:text-light">
       <section className="container animate-fadeIn px-5 md:max-w-lg">
         <div className="grid gap-2">
           <h1 className="text-center text-lg font-bold lg:text-xl">
