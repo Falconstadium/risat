@@ -1,10 +1,14 @@
 import { useTranslation } from "react-i18next";
 import english from "../assets/img/british.png";
 import french from "../assets/img/france.png";
-import { useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { langContext } from "../context/LangSwitcher";
 
 const FooterLang = () => {
+  const { hover, setHover, buttonRef, menuRef, handleClickOutside } =
+    useContext(langContext);
+
   const { t, i18n } = useTranslation("global");
 
   const changeLang = (lang: string) => {
@@ -17,29 +21,6 @@ const FooterLang = () => {
     { id: 2, lang: "Français", value: "fr", img: french },
   ];
 
-  const [hover, setHover] = useState(false);
-
-  const menuRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target) &&
-        buttonRef.current &&
-        !buttonRef.current.contains(event.target)
-      ) {
-        setHover(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <div className="relative">
       <button
@@ -47,7 +28,7 @@ const FooterLang = () => {
         className={`flex animate-fadeIn items-center gap-1 rounded bg-light px-1 py-1 text-xs font-medium italic transition-all duration-300 ease-in-out hover:bg-slate-200`}
         title={t("footer.lang")}
         ref={buttonRef}
-        onClick={() => setHover((prev) => !prev)}
+        onClick={() => handleClickOutside()}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -11,6 +11,7 @@ import frTranslation from "../src/translations/fr/local.json";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "./context/theme.tsx";
 import { TodoNoteProvider } from "./context/TodoNote.tsx";
+import { LangProvider } from "./context/LangSwitcher.tsx";
 
 const resources = {
   en: {
@@ -54,10 +55,12 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <I18nextProvider i18n={i18next}>
       <ThemeProvider>
-        <TodoNoteProvider>
-          <App />
-          <Toaster richColors />
-        </TodoNoteProvider>
+        <LangProvider>
+          <TodoNoteProvider>
+            <App />
+            <Toaster richColors />
+          </TodoNoteProvider>
+        </LangProvider>
       </ThemeProvider>
     </I18nextProvider>
   </StrictMode>,

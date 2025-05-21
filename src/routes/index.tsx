@@ -5,12 +5,14 @@ import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { themeContext } from "../context/theme";
+import { langContext } from "../context/LangSwitcher";
 
 export const Route = createFileRoute("/")({
   component: () => {
     document.title = "risat";
     //darkMode
     const { theme } = useContext(themeContext);
+    const { hover } = useContext(langContext);
 
     //animation
     const [load, setLoad] = useState(false);
@@ -45,7 +47,9 @@ export const Route = createFileRoute("/")({
             </div>
           </div>
         ) : (
-          <article className="grid min-h-dvh w-full grid-rows-[1fr_auto]">
+          <article
+            className={`grid min-h-dvh w-full grid-rows-[1fr_auto] ${hover ? "z-20 bg-black-100/80" : ""}`}
+          >
             <Navbar />
 
             {/* hero */}
