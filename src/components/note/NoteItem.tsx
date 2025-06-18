@@ -1,19 +1,23 @@
+import { Link } from "@tanstack/react-router";
 import { useContext } from "react";
-import { todoNote } from "../../context/TodoNote";
+import { Note } from "../../context/Note";
 
 const NoteItem = ({ takeNote }: any) => {
-  const { showEditForm, deleteText } = useContext(todoNote);
+  const { showEditForm, deleteNote } = useContext(Note);
 
   return (
-    <li className="mx-auto flex w-full animate-fadeIn items-center justify-between gap-7 rounded px-2 py-1 text-sm font-medium shadow-dark dark:shadow-lightWhite lg:max-w-lg">
-      <div className="flex items-center gap-2">
-        <label
-          htmlFor={takeNote.id}
-          className="cursor-pointer text-justify text-base"
-        >
-          {takeNote.name}
-        </label>
-      </div>
+    <li className="mx-auto flex w-full animate-fadeIn items-center justify-between gap-7 rounded px-2 py-1 shadow-dark dark:shadow-lightWhite lg:max-w-lg">
+      <Link
+        key={takeNote.id}
+        to="/notes/$id"
+        params={{ id: takeNote.id }}
+        search={{ name: takeNote.name }}
+        className="text-xs font-medium"
+      >
+        {takeNote.name.length > 50
+          ? `${takeNote.name.slice(0, 45)}...`
+          : `${takeNote.name}`}
+      </Link>
       <div className="flex items-center gap-2 text-light">
         <button
           type="button"
@@ -28,7 +32,7 @@ const NoteItem = ({ takeNote }: any) => {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="size-4 lg:size-5"
+            className="size-4"
           >
             <path
               strokeLinecap="round"
@@ -42,7 +46,7 @@ const NoteItem = ({ takeNote }: any) => {
           className="rounded bg-red-700 p-1 transition-colors duration-200 ease-in-out hover:bg-red-600"
           title="Delete"
           aria-label={`delete ${takeNote.name}`}
-          onClick={() => deleteText(takeNote.id)}
+          onClick={() => deleteNote(takeNote.id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +54,7 @@ const NoteItem = ({ takeNote }: any) => {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="size-4 lg:size-5"
+            className="size-4"
           >
             <path
               strokeLinecap="round"

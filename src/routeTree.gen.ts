@@ -13,12 +13,13 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as TodoImport } from './routes/todo'
 import { Route as PassGenerateImport } from './routes/pass-generate'
-import { Route as NoteImport } from './routes/note'
 import { Route as ExpenseImport } from './routes/expense'
 import { Route as DashboardImport } from './routes/dashboard'
 import { Route as ContactImport } from './routes/contact'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
+import { Route as NotesIndexImport } from './routes/notes/index'
+import { Route as NotesIdImport } from './routes/notes/$id'
 
 // Create/Update Routes
 
@@ -29,11 +30,6 @@ const TodoRoute = TodoImport.update({
 
 const PassGenerateRoute = PassGenerateImport.update({
   path: '/pass-generate',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const NoteRoute = NoteImport.update({
-  path: '/note',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -59,6 +55,16 @@ const AboutRoute = AboutImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NotesIndexRoute = NotesIndexImport.update({
+  path: '/notes/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NotesIdRoute = NotesIdImport.update({
+  path: '/notes/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -101,13 +107,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExpenseImport
       parentRoute: typeof rootRoute
     }
-    '/note': {
-      id: '/note'
-      path: '/note'
-      fullPath: '/note'
-      preLoaderRoute: typeof NoteImport
-      parentRoute: typeof rootRoute
-    }
     '/pass-generate': {
       id: '/pass-generate'
       path: '/pass-generate'
@@ -122,6 +121,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TodoImport
       parentRoute: typeof rootRoute
     }
+    '/notes/$id': {
+      id: '/notes/$id'
+      path: '/notes/$id'
+      fullPath: '/notes/$id'
+      preLoaderRoute: typeof NotesIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/notes/': {
+      id: '/notes/'
+      path: '/notes'
+      fullPath: '/notes'
+      preLoaderRoute: typeof NotesIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -133,9 +146,10 @@ export const routeTree = rootRoute.addChildren({
   ContactRoute,
   DashboardRoute,
   ExpenseRoute,
-  NoteRoute,
   PassGenerateRoute,
   TodoRoute,
+  NotesIdRoute,
+  NotesIndexRoute,
 })
 
 /* prettier-ignore-end */
@@ -151,9 +165,10 @@ export const routeTree = rootRoute.addChildren({
         "/contact",
         "/dashboard",
         "/expense",
-        "/note",
         "/pass-generate",
-        "/todo"
+        "/todo",
+        "/notes/$id",
+        "/notes/"
       ]
     },
     "/": {
@@ -171,14 +186,17 @@ export const routeTree = rootRoute.addChildren({
     "/expense": {
       "filePath": "expense.tsx"
     },
-    "/note": {
-      "filePath": "note.tsx"
-    },
     "/pass-generate": {
       "filePath": "pass-generate.tsx"
     },
     "/todo": {
       "filePath": "todo.tsx"
+    },
+    "/notes/$id": {
+      "filePath": "notes/$id.tsx"
+    },
+    "/notes/": {
+      "filePath": "notes/index.tsx"
     }
   }
 }

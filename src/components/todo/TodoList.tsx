@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import TodoItem from "./TodoItem";
-import { todoNote } from "../../context/TodoNote";
+import { todoNote } from "../../context/Todo";
 
 const TodoList = () => {
   const { text } = useContext(todoNote);

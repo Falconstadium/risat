@@ -18,7 +18,7 @@ const Dashbord = () => {
     {
       id: 2,
       title: `${t("dashboard.note")}`,
-      href: "/note",
+      href: "/notes",
       img: noteImg,
     },
     {

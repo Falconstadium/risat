@@ -10,7 +10,8 @@ import enTranslation from "../src/translations/en/local.json";
 import frTranslation from "../src/translations/fr/local.json";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "./context/theme.tsx";
-import { TodoNoteProvider } from "./context/TodoNote.tsx";
+import { TodoNoteProvider } from "./context/Todo.tsx";
+import { NoteProvider } from "./context/Note.tsx";
 import { LangProvider } from "./context/LangSwitcher.tsx";
 
 const resources = {
@@ -57,7 +58,9 @@ createRoot(document.getElementById("root")!).render(
       <ThemeProvider>
         <LangProvider>
           <TodoNoteProvider>
-            <App />
+            <NoteProvider>
+              <App />
+            </NoteProvider>
             <Toaster richColors />
           </TodoNoteProvider>
         </LangProvider>

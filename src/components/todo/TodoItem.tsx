@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { todoNote } from "../../context/TodoNote";
+import { todoNote } from "../../context/Todo";
 
 const TodoItem = ({ task }: any) => {
   const { updateText, showEditForm, deleteTodo } = useContext(todoNote);

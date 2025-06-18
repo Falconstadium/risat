@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { todoNote } from "../../context/TodoNote";
+import { todoNote } from "../../context/Todo";
 
 const TodoForm = () => {
   const { t } = useTranslation("global");
