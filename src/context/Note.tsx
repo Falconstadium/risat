@@ -1,18 +1,48 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
-export const Note = createContext<unknown | any>(undefined);
+type NoteProps = {
+  id: string;
+  name: string;
+  time: number;
+};
 
-export const NoteProvider = ({ children }: any) => {
+interface noteFcts {
+  addNote({}): void;
+  deleteNote(id: string): void;
+  deleteAll(): void;
+  modifyEdit({}): void;
+  closeEditForm(): void;
+  showEditForm(takeNote: NoteProps): void;
+  editedNote: { name: string };
+  note: NoteProps[];
+  isEditedNote: boolean;
+}
+
+export const Note = createContext<noteFcts>({
+  addNote({}) {},
+  deleteNote() {},
+  deleteAll() {},
+  modifyEdit() {},
+  closeEditForm() {},
+  showEditForm() {},
+  editedNote: { name: "" },
+  note: [],
+  isEditedNote: false,
+});
+
+export const NoteProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("global");
 
-  const storedNote = JSON.parse(localStorage.getItem("note") || "[]");
-  const [note, setNote] = useState(storedNote);
+  const storedNote = localStorage.getItem("note");
+  const [note, setNote] = useState<NoteProps[]>(
+    storedNote ? JSON.parse(storedNote) : [],
+  );
   //Open Editing Form:
   const [isEditedNote, setIsEditedNote] = useState(false);
   //Edit Note:
-  const [editedNote, setEditedNote] = useState(null);
+  const [editedNote, setEditedNote] = useState<any>(null);
 
   const addNote = (task: string) => {
     setNote((prevTask: any) => [...prevTask, task]);
@@ -26,19 +56,9 @@ export const NoteProvider = ({ children }: any) => {
     toast.success(t("Note.toast_delete"));
   };
 
-  const deleteAll = (id: string) => {
-    setNote((prevTask: string | any) =>
-      prevTask.filter((t: { id: string }) => t.id === id),
-    );
+  const deleteAll = () => {
+    setNote([]);
     toast.success(t("Note.allNotes"));
-  };
-
-  const updateNote = (id: string) => {
-    setNote((prevTask: string | any) =>
-      prevTask.map((t: { id: string; checked: unknown }) =>
-        t.id === id ? { ...t, checked: !t.checked } : t,
-      ),
-    );
   };
 
   const modifyEdit = (task: string | any) => {
@@ -53,7 +73,7 @@ export const NoteProvider = ({ children }: any) => {
     setIsEditedNote(false);
   };
 
-  const showEditForm = (task: string | any) => {
+  const showEditForm = (task: NoteProps) => {
     setEditedNote(task);
     setIsEditedNote(true);
   };
@@ -68,7 +88,6 @@ export const NoteProvider = ({ children }: any) => {
         note,
         addNote,
         deleteNote,
-        updateNote,
         deleteAll,
         modifyEdit,
         showEditForm,

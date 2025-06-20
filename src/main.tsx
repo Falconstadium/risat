@@ -10,7 +10,7 @@ import enTranslation from "../src/translations/en/local.json";
 import frTranslation from "../src/translations/fr/local.json";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "./context/theme.tsx";
-import { TodoNoteProvider } from "./context/Todo.tsx";
+import { TodoContextProvider } from "./context/Todo.tsx";
 import { NoteProvider } from "./context/Note.tsx";
 import { LangProvider } from "./context/LangSwitcher.tsx";
 
@@ -57,12 +57,12 @@ createRoot(document.getElementById("root")!).render(
     <I18nextProvider i18n={i18next}>
       <ThemeProvider>
         <LangProvider>
-          <TodoNoteProvider>
+          <TodoContextProvider>
             <NoteProvider>
               <App />
             </NoteProvider>
             <Toaster richColors />
-          </TodoNoteProvider>
+          </TodoContextProvider>
         </LangProvider>
       </ThemeProvider>
     </I18nextProvider>

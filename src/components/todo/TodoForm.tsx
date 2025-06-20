@@ -1,86 +1,77 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { todoNote } from "../../context/Todo";
+import { TodoContext } from "../../context/Todo";
 
-const TodoForm = () => {
+const TodoForm = ({ showForm }: any) => {
   const { t } = useTranslation("global");
 
-  const { addText, text, deleteAll } = useContext(todoNote);
+  const { addText } = useContext(TodoContext);
 
   const [todo, setTodo] = useState("");
 
-  const formSubmit = (e: any) => {
+  const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addText({
-      name: todo,
+      name: todo.trim(),
       checked: false,
       id: crypto.randomUUID(),
       time: Date.now(),
     });
     setTodo("");
+    showForm();
   };
 
   return (
-    <form
-      onSubmit={formSubmit}
-      className="mx-auto flex flex-1 items-center justify-center gap-2 lg:max-w-lg"
-    >
-      <input
-        type="text"
-        placeholder={t("TODO.todo_btn")}
-        className="w-3/4 rounded bg-light px-2 py-1 text-sm font-medium shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none dark:bg-black-100 dark:text-light"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
-        autoFocus
-        required
-      />
+    <main className="absolute left-0 top-0 z-50 flex min-h-dvh w-full items-center justify-center px-8 backdrop-blur-sm">
       <button
-        className="rounded bg-blue-700 p-1 text-light transition-colors duration-200 ease-in-out hover:bg-blue-600"
-        type="submit"
-        aria-label="add todo"
+        type="button"
+        className="absolute right-6 top-52 animate-fadeIn rounded-full bg-slate-900 p-1 transition duration-200 ease-in-out hover:bg-slate-800 lg:right-72 lg:p-2"
+        onClick={showForm}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          className="size-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          className="size-6 text-white lg:size-7"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
-          />
+          <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
         </svg>
       </button>
-      {text != 0 ? (
+      <form
+        onSubmit={formSubmit}
+        className="mx-auto flex flex-1 items-center justify-center gap-2 lg:max-w-lg"
+      >
+        <input
+          type="text"
+          placeholder={t("TODO.todo_btn")}
+          className="w-3/4 rounded bg-light px-2 py-1 text-sm font-medium shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none dark:bg-black-100 dark:text-light"
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
+          autoFocus
+          required
+        />
         <button
-          type="button"
-          onClick={deleteAll}
-          title={t("dashbord.deleteAll")}
-          className="flex items-center gap-1 rounded bg-red-700 p-1 text-xs text-light transition-colors duration-200 ease-in-out hover:bg-red-600"
+          className="rounded bg-blue-700 p-1 text-light transition-colors duration-200 ease-in-out hover:bg-blue-600"
+          type="submit"
+          aria-label="add todo"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
             fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
             stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-trash-icon lucide-trash"
+            className="size-5"
           >
-            <path d="M3 6h18" />
-            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
           </svg>
-          <span>({text.length})</span>
         </button>
-      ) : null}
-    </form>
+      </form>
+    </main>
   );
 };
 

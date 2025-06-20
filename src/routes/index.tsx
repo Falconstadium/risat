@@ -1,65 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { themeContext } from "../context/theme";
 import { langContext } from "../context/LangSwitcher";
+import { WideSpin } from "../components/AnimationLoading";
 
 export const Route = createFileRoute("/")({
-  component: () => {
-    document.title = "risat";
-    //darkMode
+  component: HomeRoute,
+  pendingComponent: () => {
     const { theme } = useContext(themeContext);
-    const { hover } = useContext(langContext);
-
-    //animation
-    const [load, setLoad] = useState(false);
-    useEffect(() => {
-      setLoad(true);
-      setTimeout(() => {
-        setLoad(false);
-      }, 1000);
-    }, []);
-
     return (
-      <main className={`${theme && "dark"}`}>
-        {load ? (
-          <div className="flex min-h-dvh items-center justify-center dark:bg-black-500">
-            <div className="relative">
-              <div className="relative h-32 w-32">
-                <div
-                  className="absolute h-full w-full animate-spin rounded-full border-[4px] border-gray-100/10 border-b-indigo-700 border-r-indigo-700"
-                  style={{ animationDuration: "3s" }}
-                ></div>
-
-                <div
-                  className="absolute h-full w-full animate-spin rounded-full border-[4px] border-gray-100/10 border-t-indigo-700"
-                  style={{
-                    animationDuration: "2s",
-                    animationDirection: "reverse",
-                  }}
-                ></div>
-              </div>
-
-              <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-tr from-indigo-700/10 via-transparent to-indigo-700/5 blur-sm"></div>
-            </div>
-          </div>
-        ) : (
-          <article
-            className={`grid min-h-dvh w-full grid-rows-[1fr_auto] ${hover ? "z-20 bg-black-100/80" : ""}`}
-          >
-            <Navbar />
-
-            {/* hero */}
-            <Home />
-
-            {/* footer */}
-            <Footer />
-          </article>
-        )}
-      </main>
+      <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
+        <WideSpin theme={theme} />
+      </div>
     );
   },
 });
+
+function HomeRoute() {
+  document.title = "risat";
+  //darkMode
+  const { theme } = useContext(themeContext);
+  const { hover } = useContext(langContext);
+
+  return (
+    <main className={`${theme && "dark"}`}>
+      <article
+        className={`grid min-h-dvh w-full grid-rows-[1fr_auto] ${hover ? "z-20 bg-black-100/80" : ""}`}
+      >
+        <Navbar />
+
+        {/* hero */}
+        <Home />
+
+        {/* footer */}
+        <Footer />
+      </article>
+    </main>
+  );
+}

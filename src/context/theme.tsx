@@ -1,10 +1,18 @@
-import { createContext, useEffect } from "react";
+import { createContext, ReactNode, useEffect } from "react";
 import { useState } from "react";
 
-export const themeContext = createContext<unknown | any>(undefined);
+type themeProps = {
+  toggleTheme(): void;
+  theme: string;
+};
 
-export const ThemeProvider = ({ children }: any) => {
-  const darkMode = JSON.parse(localStorage.getItem("mode") || "[]");
+export const themeContext = createContext<themeProps>({
+  toggleTheme() {},
+  theme: "",
+});
+
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const darkMode = JSON.parse(localStorage.getItem("mode") || "");
   const [theme, setTheme] = useState(darkMode);
 
   const toggleTheme = () => {

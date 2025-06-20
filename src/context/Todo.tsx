@@ -2,9 +2,9 @@ import { createContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
-export const todoNote = createContext<unknown | any>(undefined);
+export const TodoContext = createContext<unknown | any>(undefined);
 
-export const TodoNoteProvider = ({ children }: any) => {
+export const TodoContextProvider = ({ children }: any) => {
   const { t } = useTranslation("global");
 
   const storedTasks = JSON.parse(localStorage.getItem("task") || "[]");
@@ -63,7 +63,7 @@ export const TodoNoteProvider = ({ children }: any) => {
   }, [text]);
 
   return (
-    <todoNote.Provider
+    <TodoContext.Provider
       value={{
         text,
         addText,
@@ -78,6 +78,6 @@ export const TodoNoteProvider = ({ children }: any) => {
       }}
     >
       {children}
-    </todoNote.Provider>
+    </TodoContext.Provider>
   );
 };

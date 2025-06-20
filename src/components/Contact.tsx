@@ -1,21 +1,21 @@
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { FormEvent, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
 const Contact = () => {
   const { t } = useTranslation("global");
 
-  const formContact = useRef<any>();
+  const formContact = useRef<HTMLFormElement>(null);
 
-  const submitForm = (e: any) => {
+  const submitForm = (e: FormEvent) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
         `${import.meta.env.VITE_SERVICE_ID}`,
         `${import.meta.env.VITE_TEMPLATE_ID}`,
-        formContact.current,
+        formContact.current!,
         {
           publicKey: `${import.meta.env.VITE_PUBLIC_KEY}`,
         },
@@ -25,7 +25,7 @@ const Contact = () => {
           console.log("SUCCESS!");
           toast.success(`${t("contact.success")}`);
         },
-        (error: any) => {
+        (error) => {
           console.log("FAILED...", error.text);
           toast.error(`${t("contact.error")}`);
         },

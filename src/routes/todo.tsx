@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import AnimationLoading from "../components/AnimationLoading";
+import { themeContext } from "../context/theme";
+import { TodoContext } from "../context/Todo";
+import { Sun } from "../components/Sun";
+import { AnimationLoading } from "../components/AnimationLoading";
 import TodoForm from "../components/todo/TodoForm";
 import TodoList from "../components/todo/TodoList";
 import EditForm from "../components/todo/EditForm";
-import { themeContext } from "../context/theme";
-import { todoNote } from "../context/Todo";
-import { Sun } from "../components/Sun";
-import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/todo")({
   component: Todo,
@@ -23,10 +23,15 @@ export const Route = createFileRoute("/todo")({
 });
 
 function Todo() {
-  const { text, isEdited } = useContext(todoNote);
+  const { text, isEdited, deleteAll } = useContext(TodoContext);
 
   // darkMode
   const { theme } = useContext(themeContext);
+  // show form
+  const [show, setShow] = useState(false);
+  const showForm = () => {
+    setShow(!show);
+  };
 
   const { t } = useTranslation("global");
 
@@ -67,10 +72,59 @@ function Todo() {
         </header>
 
         <main className="bg-white dark:bg-black-500">
-          <section className="container mx-auto w-full px-4 pt-10">
+          <section className="mx-auto w-full max-w-xl px-4 pt-10">
+            {show ? <TodoForm showForm={showForm} /> : null}
+            <button
+              type="button"
+              className="absolute bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
+              onClick={showForm}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-plus-icon lucide-plus"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+            </button>
+
+            {text != 0 ? (
+              <button
+                type="button"
+                onClick={deleteAll}
+                title={t("dashbord.deleteAll")}
+                className="mb-4 ml-auto flex items-center gap-1 rounded bg-red-700 px-3 py-1 text-xs text-light transition-colors duration-200 ease-in-out hover:bg-red-600"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-trash-icon lucide-trash"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                </svg>
+                <span>({text.length})</span>
+              </button>
+            ) : null}
+
             {isEdited && <EditForm />}
 
-            <TodoForm />
             {text && <TodoList />}
           </section>
         </main>

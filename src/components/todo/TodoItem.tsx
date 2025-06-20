@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { todoNote } from "../../context/Todo";
+import { TodoContext } from "../../context/Todo";
 
 const TodoItem = ({ task }: any) => {
-  const { updateText, showEditForm, deleteTodo } = useContext(todoNote);
+  const { updateText, showEditForm, deleteText } = useContext(TodoContext);
 
   const [done, setDone] = useState(task.checked);
 
@@ -12,18 +12,17 @@ const TodoItem = ({ task }: any) => {
   };
 
   return (
-    <li className="mx-auto flex w-full animate-fadeIn items-center justify-between rounded px-2 py-1 text-sm font-medium shadow-dark dark:shadow-lightWhite lg:max-w-lg">
+    <li className="mx-auto flex w-full max-w-lg animate-fadeIn items-center justify-between rounded px-2 py-1 font-medium shadow-dark dark:shadow-lightWhite">
       <div className="flex items-center gap-2">
         <input
           type="checkbox"
           onChange={isComplete}
           name={task.name}
           id={task.id}
-          className="first-letter:capitalize"
         />
         <label
           htmlFor={task.id}
-          className={`cursor-pointer text-base ${done ? "text-neutral-500 line-through dark:text-neutral-400" : ""}`}
+          className={`cursor-pointer text-xs ${done ? "text-neutral-500 line-through dark:text-neutral-400" : ""}`}
         >
           {task.name}
         </label>
@@ -42,7 +41,7 @@ const TodoItem = ({ task }: any) => {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="size-4 lg:size-5"
+            className="size-4"
           >
             <path
               strokeLinecap="round"
@@ -56,7 +55,7 @@ const TodoItem = ({ task }: any) => {
           className="rounded bg-red-700 p-1 transition-colors duration-200 ease-in-out hover:bg-red-600"
           title="Delete"
           aria-label={`delete ${task.name}`}
-          onClick={() => deleteTodo(task.id)}
+          onClick={() => deleteText(task.id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +63,7 @@ const TodoItem = ({ task }: any) => {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="size-4 lg:size-5"
+            className="size-4"
           >
             <path
               strokeLinecap="round"

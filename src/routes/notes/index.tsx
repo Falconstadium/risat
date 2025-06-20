@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { themeContext } from "../../context/theme";
 import { Note } from "../../context/Note";
 import { Sun } from "../../components/Sun";
-import AnimationLoading from "../../components/AnimationLoading";
+import { AnimationLoading } from "../../components/AnimationLoading";
 import EditNote from "../../components/note/EditNote";
 import NoteList from "../../components/note/NoteList";
 import NoteForm from "../../components/note/NoteForm";
@@ -27,7 +27,6 @@ function Notes() {
   const { theme } = useContext(themeContext);
   // form
   const { note, isEditedNote, deleteAll } = useContext(Note);
-  if (!note) throw new Error("Note context must be used within a provider");
   // show form
   const [show, setShow] = useState(false);
   const showForm = () => {
@@ -75,53 +74,66 @@ function Notes() {
         <main className="bg-white dark:bg-black-500">
           <section className="mx-auto w-full max-w-xl px-4 pt-10">
             {show ? <NoteForm showForm={showForm} /> : null}
-            <button
-              type="button"
-              className="absolute bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
-              onClick={showForm}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-plus-icon lucide-plus"
-              >
-                <path d="M5 12h14" />
-                <path d="M12 5v14" />
-              </svg>
-            </button>
-            {note != 0 ? (
-              <button
-                type="button"
-                onClick={deleteAll}
-                title={t("dashbord.deleteAll")}
-                className="mb-4 ml-auto flex items-center gap-1 rounded bg-red-700 px-3 py-1 text-xs text-light transition-colors duration-200 ease-in-out hover:bg-red-600"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-trash-icon lucide-trash"
+            {note.length != 0 ? (
+              <>
+                <button
+                  type="button"
+                  className="absolute bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
+                  onClick={showForm}
                 >
-                  <path d="M3 6h18" />
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                </svg>
-                <span>({note.length})</span>
-              </button>
-            ) : null}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-plus-icon lucide-plus"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={deleteAll}
+                  title={t("dashbord.deleteAll")}
+                  className="mb-4 ml-auto flex items-center gap-1 rounded bg-red-700 px-3 py-1 text-xs text-light transition-colors duration-200 ease-in-out hover:bg-red-600"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-trash-icon lucide-trash"
+                  >
+                    <path d="M3 6h18" />
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                  </svg>
+                  <span>({note.length})</span>
+                </button>
+              </>
+            ) : (
+              <div className="grid animate-fadeIn place-content-center gap-2 pt-20">
+                <p className="dark:text-light">No Notes here!</p>
+                <button
+                  type="button"
+                  className="mx-auto rounded bg-blue-700 px-3 py-1 text-xs capitalize text-light transition-colors duration-200 ease-in-out hover:bg-blue-600"
+                  onClick={showForm}
+                >
+                  create note
+                </button>
+              </div>
+            )}
 
             {/* show edit */}
             {isEditedNote && <EditNote />}

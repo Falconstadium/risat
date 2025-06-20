@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useContext } from "react";
 import { themeContext } from "../../context/theme";
-import AnimationLoading from "../../components/AnimationLoading";
+import { AnimationLoading } from "../../components/AnimationLoading";
 
 export const Route = createFileRoute("/notes/$id")({
   component: NoteContent,

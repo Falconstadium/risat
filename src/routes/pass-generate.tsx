@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { getRandomChar, getSpecialChar } from "../components/password/utils";
 import { useForm } from "../components/password/UseForm";
-import AnimationLoading from "../components/AnimationLoading";
+import { AnimationLoading } from "../components/AnimationLoading";
 import { themeContext } from "../context/theme";
 import { Sun } from "../components/Sun";
 

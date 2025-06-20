@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Note } from "../../context/Note";
 
@@ -7,7 +7,7 @@ const EditNote = () => {
 
   const [editNote, setEditNote] = useState(editedNote.name);
 
-  const formSubmit = (e: any) => {
+  const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     modifyEdit({ ...editedNote, name: editNote });
   };

@@ -1,8 +1,8 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import english from "../assets/img/british.png";
 import french from "../assets/img/france.png";
-import { useContext } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { langContext } from "../context/LangSwitcher";
 
 const FooterLang = () => {

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import AnimationLoading from "../components/AnimationLoading";
+import { AnimationLoading } from "../components/AnimationLoading";
 import { themeContext } from "../context/theme";
 import { Sun } from "../components/Sun";
 
