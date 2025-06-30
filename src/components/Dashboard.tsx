@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import todoImg from "../assets/img/todo.jpg";
-import noteImg from "../assets/img/notes.jpg";
 import expenseImg from "../assets/img/expense.png";
+import noteImg from "../assets/img/notes.jpg";
 import passImg from "../assets/img/pass.jpg";
+import todoImg from "../assets/img/todo.jpg";
 
 const Dashbord = () => {
   const { t } = useTranslation("global");
@@ -37,7 +37,7 @@ const Dashbord = () => {
 
   return (
     <main className="grid place-content-center bg-white dark:bg-black-500">
-      <section className="container mx-auto grid w-full animate-fadeIn place-content-center place-items-center gap-8 px-6 py-4 dark:text-light lg:grid-cols-2 lg:gap-12">
+      <section className="mx-auto grid w-full max-w-4xl animate-fadeIn place-content-center place-items-center gap-8 px-8 py-10 dark:text-light lg:grid-cols-2 lg:gap-12 lg:px-0 lg:py-0">
         {tools.map((tool) => {
           return (
             <div
@@ -50,12 +50,12 @@ const Dashbord = () => {
                 className="w-1/2 object-cover"
               />
               <div className="grid w-1/2 place-items-center gap-2 px-2">
-                <h2 className="animate-fadeUp bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-center text-2xl font-semibold text-transparent dark:from-neutral-200 dark:to-neutral-400 md:text-3xl">
+                <h2 className="animate-fadeUp bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-center text-2xl font-bold text-transparent dark:from-neutral-200 dark:to-neutral-400 lg:text-3xl">
                   {tool.title}
                 </h2>
 
                 <Link
-                  className="flex items-center gap-2 text-sm font-medium text-blue-700 transition-colors duration-200 ease-in-out hover:text-blue-600 lg:text-base"
+                  className="flex items-center gap-2 text-xs font-medium text-blue-700 transition-colors duration-200 ease-in-out hover:text-blue-600 lg:text-sm"
                   to={tool.href}
                 >
                   {t("dashboard.link")}

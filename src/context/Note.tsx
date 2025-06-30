@@ -4,7 +4,8 @@ import { toast } from "sonner";
 
 type NoteProps = {
   id: string;
-  name: string;
+  title: string;
+  desc: string;
   time: number;
 };
 
@@ -15,7 +16,7 @@ interface noteFcts {
   modifyEdit({}): void;
   closeEditForm(): void;
   showEditForm(takeNote: NoteProps): void;
-  editedNote: { name: string };
+  editedNote: { title: string; desc: string };
   note: NoteProps[];
   isEditedNote: boolean;
 }
@@ -27,7 +28,7 @@ export const Note = createContext<noteFcts>({
   modifyEdit() {},
   closeEditForm() {},
   showEditForm() {},
-  editedNote: { name: "" },
+  editedNote: { title: "", desc: "" },
   note: [],
   isEditedNote: false,
 });
@@ -63,7 +64,9 @@ export const NoteProvider = ({ children }: { children: ReactNode }) => {
 
   const modifyEdit = (task: string | any) => {
     setNote((prevTask: any[]) =>
-      prevTask.map((t) => (t.id === task.id ? { ...t, name: task.name } : t)),
+      prevTask.map((t) =>
+        t.id === task.id ? { ...t, title: task.title, desc: task.desc } : t,
+      ),
     );
     closeEditForm();
     toast.success(t("Note.toast_edit"));

@@ -2,11 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { useContext } from "react";
 import { Note } from "../../context/Note";
 
-type NoteProps = {
+export type NoteProps = {
   takeNote: {
     id: string;
     time: number;
-    name: string;
+    title: string;
+    desc: string;
   };
 };
 
@@ -14,24 +15,22 @@ const NoteItem = ({ takeNote }: NoteProps) => {
   const { showEditForm, deleteNote } = useContext(Note);
 
   return (
-    <li className="mx-auto flex w-full animate-fadeIn items-center justify-between gap-7 rounded px-2 py-1 shadow-dark dark:shadow-lightWhite lg:max-w-lg">
+    <li className="mx-auto flex w-full max-w-lg animate-fadeIn items-center justify-between gap-7 rounded px-2 py-1 shadow-dark dark:shadow-lightWhite">
       <Link
         key={takeNote.id}
         to="/notes/$id"
         params={{ id: takeNote.id }}
-        search={{ name: takeNote.name }}
+        search={{ name: takeNote.title, desc: takeNote.desc }}
         className="text-xs font-medium"
       >
-        {takeNote.name.length > 50
-          ? `${takeNote.name.slice(0, 45)}...`
-          : `${takeNote.name}`}
+        {takeNote.title}
       </Link>
       <div className="flex items-center gap-2 text-light">
         <button
           type="button"
           className="rounded bg-green-700 p-1 transition-colors duration-200 ease-in-out hover:bg-green-600"
           title="Edit"
-          aria-label={`edit ${takeNote.name}`}
+          aria-label={`edit ${takeNote.title}`}
           onClick={() => showEditForm(takeNote)}
         >
           <svg
@@ -53,7 +52,7 @@ const NoteItem = ({ takeNote }: NoteProps) => {
           type="button"
           className="rounded bg-red-700 p-1 transition-colors duration-200 ease-in-out hover:bg-red-600"
           title="Delete"
-          aria-label={`delete ${takeNote.name}`}
+          aria-label={`delete ${takeNote.title}`}
           onClick={() => deleteNote(takeNote.id)}
         >
           <svg

@@ -2,13 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { themeContext } from "../../context/theme";
-import { Note } from "../../context/Note";
-import { Sun } from "../../components/Sun";
 import { AnimationLoading } from "../../components/AnimationLoading";
 import EditNote from "../../components/note/EditNote";
-import NoteList from "../../components/note/NoteList";
 import NoteForm from "../../components/note/NoteForm";
+import NoteList from "../../components/note/NoteList";
+import { Note } from "../../context/Note";
+import { themeContext } from "../../context/theme";
 
 export const Route = createFileRoute("/notes/")({
   component: Notes,
@@ -39,8 +38,8 @@ function Notes() {
     <main className={`${theme && "dark"}`}>
       <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
         {/* Navbar */}
-        <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-3 text-light">
-          <nav className="mx-auto flex max-w-xl items-center justify-between">
+        <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 text-light">
+          <nav className="mx-auto flex max-w-2xl items-center justify-between">
             <Link to="/dashboard" className="flex items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +66,6 @@ function Notes() {
                 </h3>
               </div>
             </Link>
-            <Sun />
           </nav>
         </header>
 
@@ -83,15 +81,13 @@ function Notes() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="lucide lucide-plus-icon lucide-plus"
+                    className="lucide lucide-plus-icon lucide-plus size-7"
                   >
                     <path d="M5 12h14" />
                     <path d="M12 5v14" />

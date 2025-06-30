@@ -2,13 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { themeContext } from "../context/theme";
-import { TodoContext } from "../context/Todo";
-import { Sun } from "../components/Sun";
 import { AnimationLoading } from "../components/AnimationLoading";
+import EditForm from "../components/todo/EditForm";
 import TodoForm from "../components/todo/TodoForm";
 import TodoList from "../components/todo/TodoList";
-import EditForm from "../components/todo/EditForm";
+import { themeContext } from "../context/theme";
+import { TodoContext } from "../context/Todo";
 
 export const Route = createFileRoute("/todo")({
   component: Todo,
@@ -39,8 +38,8 @@ function Todo() {
     <main className={`${theme && "dark"}`}>
       <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
         {/* Navbar */}
-        <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-3 text-light">
-          <nav className="mx-auto flex max-w-xl items-center justify-between">
+        <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 text-light">
+          <nav className="mx-auto flex max-w-2xl items-center justify-between">
             <Link to="/dashboard" className="flex items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +66,6 @@ function Todo() {
                 </h3>
               </div>
             </Link>
-            <Sun />
           </nav>
         </header>
 

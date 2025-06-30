@@ -7,16 +7,19 @@ const NoteForm = ({ showForm }: any) => {
 
   const { addNote } = useContext(Note);
 
-  const [memo, setMemo] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
 
   const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addNote({
-      name: memo,
+      title: title,
+      desc: desc,
       id: crypto.randomUUID(),
       time: Date.now(),
     });
-    setMemo("");
+    setTitle("");
+    setDesc("");
     showForm();
   };
 
@@ -38,18 +41,26 @@ const NoteForm = ({ showForm }: any) => {
       </button>
       <form
         onSubmit={formSubmit}
-        className="mx-auto flex flex-1 animate-fadeIn items-center justify-center gap-2 lg:max-w-md"
+        className="mx-auto grid w-full max-w-lg gap-2 backdrop-blur-xl"
       >
-        <textarea
-          placeholder={t("Note.note_btn")}
-          className="w-3/4 rounded bg-light px-2 py-1 text-sm font-medium shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in first-letter:capitalize focus:shadow-[0_0_8px] focus:outline-none dark:bg-black-100 dark:text-light"
-          value={memo}
-          onChange={(e) => setMemo(e.target.value)}
+        <input
+          type="text"
+          placeholder={t("Note.note_title")}
+          className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-2"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           autoFocus
+          required
+        />
+        <textarea
+          placeholder={t("Note.note_desc")}
+          className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-2"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
           required
         ></textarea>
         <button
-          className="rounded bg-blue-700 p-1 text-light transition-colors duration-200 ease-in-out hover:bg-blue-600"
+          className="mx-auto rounded bg-blue-700 p-1 text-light transition-colors duration-200 ease-in-out hover:bg-blue-600"
           type="submit"
           aria-label="add todo"
         >

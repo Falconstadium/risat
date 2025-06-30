@@ -2,9 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
-import Dashbord from "../components/Dashboard";
-import { themeContext } from "../context/theme";
 import { Spinner } from "../components/AnimationLoading";
+import Dashbord from "../components/Dashboard";
+import { Sun } from "../components/Sun";
+import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
@@ -27,8 +28,8 @@ function Dashboard() {
     <main className={`${theme && "dark"}`}>
       <article className="grid min-h-[100dvh] w-full grid-rows-[auto_1fr]">
         {/* Navbar */}
-        <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-6 py-5 text-light">
-          <nav className="container mx-auto flex items-center justify-between">
+        <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 text-light">
+          <nav className="mx-auto flex max-w-5xl items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +56,7 @@ function Dashboard() {
                 </h3>
               </div>
             </Link>
+            <Sun />
           </nav>
         </header>
 
