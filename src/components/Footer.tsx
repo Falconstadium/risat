@@ -6,9 +6,17 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#30475e] px-6 py-3">
-      <div className="container mx-auto flex items-center justify-between gap-2">
-        <p className="text-xs font-medium capitalize tracking-wide text-light">
-          {t("footer.right")}
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-2">
+        <p className="text-xs font-medium tracking-wide text-light">
+          {t("footer.right")}{" "}
+          <a
+            href="https://yassiraterta.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm uppercase hover:underline"
+          >
+            yassir
+          </a>
           {""} &copy; {new Date().getFullYear()}
         </p>
         <FooterLang />

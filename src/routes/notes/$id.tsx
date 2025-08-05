@@ -29,13 +29,13 @@ function NoteContent() {
   return (
     <main className={`${theme && "dark"}`}>
       <article className="min-h-dvh w-full dark:bg-black-100 dark:text-light">
-        <section className="mx-auto grid max-w-2xl gap-4 px-4 pt-20" key={id}>
-          <h4 className="animate-fadeIn break-words rounded border-2 border-slate-950 px-2 py-4 text-lg font-semibold dark:border-slate-600">
+        <section className="mx-auto grid max-w-xl gap-2 px-4 pt-20" key={id}>
+          <h4 className="animate-fadeIn break-words rounded bg-slate-100 px-1 py-1 text-lg font-semibold xl:text-xl">
             {name}
           </h4>
-          <p className="animate-fadeIn break-words rounded border-2 border-slate-950 px-2 py-1 text-sm dark:border-slate-600">
+          <textarea className="animate-fadeIn break-words rounded bg-slate-50 px-1 py-1 text-sm">
             {desc}
-          </p>
+          </textarea>
         </section>
       </article>
     </main>

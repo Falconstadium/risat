@@ -108,14 +108,6 @@ function Password() {
     },
   ];
 
-  const [show, setShow] = useState(false);
-  const showText = () => {
-    setShow(true);
-    setTimeout(() => {
-      setShow(false);
-    }, 3000);
-  };
-
   return (
     <main className={`${theme && "dark"}`}>
       <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
@@ -163,24 +155,18 @@ function Password() {
               className="w-full rounded-sm border border-solid border-slate-900 bg-transparent px-2 py-1 text-sm font-medium tracking-wider text-black-500 focus:outline-none dark:border-light dark:text-light md:text-base"
             />
             <div className="flex items-center justify-center gap-4">
-              <div className="grid place-items-center gap-1">
-                <p className="font-mono font-semibold capitalize text-gray-700 dark:text-gray-400">
-                  {t("password.length")}
-                </p>
-                {show && (
-                  <p className="text-xs font-medium text-red-600 transition-all duration-100 ease-in-out">
-                    {t("password.less")}
-                  </p>
-                )}
-              </div>
+              <p className="font-mono font-semibold capitalize text-gray-700 dark:text-gray-400">
+                {t("password.length")}
+              </p>
+
               <input
                 type="number"
+                inputMode="numeric"
                 min={8}
                 max={16}
                 name="length"
                 value={val.length}
                 onChange={setVal}
-                onClick={showText}
                 className="w-16 rounded-md border border-solid border-slate-900 bg-transparent px-2 py-1 text-sm font-medium tracking-wider text-black-500 focus:outline-none dark:border-light dark:text-light"
               />
             </div>

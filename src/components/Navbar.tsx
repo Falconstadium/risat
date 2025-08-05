@@ -17,7 +17,7 @@ const Navbar = () => {
     <header
       className={`fixed top-0 z-50 w-full bg-white px-6 py-4 text-black-100 dark:bg-black-500 dark:text-light lg:py-5 ${color ? "bg-white/75 shadow-dark backdrop-blur dark:bg-black-500/75 dark:shadow-lightWhite" : ""}`}
     >
-      <nav className="container mx-auto flex items-center justify-between">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between">
         <div>
           <Link
             to="/"
