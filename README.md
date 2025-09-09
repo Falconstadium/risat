@@ -1,4 +1,4 @@
-risat is my personal project, it's a website containing some different tools that we use every day.
+Risat is my personal project, it's a website containing some different tools that we use every day.
 
 ![image alt](./screenshot.jpeg)
 
