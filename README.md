@@ -1,6 +1,6 @@
 risat is my personal project, it's a website containing some different tools that we use every day.
 
-![image alt](./screenshot.jpeg)
+![image alt](./screenshot.png)
 
 ### This website is built with:
 
