@@ -2,21 +2,20 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { AnimationLoading } from "../components/AnimationLoading";
 import ExpenseForm from "../components/expense/ExpenseForm";
 import ExpenseList from "../components/expense/ExpenseList";
+import Theme from "../components/Theme";
 import { themeContext } from "../context/theme";
+
+type Transaction = {
+  id: number;
+  description: string;
+  amount: number;
+};
 
 export const Route = createFileRoute("/expense")({
   component: Expense,
-  pendingComponent: () => {
-    const { theme } = useContext(themeContext);
-    return (
-      <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
-        <AnimationLoading theme={theme} />
-      </div>
-    );
-  },
+  pendingComponent: () => Theme,
 });
 
 function Expense() {
@@ -37,8 +36,12 @@ function Expense() {
   const submitForm = (e: FormEvent) => {
     e.preventDefault();
     if (edit) {
-      const newTransaction = transaction.map((item: any) => {
-        item.id === edit ? { id: edit, description, amount } : item;
+      const newTransaction = transaction.map((item: { id: number }) => {
+        if (item.id === edit) {
+          return { id: edit, description, amount };
+        } else {
+          return item;
+        }
       });
       setTransaction(newTransaction);
       setEdit(null);
@@ -50,7 +53,7 @@ function Expense() {
   };
 
   const deleteItem = (id: number) => {
-    setTransaction((prevTr: any[]) =>
+    setTransaction((prevTr: Transaction[]) =>
       prevTr.filter((t: { id: number }) => t.id !== id),
     );
   };
@@ -105,18 +108,6 @@ function Expense() {
 
           <ExpenseList transaction={transaction} deleteItem={deleteItem} />
         </section>
-
-        {/* <div className="absolute bottom-6 right-4 flex items-center justify-center gap-2 text-sm dark:text-light md:bottom-8 md:right-8 md:text-base lg:bottom-10 lg:right-9">
-              <p>{t("expense.link")}</p>
-              <a
-                className="text-sm font-semibold underline hover:text-indigo-700"
-                href="https://fundstruck.netlify.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Expense
-              </a>
-            </div> */}
       </main>
     </article>
   );

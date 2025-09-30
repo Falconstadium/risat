@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { AnimationLoading } from "../components/AnimationLoading";
+import Theme from "../components/Theme";
 import EditForm from "../components/todo/EditForm";
 import TodoForm from "../components/todo/TodoForm";
 import TodoList from "../components/todo/TodoList";
@@ -11,14 +11,7 @@ import { TodoContext } from "../context/Todo";
 
 export const Route = createFileRoute("/todo")({
   component: Todo,
-  pendingComponent: () => {
-    const { theme } = useContext(themeContext);
-    return (
-      <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
-        <AnimationLoading theme={theme} />
-      </div>
-    );
-  },
+  pendingComponent: () => Theme,
 });
 
 function Todo() {

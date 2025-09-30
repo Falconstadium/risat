@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useContext } from "react";
-import { AnimationLoading } from "../../components/AnimationLoading";
+import Theme from "../../components/Theme";
 import { themeContext } from "../../context/theme";
 
 export const Route = createFileRoute("/notes/$id")({
@@ -10,19 +10,12 @@ export const Route = createFileRoute("/notes/$id")({
       id: params.id,
     };
   },
-  pendingComponent: () => {
-    const { theme } = useContext(themeContext);
-    return (
-      <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
-        <AnimationLoading theme={theme} />
-      </div>
-    );
-  },
+  pendingComponent: () => Theme,
 });
 
 function NoteContent() {
   const { id } = Route.useParams();
-  const { name, desc }: any = Route.useSearch();
+  const { name, desc }: { name: string; desc: string } = Route.useSearch();
 
   const { theme } = useContext(themeContext);
 

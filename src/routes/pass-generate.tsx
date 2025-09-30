@@ -3,21 +3,14 @@ import { FormEvent, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
-import { AnimationLoading } from "../components/AnimationLoading";
 import { useForm } from "../components/password/UseForm";
 import { getRandomChar, getSpecialChar } from "../components/password/utils";
+import Theme from "../components/Theme";
 import { themeContext } from "../context/theme";
 
 export const Route = createFileRoute("/pass-generate")({
   component: Password,
-  pendingComponent: () => {
-    const { theme } = useContext(themeContext);
-    return (
-      <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
-        <AnimationLoading theme={theme} />
-      </div>
-    );
-  },
+  pendingComponent: () => Theme,
 });
 
 function Password() {
@@ -63,8 +56,12 @@ function Password() {
       const index = Math.floor(Math.random() * typeArr.length);
       const letter = typeArr[index].getChar();
 
-      letter ? (generatedPass += letter) : null;
-      generatedPass ? setResult(generatedPass) : null;
+      if (letter) {
+        generatedPass += letter;
+      }
+      if (generatedPass) {
+        setResult(generatedPass);
+      }
     }
   };
 
