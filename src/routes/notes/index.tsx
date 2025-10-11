@@ -2,23 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { AnimationLoading } from "../../components/AnimationLoading";
 import EditNote from "../../components/note/EditNote";
 import NoteForm from "../../components/note/NoteForm";
 import NoteList from "../../components/note/NoteList";
+import Theme from "../../components/Theme";
 import { Note } from "../../context/Note";
 import { themeContext } from "../../context/theme";
 
 export const Route = createFileRoute("/notes/")({
   component: Notes,
-  pendingComponent: () => {
-    const { theme } = useContext(themeContext);
-    return (
-      <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
-        <AnimationLoading theme={theme} />
-      </div>
-    );
-  },
+  pendingComponent: () => Theme,
 });
 
 function Notes() {
@@ -71,28 +64,30 @@ function Notes() {
 
         <main className="bg-white dark:bg-black-500">
           <section className="mx-auto w-full max-w-xl px-4 pt-10">
-            {show ? <NoteForm showForm={showForm} /> : null}
+            {show && <NoteForm showForm={showForm} />}
+            <button
+              type="button"
+              title={t("Note.create")}
+              aria-label={t("Note.create")}
+              className="fixed bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
+              onClick={showForm}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-plus-icon lucide-plus size-7"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+            </button>
             {note.length != 0 ? (
               <>
-                <button
-                  type="button"
-                  className="absolute bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
-                  onClick={showForm}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-plus-icon lucide-plus size-7"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="M12 5v14" />
-                  </svg>
-                </button>
                 <button
                   type="button"
                   onClick={deleteAll}
@@ -119,16 +114,9 @@ function Notes() {
                 </button>
               </>
             ) : (
-              <div className="grid animate-fadeIn place-content-center gap-2 pt-20">
-                <p className="dark:text-light">No Notes here!</p>
-                <button
-                  type="button"
-                  className="mx-auto rounded bg-blue-700 px-3 py-1 text-xs capitalize text-light transition-colors duration-200 ease-in-out hover:bg-blue-600"
-                  onClick={showForm}
-                >
-                  create note
-                </button>
-              </div>
+              <p className="animate-fadeIn pt-24 text-center font-medium dark:text-light">
+                {t("Note.no_note")}
+              </p>
             )}
 
             {/* show edit */}
