@@ -64,10 +64,12 @@ function Todo() {
 
         <main className="bg-white dark:bg-black-500">
           <section className="mx-auto w-full max-w-xl px-4 pt-10">
-            {show ? <TodoForm showForm={showForm} /> : null}
+            {show && <TodoForm showForm={showForm} />}
             <button
               type="button"
-              className="absolute bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
+              title={t("TODO.create")}
+              aria-label={t("TODO.create")}
+              className="fixed bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
               onClick={showForm}
             >
               <svg
@@ -112,7 +114,11 @@ function Todo() {
                 </svg>
                 <span>({text.length})</span>
               </button>
-            ) : null}
+            ) : (
+              <p className="pt-24 text-center font-medium dark:text-light">
+                {t("TODO.no_todo")}
+              </p>
+            )}
 
             {isEdited && <EditForm />}
 
