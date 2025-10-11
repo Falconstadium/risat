@@ -49,7 +49,7 @@
     "link": "Aller à",
     "list": "Liste de tâches",
     "note": "Notes",
-    "expense": "Suivi des Dépenses",
+    "expense": "Liste des Achats",
     "pass": "Générateur Mot de Passe",
     "btn": "Retour au Tableau de bord",
     "title": "Tableau de bord",
@@ -62,8 +62,9 @@
     "toast_edit": "Tâche modifiée",
     "todo_modify": "Modifier Tâche...",
     "toast_delete": "Tâche supprimée",
-    "allTodos": "Tous les Tâches de cette liste ont été supprimés"
-
+    "allTodos": "Tous les Tâches de cette liste ont été supprimés",
+    "no_todo": "Pas de Todos ici !",
+    "create": "créer todo"
   },
 
   "Note": {
@@ -73,7 +74,9 @@
     "toast_edit": "Note modifiée",
     "note_modify": "Modifier Note...",
     "toast_delete": "Note Supprimée",
-    "allNotes": "Tous les Notes de cette page ont été supprimés"
+    "allNotes": "Tous les Notes de cette page ont été supprimés",
+    "no_note": "Pas de Notes ici !",
+    "create": "créer note"
   },
 
   "password":{
@@ -90,8 +93,7 @@
   },
 
   "expense":{
-    "transaction": "Ajouter une transaction",
-    "description": "Description",
-    "link": "Pour plus de clarté, Consultez ce lien"
+    "transaction": "Ajouter un élement",
+    "description": "Description"
   }
 }

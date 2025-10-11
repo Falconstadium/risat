@@ -48,7 +48,7 @@
     "link": "Go to",
     "list": "TODO List",
     "note": "Notes",
-    "expense": "Expense Tracker",
+    "expense": "Grocery List",
     "pass": "Password Generator",
     "btn": "Return to Dashboard",
     "title": "Dashboard",
@@ -62,7 +62,9 @@
     "toast_edit": "Todo Edited",
     "todo_modify": "Edit Todo...",
     "toast_delete": "Todo Deleted",
-    "allTodos": "All the Todos in this list has been deleted"
+    "allTodos": "All the Todos in this list has been deleted",
+    "no_todo": "No Todos here!",
+    "create": "create todo"
   },
 
   "Note": {
@@ -72,7 +74,9 @@
     "toast_edit": "Note Edited",
     "note_modify": "Edit Note...",
     "toast_delete": "Note Deleted",
-    "allNotes": "All the Notes in this page has been deleted"
+    "allNotes": "All the Notes in this page has been deleted",
+    "no_note": "No Notes here!",
+    "create": "create note"
   },
 
   "password":{
@@ -89,8 +93,7 @@
   },
 
   "expense":{
-    "transaction": "Add transaction",
-    "description": "Description",
-    "link": "For more clarity, Checkout this link"
+    "transaction": "Add an item",
+    "description": "Description"
   }
 }
