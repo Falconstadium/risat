@@ -50,6 +50,7 @@ function Expense() {
     }
     setDescription("");
     setAmount(0);
+    showForm();
   };
 
   const deleteItem = (id: number) => {
@@ -59,6 +60,10 @@ function Expense() {
   };
 
   const { t } = useTranslation("global");
+  const [show, setShow] = useState(false);
+  const showForm = () => {
+    setShow(!show);
+  };
 
   return (
     <article
@@ -98,17 +103,44 @@ function Expense() {
 
       <main className="flex w-full items-start justify-center bg-white dark:bg-black-500">
         <section className="container grid w-full max-w-lg animate-fadeIn gap-7 px-8 pt-10">
-          <ExpenseForm
-            submitForm={submitForm}
-            description={description}
-            setDescription={setDescription}
-            amount={amount}
-            setAmount={setAmount}
-          />
+          {show && (
+            <ExpenseForm
+              submitForm={submitForm}
+              description={description}
+              setDescription={setDescription}
+              amount={amount}
+              setAmount={setAmount}
+              showForm={showForm}
+            />
+          )}
 
           <ExpenseList transaction={transaction} deleteItem={deleteItem} />
         </section>
       </main>
+
+      <button
+        type="button"
+        title={t("TODO.create")}
+        aria-label={t("TODO.create")}
+        className="fixed bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
+        onClick={showForm}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-plus-icon lucide-plus"
+        >
+          <path d="M5 12h14" />
+          <path d="M12 5v14" />
+        </svg>
+      </button>
     </article>
   );
 }
