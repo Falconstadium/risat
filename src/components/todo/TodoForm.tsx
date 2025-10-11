@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TodoContext } from "../../context/Todo";
 
-const TodoForm = ({ showForm }: any) => {
+const TodoForm = ({ showForm }: { showForm: () => void }) => {
   const { t } = useTranslation("global");
 
   const { addText } = useContext(TodoContext);
@@ -39,7 +39,7 @@ const TodoForm = ({ showForm }: any) => {
       </button>
       <form
         onSubmit={formSubmit}
-        className="mx-auto flex flex-1 items-center justify-center gap-2 lg:max-w-lg"
+        className="mx-auto flex max-w-lg flex-1 items-center justify-center gap-2"
       >
         <input
           type="text"
