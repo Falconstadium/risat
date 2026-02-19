@@ -1,18 +1,18 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
 import i18next from "i18next";
-import { I18nextProvider, initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { I18nextProvider, initReactI18next } from "react-i18next";
+import { Toaster } from "sonner";
 import enTranslation from "../src/translations/en/local.json";
 import frTranslation from "../src/translations/fr/local.json";
-import { Toaster } from "sonner";
+import App from "./App.tsx";
+import { LangProvider } from "./context/LangSwitcher.tsx";
+import { NoteProvider } from "./context/Note.tsx";
 import { ThemeProvider } from "./context/theme.tsx";
 import { TodoContextProvider } from "./context/Todo.tsx";
-import { NoteProvider } from "./context/Note.tsx";
-import { LangProvider } from "./context/LangSwitcher.tsx";
+import "./index.css";
 
 const resources = {
   en: {
