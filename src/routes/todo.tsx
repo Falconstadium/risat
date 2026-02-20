@@ -2,11 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Theme from "../components/Theme";
 import EditForm from "../components/todo/EditForm";
 import TodoForm from "../components/todo/TodoForm";
 import TodoList from "../components/todo/TodoList";
-import { themeContext } from "../context/theme";
+import Theme from "../components/ui/Theme";
 import { TodoContext } from "../context/Todo";
 
 export const Route = createFileRoute("/todo")({
@@ -17,8 +16,6 @@ export const Route = createFileRoute("/todo")({
 function Todo() {
   const { text, isEdited, deleteAll } = useContext(TodoContext);
 
-  // darkMode
-  const { theme } = useContext(themeContext);
   // show form
   const [show, setShow] = useState(false);
   const showForm = () => {
@@ -28,104 +25,102 @@ function Todo() {
   const { t } = useTranslation("global");
 
   return (
-    <main className={`${theme && "dark"}`}>
-      <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
-        {/* Navbar */}
-        <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 text-light">
-          <nav className="mx-auto flex max-w-2xl items-center justify-between">
-            <Link to="/dashboard" className="flex items-center gap-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="size-6"
-              >
-                <g clipPath="url(#a)">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.25-7.25a.75.75 0 0 0 0-1.5H8.66l2.1-1.95a.75.75 0 1 0-1.02-1.1l-3.5 3.25a.75.75 0 0 0 0 1.1l3.5 3.25a.75.75 0 0 0 1.02-1.1l-2.1-1.95h4.59Z"
-                    clipRule="evenodd"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="a">
-                    <path d="M0 0h20v20H0z" />
-                  </clipPath>
-                </defs>
-              </svg>
-              <div className="relative">
-                <h3 className="font-Fancy text-lg font-semibold tracking-wide transition-all duration-200 ease-in-out after:absolute after:-bottom-1 after:left-0 after:right-0 after:mx-auto after:h-1 after:w-0 after:rounded-md after:bg-white hover:after:w-16 md:tracking-wider">
-                  {t("dashboard.list")}
-                </h3>
-              </div>
-            </Link>
-          </nav>
-        </header>
+    <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
+      {/* Navbar */}
+      <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 text-light">
+        <nav className="mx-auto flex max-w-2xl items-center justify-between">
+          <Link to="/dashboard" className="flex items-center gap-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="size-6"
+            >
+              <g clipPath="url(#a)">
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.25-7.25a.75.75 0 0 0 0-1.5H8.66l2.1-1.95a.75.75 0 1 0-1.02-1.1l-3.5 3.25a.75.75 0 0 0 0 1.1l3.5 3.25a.75.75 0 0 0 1.02-1.1l-2.1-1.95h4.59Z"
+                  clipRule="evenodd"
+                />
+              </g>
+              <defs>
+                <clipPath id="a">
+                  <path d="M0 0h20v20H0z" />
+                </clipPath>
+              </defs>
+            </svg>
+            <div className="relative">
+              <h3 className="font-Fancy text-lg font-semibold tracking-wide transition-all duration-200 ease-in-out after:absolute after:-bottom-1 after:left-0 after:right-0 after:mx-auto after:h-1 after:w-0 after:rounded-md after:bg-white hover:after:w-16 md:tracking-wider">
+                {t("dashboard.list")}
+              </h3>
+            </div>
+          </Link>
+        </nav>
+      </header>
 
-        <main className="bg-white dark:bg-black-500">
-          <section className="mx-auto w-full max-w-xl px-4 pt-10">
-            {show && <TodoForm showForm={showForm} />}
+      <main className="bg-white dark:bg-black-500">
+        <section className="mx-auto w-full max-w-xl px-4 pt-10">
+          {show && <TodoForm showForm={showForm} />}
+          <button
+            type="button"
+            title={t("TODO.create")}
+            aria-label={t("TODO.create")}
+            className="fixed bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
+            onClick={showForm}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-plus-icon lucide-plus"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+          </button>
+
+          {text.length != 0 ? (
             <button
               type="button"
-              title={t("TODO.create")}
-              aria-label={t("TODO.create")}
-              className="fixed bottom-10 right-8 rounded-full bg-yellow-600 p-1 text-light transition-colors duration-300 hover:bg-yellow-500"
-              onClick={showForm}
+              onClick={deleteAll}
+              title={t("dashbord.deleteAll")}
+              className="mb-4 ml-auto flex items-center gap-1 rounded bg-red-700 px-3 py-1 text-xs text-light transition-colors duration-200 ease-in-out hover:bg-red-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.5"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="lucide lucide-plus-icon lucide-plus"
+                className="lucide lucide-trash-icon lucide-trash"
               >
-                <path d="M5 12h14" />
-                <path d="M12 5v14" />
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
               </svg>
+              <span>({text.length})</span>
             </button>
+          ) : (
+            <p className="pt-24 text-center font-medium dark:text-light">
+              {t("TODO.no_todo")}
+            </p>
+          )}
 
-            {text != 0 ? (
-              <button
-                type="button"
-                onClick={deleteAll}
-                title={t("dashbord.deleteAll")}
-                className="mb-4 ml-auto flex items-center gap-1 rounded bg-red-700 px-3 py-1 text-xs text-light transition-colors duration-200 ease-in-out hover:bg-red-600"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-trash-icon lucide-trash"
-                >
-                  <path d="M3 6h18" />
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                </svg>
-                <span>({text.length})</span>
-              </button>
-            ) : (
-              <p className="pt-24 text-center font-medium dark:text-light">
-                {t("TODO.no_todo")}
-              </p>
-            )}
+          {isEdited && <EditForm />}
 
-            {isEdited && <EditForm />}
-
-            {text && <TodoList />}
-          </section>
-        </main>
-      </article>
-    </main>
+          {text && <TodoList />}
+        </section>
+      </main>
+    </article>
   );
 }

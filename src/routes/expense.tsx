@@ -1,11 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import ExpenseForm from "../components/expense/ExpenseForm";
 import ExpenseList from "../components/expense/ExpenseList";
-import Theme from "../components/Theme";
-import { themeContext } from "../context/theme";
+import Theme from "../components/ui/Theme";
 
 type Transaction = {
   id: number;
@@ -19,9 +18,6 @@ export const Route = createFileRoute("/expense")({
 });
 
 function Expense() {
-  // darkMode
-  const { theme } = useContext(themeContext);
-
   const storedTrack = JSON.parse(localStorage.getItem("track") || "[]");
 
   const [transaction, setTransaction] = useState(storedTrack);
@@ -66,9 +62,7 @@ function Expense() {
   };
 
   return (
-    <article
-      className={`${theme && "dark"} grid min-h-dvh w-full grid-rows-[auto_1fr]`}
-    >
+    <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
       {/* Navbar */}
       <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-3 text-light">
         <nav className="mx-auto max-w-2xl">

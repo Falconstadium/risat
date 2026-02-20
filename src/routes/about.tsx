@@ -1,24 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useContext } from "react";
 
-import Navbar from "../components/Navbar";
 import About from "../components/About";
-import { themeContext } from "../context/theme";
+import Navbar from "../components/Navbar";
 
 export const Route = createFileRoute("/about")({
-  component: () => {
-    //dark
-    const { theme } = useContext(themeContext);
-
-    return (
-      <main
-        className={`${theme && "dark"} grid min-h-dvh w-full grid-rows-[1fr]`}
-      >
-        <Navbar />
-
-        {/* hero */}
-        <About />
-      </main>
-    );
-  },
+  component: AboutPage,
 });
+
+function AboutPage() {
+  return (
+    <main className="grid min-h-dvh w-full grid-rows-[1fr]">
+      <Navbar />
+
+      {/* hero */}
+      <About />
+    </main>
+  );
+}
