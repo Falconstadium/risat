@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
-import { TodoContext } from "../../context/Todo";
+import { TaskType, TodoContext } from "../../context/Todo";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const TodoItem = ({ task }: any) => {
+const TodoItem = ({ task }: { task: TaskType }) => {
   const { updateText, showEditForm, deleteText } = useContext(TodoContext);
 
   const [done, setDone] = useState(task.checked);

@@ -1,17 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useContext } from "react";
-import { Note } from "../../context/Note";
+import { Note, NoteProps } from "../../context/Note";
 
-export type NoteProps = {
-  takeNote: {
-    id: string;
-    time: number;
-    title: string;
-    desc: string;
-  };
-};
-
-const NoteItem = ({ takeNote }: NoteProps) => {
+const NoteItem = ({ takeNote }: { takeNote: NoteProps }) => {
   const { showEditForm, deleteNote } = useContext(Note);
 
   return (

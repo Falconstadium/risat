@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Note } from "../../context/Note";
 
-const NoteForm = ({ showForm }: any) => {
+const NoteForm = ({ showForm }: { showForm: () => void }) => {
   const { t } = useTranslation("global");
 
   const { addNote } = useContext(Note);

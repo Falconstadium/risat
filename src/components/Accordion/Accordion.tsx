@@ -1,37 +1,23 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
+import { AccordionContext } from "../../context/AccordionContext";
+import { useAccordion } from "../../hooks/useAccordion";
 
 type AccordionProps = {
   children: React.ReactNode;
   value: string | null;
-  onChange?: (value: string | null) => void;
   className?: string;
 };
 
-type AccordionItemProps = {
+export type AccordionItemProps = {
   children: React.ReactNode;
   value: string;
   trigger: React.ReactNode;
   className?: string;
 };
 
-interface AccordionContextType {
-  selected: string | null;
-  setSelected: Dispatch<SetStateAction<string | null>>;
-}
-
-const AccordionContext = createContext<AccordionContextType | null>(null);
-
 export const Accordion: React.FC<AccordionProps> = ({
   children,
   value,
-  onChange,
   ...props
 }) => {
   const [selected, setSelected] = useState<string | null>(value);
@@ -45,13 +31,13 @@ export const Accordion: React.FC<AccordionProps> = ({
   );
 };
 
-export const AccordionItem: React.FC<AccordionItemProps> = ({
+export const AccordionItem = ({
   children,
   value,
   trigger,
   ...props
-}) => {
-  const { selected, setSelected }: any = useContext(AccordionContext);
+}: AccordionItemProps) => {
+  const { selected, setSelected } = useAccordion();
 
   const open = selected === value;
 

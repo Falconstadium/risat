@@ -5,12 +5,16 @@ import { Note } from "../../context/Note";
 const EditNote = () => {
   const { editedNote, modifyEdit, closeEditForm } = useContext(Note);
 
-  const [editTitle, setEditTitle] = useState(editedNote.title);
-  const [editDesc, setEditDesc] = useState(editedNote.desc);
+  const [editTitle, setEditTitle] = useState(editedNote?.title);
+  const [editDesc, setEditDesc] = useState(editedNote?.desc);
 
   const formSubmit = (e: FormEvent) => {
     e.preventDefault();
-    modifyEdit({ ...editedNote, title: editTitle, desc: editDesc });
+    modifyEdit({
+      ...editedNote,
+      title: editTitle,
+      desc: editDesc,
+    });
   };
 
   const { t } = useTranslation("global");
@@ -40,7 +44,7 @@ const EditNote = () => {
           className="w-full rounded bg-slate-200 px-2 py-1 text-sm font-medium text-neutral-900 shadow-[0_0_2px] shadow-slate-400 transition duration-300 focus:shadow-[0_0_8px] focus:outline-none dark:text-neutral-100 lg:px-3 lg:py-2"
           placeholder={t("Note.note_title")}
           value={editTitle}
-          onInput={(e: any) => setEditTitle(e.target.value)}
+          onChange={(e) => setEditTitle(e.target.value)}
           autoFocus
           required
         />
@@ -48,7 +52,7 @@ const EditNote = () => {
           className="w-full rounded bg-slate-200 px-2 py-1 text-sm font-medium text-neutral-900 shadow-[0_0_2px] shadow-slate-400 transition duration-300 focus:shadow-[0_0_8px] focus:outline-none dark:text-neutral-100 lg:px-3 lg:py-2"
           placeholder={t("Note.note_desc")}
           value={editDesc}
-          onInput={(e: any) => setEditDesc(e.target.value)}
+          onChange={(e) => setEditDesc(e.target.value)}
           required
         ></textarea>
 

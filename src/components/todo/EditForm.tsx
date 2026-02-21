@@ -5,11 +5,12 @@ import { TodoContext } from "../../context/Todo";
 const EditForm = () => {
   const { modifyEdit, editedText, closeEditForm } = useContext(TodoContext);
 
-  const [editTodo, setEditTodo] = useState(editedText.name);
+  const [editTodo, setEditTodo] = useState(editedText?.name ?? "");
 
   const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    modifyEdit({ ...editedText, name: editTodo });
+    if (!editedText) return;
+    modifyEdit({ ...editedText, name: editTodo.trim() });
   };
 
   const { t } = useTranslation("global");
@@ -39,7 +40,7 @@ const EditForm = () => {
           className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-2"
           placeholder={t("TODO.todo_modify")}
           value={editTodo}
-          onInput={(e: any) => setEditTodo(e.target.value)}
+          onChange={(e) => setEditTodo(e.target.value)}
           autoFocus
           required
         />
