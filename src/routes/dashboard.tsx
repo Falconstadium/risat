@@ -2,21 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
 import Dashbord from "../components/Dashboard";
-import { Spinner } from "../components/ui/AnimationLoading";
 import { Sun } from "../components/ui/Sun";
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
-  pendingComponent: ChangeTheme,
 });
-
-function ChangeTheme() {
-  return (
-    <div className="w-full dark:bg-black-100">
-      <Spinner />
-    </div>
-  );
-}
 
 function Dashboard() {
   const { t } = useTranslation("global");

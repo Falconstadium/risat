@@ -5,11 +5,9 @@ import { toast } from "sonner";
 
 import { useForm } from "../components/password/UseForm";
 import { getRandomChar, getSpecialChar } from "../components/password/utils";
-import Theme from "../components/ui/Theme";
 
 export const Route = createFileRoute("/pass-generate")({
   component: Password,
-  pendingComponent: Theme,
 });
 
 function Password() {

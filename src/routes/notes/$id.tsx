@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Theme from "../../components/ui/Theme";
 
 export const Route = createFileRoute("/notes/$id")({
   component: NoteContent,
@@ -8,7 +7,6 @@ export const Route = createFileRoute("/notes/$id")({
       id: params.id,
     };
   },
-  pendingComponent: Theme,
 });
 
 function NoteContent() {

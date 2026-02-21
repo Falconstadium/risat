@@ -5,12 +5,10 @@ import { useTranslation } from "react-i18next";
 import EditNote from "../../components/note/EditNote";
 import NoteForm from "../../components/note/NoteForm";
 import NoteList from "../../components/note/NoteList";
-import Theme from "../../components/ui/Theme";
 import { Note } from "../../context/Note";
 
 export const Route = createFileRoute("/notes/")({
   component: Notes,
-  pendingComponent: Theme,
 });
 
 function Notes() {

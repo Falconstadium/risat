@@ -5,12 +5,10 @@ import { useTranslation } from "react-i18next";
 import EditForm from "../components/todo/EditForm";
 import TodoForm from "../components/todo/TodoForm";
 import TodoList from "../components/todo/TodoList";
-import Theme from "../components/ui/Theme";
 import { TodoContext } from "../context/Todo";
 
 export const Route = createFileRoute("/todo")({
   component: Todo,
-  pendingComponent: () => Theme(),
 });
 
 function Todo() {

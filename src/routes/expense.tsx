@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 
 import ExpenseForm from "../components/expense/ExpenseForm";
 import ExpenseList from "../components/expense/ExpenseList";
-import Theme from "../components/ui/Theme";
 
 type Transaction = {
   id: number;
@@ -14,7 +13,6 @@ type Transaction = {
 
 export const Route = createFileRoute("/expense")({
   component: Expense,
-  pendingComponent: Theme,
 });
 
 function Expense() {
