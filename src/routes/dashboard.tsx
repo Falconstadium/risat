@@ -2,10 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
 import Dashbord from "../components/Dashboard";
-import { Sun } from "../components/ui/Sun";
+import { SunBtn } from "../components/ui/Sun";
+import Theme from "../components/ui/Theme";
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
+  pendingComponent: Theme,
 });
 
 function Dashboard() {
@@ -42,7 +44,7 @@ function Dashboard() {
               </h3>
             </div>
           </Link>
-          <Sun />
+          <SunBtn />
         </nav>
       </header>
 
