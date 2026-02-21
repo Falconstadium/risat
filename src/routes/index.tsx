@@ -6,7 +6,6 @@ import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import { WideSpin } from "../components/ui/AnimationLoading";
 import { LangContext } from "../context/LangSwitcher";
-import { useTheme } from "../hooks/useTheme";
 
 export const Route = createFileRoute("/")({
   component: HomeRoute,
@@ -14,10 +13,9 @@ export const Route = createFileRoute("/")({
 });
 
 function ChangeTheme() {
-  const { theme } = useTheme();
   return (
-    <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
-      <WideSpin theme={theme} />
+    <div className="w-full dark:bg-black-100">
+      <WideSpin />
     </div>
   );
 }
@@ -28,18 +26,16 @@ function HomeRoute() {
   const { hover } = useContext(LangContext);
 
   return (
-    <main>
-      <article
-        className={`grid min-h-dvh w-full grid-rows-[1fr_auto] ${hover ? "z-20 bg-black-100/80" : ""}`}
-      >
-        <Navbar />
+    <article
+      className={`grid min-h-dvh w-full grid-rows-[1fr_auto] ${hover ? "z-20 bg-black-100/80" : ""}`}
+    >
+      <Navbar />
 
-        {/* hero */}
-        <Home />
+      {/* hero */}
+      <Home />
 
-        {/* footer */}
-        <Footer />
-      </article>
-    </main>
+      {/* footer */}
+      <Footer />
+    </article>
   );
 }

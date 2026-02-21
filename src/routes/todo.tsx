@@ -10,7 +10,7 @@ import { TodoContext } from "../context/Todo";
 
 export const Route = createFileRoute("/todo")({
   component: Todo,
-  pendingComponent: () => Theme,
+  pendingComponent: Theme,
 });
 
 function Todo() {

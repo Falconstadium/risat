@@ -14,7 +14,7 @@ type Transaction = {
 
 export const Route = createFileRoute("/expense")({
   component: Expense,
-  pendingComponent: () => Theme,
+  pendingComponent: Theme,
 });
 
 function Expense() {

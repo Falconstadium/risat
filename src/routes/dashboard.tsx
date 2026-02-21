@@ -4,18 +4,16 @@ import { useTranslation } from "react-i18next";
 import Dashbord from "../components/Dashboard";
 import { Spinner } from "../components/ui/AnimationLoading";
 import { Sun } from "../components/ui/Sun";
-import { useTheme } from "../hooks/useTheme";
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
-  pendingComponent: () => ChangeTheme(),
+  pendingComponent: ChangeTheme,
 });
 
 function ChangeTheme() {
-  const { theme } = useTheme();
   return (
-    <div className={`${theme && "dark"} w-full dark:bg-black-100`}>
-      <Spinner theme={theme} />
+    <div className="w-full dark:bg-black-100">
+      <Spinner />
     </div>
   );
 }

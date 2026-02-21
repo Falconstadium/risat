@@ -9,7 +9,7 @@ import Theme from "../components/ui/Theme";
 
 export const Route = createFileRoute("/pass-generate")({
   component: Password,
-  pendingComponent: () => Theme,
+  pendingComponent: Theme,
 });
 
 function Password() {
@@ -197,7 +197,7 @@ function Password() {
             </button>
             <span
               onClick={copyBtn}
-              className="cursor-pointer rounded bg-darker px-4 py-1 text-xs font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out hover:bg-pirose md:text-sm"
+              className="bg-darker hover:bg-pirose cursor-pointer rounded px-4 py-1 text-xs font-semibold capitalize tracking-wide text-light transition-colors duration-300 ease-in-out md:text-sm"
               aria-label="Copy Password"
             >
               {t("password.copy")}

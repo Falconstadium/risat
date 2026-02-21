@@ -10,7 +10,7 @@ import { Note } from "../../context/Note";
 
 export const Route = createFileRoute("/notes/")({
   component: Notes,
-  pendingComponent: () => Theme,
+  pendingComponent: Theme,
 });
 
 function Notes() {
