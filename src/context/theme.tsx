@@ -1,31 +1,52 @@
-import { createContext, ReactNode, useEffect } from "react";
-import { useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
-type themeProps = {
+type Theme = "light" | "dark";
+
+interface ThemeProps {
   toggleTheme(): void;
-  theme: string;
-};
+  theme: Theme;
+}
 
-export const themeContext = createContext<themeProps>({
-  toggleTheme() {},
-  theme: "",
-});
+export const ThemeContext = createContext<ThemeProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const darkMode = JSON.parse(localStorage.getItem("mode") || "");
-  const [theme, setTheme] = useState(darkMode);
+  // 2. Safe JSON parsing with try-catch
+  const getInitialTheme = (): Theme => {
+    const savedMode = localStorage.getItem("mode");
+    if (!savedMode) return "light";
 
-  const toggleTheme = () => {
-    setTheme(!theme);
+    try {
+      // If you previously saved it as a raw string (e.g., "dark"),
+      // JSON.parse might fail if it's not wrapped in quotes.
+      // If it fails, we assume it's a raw string.
+      return JSON.parse(savedMode) as Theme;
+    } catch (e) {
+      return savedMode as Theme;
+      console.error(e);
+    }
   };
 
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  // 3. Persist and apply classes
   useEffect(() => {
     localStorage.setItem("mode", JSON.stringify(theme));
+
+    // Apply theme to document for Tailwind 'dark:' selectors
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, [theme]);
 
   return (
-    <themeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
-    </themeContext.Provider>
+    </ThemeContext.Provider>
   );
 };

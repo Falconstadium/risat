@@ -1,40 +1,64 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-export const langContext = createContext<unknown | any>(undefined);
+interface LangProps {
+  hover: boolean;
+  setHover: (hover: boolean) => void;
+  handleClickOutside(): void;
+  buttonRef: RefObject<HTMLButtonElement>;
+  menuRef: RefObject<HTMLDivElement>;
+}
 
-export const LangProvider = ({ children }: any) => {
+export const LangContext = createContext<LangProps>({
+  hover: false,
+  setHover: () => {},
+  handleClickOutside() {},
+  buttonRef: { current: null },
+  menuRef: { current: null },
+});
+
+export const LangProvider = ({ children }: { children: ReactNode }) => {
   const [hover, setHover] = useState(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
+    const handleClick = (event: MouseEvent) => {
       if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target) &&
         buttonRef.current &&
-        !buttonRef.current.contains(event.target)
+        menuRef.current &&
+        !buttonRef.current.contains(event.target as Node) &&
+        !menuRef.current.contains(event.target as Node)
       ) {
-        setHover(false);
+        handleClickOutside();
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    if (hover) {
+      document.addEventListener("mousedown", handleClick);
+    }
+
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClick);
     };
-  }, []);
+  }, [hover]);
 
   const handleClickOutside = () => {
     setHover((prev) => !prev);
   };
 
   return (
-    <langContext.Provider
+    <LangContext.Provider
       value={{ hover, setHover, handleClickOutside, buttonRef, menuRef }}
     >
       {children}
-    </langContext.Provider>
+    </LangContext.Provider>
   );
 };

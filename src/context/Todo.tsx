@@ -1,48 +1,81 @@
-import { createContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
-export const TodoContext = createContext<unknown | any>(undefined);
+export type TaskType = {
+  name: string;
+  id: string;
+  checked: boolean;
+  time: number;
+};
 
-export const TodoContextProvider = ({ children }: any) => {
+interface TodoTypes {
+  text: TaskType[];
+  editedText: TaskType | null;
+  isEdited: boolean;
+  addText(task: TaskType): void;
+  deleteText(id: string): void;
+  updateText(id: string): void;
+  deleteAll(): void;
+  modifyEdit(task: TaskType): void;
+  showEditForm(task: SetStateAction<TaskType | null>): void;
+  closeEditForm(): void;
+}
+
+export const TodoContext = createContext<TodoTypes>({
+  text: [],
+  editedText: null,
+  isEdited: false,
+  addText() {},
+  deleteText() {},
+  updateText() {},
+  deleteAll() {},
+  modifyEdit() {},
+  showEditForm() {},
+  closeEditForm() {},
+});
+
+export const TodoContextProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("global");
 
-  const storedTasks = JSON.parse(localStorage.getItem("task") || "[]");
-  const [text, setText] = useState(storedTasks);
+  const storedTasks = localStorage.getItem("task");
+  const [text, setText] = useState<TaskType[]>(
+    storedTasks ? JSON.parse(storedTasks) : [],
+  );
   //Open Editing Form:
   const [isEdited, setIsEdited] = useState(false);
   //Edit Todo:
-  const [editedText, setEditedText] = useState(null);
+  const [editedText, setEditedText] = useState<TaskType | null>(null);
 
-  const addText = (task: string) => {
-    setText((prevTask: any) => [...prevTask, task]);
+  const addText = (task: TaskType) => {
+    setText((prevTask) => [...prevTask, task]);
     toast.success(t("TODO.toast"));
   };
 
   const deleteText = (id: string) => {
-    setText((prevTask: string | any) =>
-      prevTask.filter((t: { id: string }) => t.id !== id),
-    );
+    setText((prevTask) => prevTask.filter((t: { id: string }) => t.id !== id));
     toast.success(t("TODO.toast_delete"));
   };
 
-  const deleteAll = (id: string) => {
-    setText((prevTask: string | any) =>
-      prevTask.filter((t: { id: string }) => t.id === id),
-    );
+  const deleteAll = () => {
+    setText([]);
     toast.success(t("TODO.allTodos"));
   };
 
   const updateText = (id: string) => {
-    setText((prevTask: string | any) =>
-      prevTask.map((t: { id: string; checked: unknown }) =>
-        t.id === id ? { ...t, checked: !t.checked } : t,
-      ),
+    setText((prevTask) =>
+      prevTask.map((t) => (t.id === id ? { ...t, checked: !t.checked } : t)),
     );
   };
 
-  const modifyEdit = (task: string | any) => {
-    setText((prevTask: any[]) =>
+  const modifyEdit = (task: TaskType) => {
+    setText((prevTask) =>
       prevTask.map((t) => (t.id === task.id ? { ...t, name: task.name } : t)),
     );
     closeEditForm();
@@ -53,7 +86,7 @@ export const TodoContextProvider = ({ children }: any) => {
     setIsEdited(false);
   };
 
-  const showEditForm = (task: string | any) => {
+  const showEditForm = (task: SetStateAction<TaskType | null>) => {
     setEditedText(task);
     setIsEdited(true);
   };
