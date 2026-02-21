@@ -1,6 +1,6 @@
+import emailjs from "@emailjs/browser";
 import { FormEvent, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <>
-      <section className="mx-auto w-full place-content-center dark:bg-black-500 dark:text-light lg:grid">
+      <section className="mx-auto w-full place-content-center bg-neutral-100 dark:bg-black-500 dark:text-light lg:grid">
         <form
           ref={formContact}
           onSubmit={submitForm}

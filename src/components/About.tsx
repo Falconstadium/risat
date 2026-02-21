@@ -4,8 +4,8 @@ const About = () => {
   const { t } = useTranslation("global");
 
   return (
-    <main className="flex w-full items-center justify-center dark:bg-black-500 dark:text-light">
-      <section className="container animate-fadeIn px-5 md:max-w-lg">
+    <main className="flex w-full items-center justify-center bg-neutral-100 dark:bg-black-500 dark:text-light">
+      <section className="container animate-fadeIn px-4 md:max-w-lg">
         <div className="grid gap-2">
           <h1 className="text-center text-lg font-bold lg:text-xl">
             {t("about.title")} <span className="italic">Risat :</span>

@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Sun } from "./Sun";
+import { SunBtn } from "./ui/Sun";
 
 const Navbar = () => {
   const { t } = useTranslation("global");
@@ -9,8 +9,13 @@ const Navbar = () => {
   //bg-sticky
   const [color, setColor] = useState(false);
   const changeBg = () => {
-    window.scrollY >= 10 ? setColor(true) : setColor(false);
+    if (window.scrollY >= 10) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
   };
+
   window.addEventListener("scroll", changeBg);
 
   return (
@@ -39,7 +44,7 @@ const Navbar = () => {
           >
             {t("nav.contact")}
           </Link>
-          <Sun />
+          <SunBtn />
         </div>
       </nav>
     </header>

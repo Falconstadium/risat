@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import english from "../assets/img/british.png";
 import french from "../assets/img/france.png";
-import { langContext } from "../context/LangSwitcher";
+import { LangContext } from "../context/LangSwitcher";
 
 const FooterLang = () => {
   const { hover, setHover, buttonRef, menuRef, handleClickOutside } =
-    useContext(langContext);
+    useContext(LangContext);
 
   const { t, i18n } = useTranslation("global");
 
