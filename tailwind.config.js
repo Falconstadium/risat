@@ -12,7 +12,7 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        Fancy: ["Charm", "cursive"],
+        Fancy: ["Roboto Serif", "serif"],
       },
       colors: {
         "black-500": "#0c0c0c",
