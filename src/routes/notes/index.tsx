@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import EditNote from "../../components/note/EditNote";
 import NoteForm from "../../components/note/NoteForm";
 import NoteList from "../../components/note/NoteList";
-import { Note } from "../../context/Note";
+import { useNotes } from "../../hooks/useNotes";
 
 export const Route = createFileRoute("/notes/")({
   component: Notes,
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/notes/")({
 
 function Notes() {
   // form
-  const { note, isEditedNote, deleteAll } = useContext(Note);
+  const { notes, isEditedNote, deleteAll } = useNotes();
   // show form
   const [show, setShow] = useState(false);
   const showForm = () => {
@@ -26,7 +26,7 @@ function Notes() {
     <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
       {/* Navbar */}
       <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 text-light">
-        <nav className="mx-auto flex max-w-2xl items-center justify-between">
+        <nav className="mx-auto flex max-w-3xl items-center justify-between">
           <Link to="/dashboard" className="flex items-center gap-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ function Notes() {
               </defs>
             </svg>
             <div className="relative">
-              <h3 className="font-Fancy text-lg font-semibold tracking-wide transition-all duration-200 ease-in-out after:absolute after:-bottom-1 after:left-0 after:right-0 after:mx-auto after:h-1 after:w-0 after:rounded-md after:bg-white hover:after:w-10 md:tracking-wider">
+              <h3 className="font-Fancy font-semibold tracking-wide transition-all duration-200 ease-in-out after:absolute after:-bottom-1 after:left-0 after:right-0 after:mx-auto after:h-1 after:w-0 after:rounded-md after:bg-white hover:after:w-10 md:tracking-wider">
                 {t("dashboard.note")}
               </h3>
             </div>
@@ -80,7 +80,7 @@ function Notes() {
               <path d="M12 5v14" />
             </svg>
           </button>
-          {note.length != 0 ? (
+          {notes.length != 0 ? (
             <>
               <button
                 type="button"
@@ -104,7 +104,7 @@ function Notes() {
                   <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
                   <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
                 </svg>
-                <span>({note.length})</span>
+                <span>({notes.length})</span>
               </button>
             </>
           ) : (
@@ -115,7 +115,7 @@ function Notes() {
 
           {/* show edit */}
           {isEditedNote && <EditNote />}
-          {note && <NoteList />}
+          {notes && <NoteList />}
         </section>
       </main>
     </article>
