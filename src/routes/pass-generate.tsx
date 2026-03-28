@@ -103,7 +103,7 @@ function Password() {
     <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
       {/* Navbar */}
       <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-3 text-light">
-        <nav className="mx-auto max-w-2xl">
+        <nav className="mx-auto max-w-3xl">
           <Link to="/" className="flex items-center gap-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ function Password() {
               </defs>
             </svg>
             <div className="relative">
-              <h3 className="font-Fancy text-lg font-semibold tracking-wide transition-all duration-200 ease-in-out after:absolute after:-bottom-1 after:left-0 after:right-0 after:mx-auto after:h-1 after:w-0 after:rounded-md after:bg-white hover:after:w-16 md:tracking-wider">
+              <h3 className="font-Fancy font-semibold tracking-wide transition-all duration-200 ease-in-out after:absolute after:-bottom-1 after:left-0 after:right-0 after:mx-auto after:h-1 after:w-0 after:rounded-md after:bg-white hover:after:w-16 md:tracking-wider">
                 {t("dashboard.pass")}
               </h3>
             </div>
