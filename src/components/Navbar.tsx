@@ -26,7 +26,7 @@ const Navbar = () => {
         <div>
           <Link
             to="/"
-            className="font-Fancy text-lg font-bold tracking-wide md:text-xl"
+            className="font-Fancy font-bold tracking-wide lg:text-lg"
           >
             Risat.
           </Link>
