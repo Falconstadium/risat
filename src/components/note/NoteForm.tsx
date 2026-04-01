@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Note } from "../../context/Note";
+import { useNotes } from "../../hooks/useNotes";
 
 const NoteForm = ({ showForm }: { showForm: () => void }) => {
   const { t } = useTranslation("global");
 
-  const { addNote } = useContext(Note);
+  const { addNote } = useNotes();
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -13,10 +13,11 @@ const NoteForm = ({ showForm }: { showForm: () => void }) => {
   const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addNote({
-      title: title,
-      desc: desc,
       id: crypto.randomUUID(),
-      time: Date.now(),
+      title,
+      desc,
+      createdAt: new Date().toISOString(),
+      time: new Date(),
     });
     setTitle("");
     setDesc("");
@@ -53,6 +54,8 @@ const NoteForm = ({ showForm }: { showForm: () => void }) => {
           required
         />
         <textarea
+          rows={5}
+          cols={30}
           placeholder={t("Note.note_desc")}
           className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-2"
           value={desc}
