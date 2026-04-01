@@ -51,7 +51,7 @@ export const AccordionItem = ({
       <header
         role="button"
         onClick={() => setSelected(open ? null : value)}
-        className="flex items-center justify-between font-medium"
+        className="flex items-center justify-between text-sm font-medium lg:text-base"
       >
         {trigger}
         <svg
@@ -73,12 +73,12 @@ export const AccordionItem = ({
         className="overflow-y-hidden transition-all duration-300 ease-in-out"
         style={{ height: open ? ref.current?.offsetHeight || 0 : 0 }}
       >
-        <div
-          className="py-3 pr-4 text-sm text-neutral-700 dark:text-neutral-300"
+        <p
+          className="py-3 pr-4 text-xs text-neutral-700 dark:text-neutral-300 lg:text-sm"
           ref={ref}
         >
           {children}
-        </div>
+        </p>
       </div>
     </li>
   );
