@@ -27,8 +27,8 @@ const Home = () => {
         </section>
 
         {/* faq */}
-        <section className="container z-10 mx-auto min-h-dvh justify-center px-6 md:px-0">
-          <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Fancy text-4xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 lg:text-5xl">
+        <section className="container z-10 mx-auto min-h-dvh justify-center px-4">
+          <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Fancy text-3xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 lg:text-4xl">
             fàq
           </h1>
           <div className="grid gap-4 pt-10">
