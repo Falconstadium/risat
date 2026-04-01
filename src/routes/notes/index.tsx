@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import EditNote from "../../components/note/EditNote";
 import NoteForm from "../../components/note/NoteForm";
 import NoteList from "../../components/note/NoteList";
 import { useNotes } from "../../hooks/useNotes";
@@ -13,7 +12,7 @@ export const Route = createFileRoute("/notes/")({
 
 function Notes() {
   // form
-  const { notes, isEditedNote, deleteAll } = useNotes();
+  const { notes, deleteAll } = useNotes();
   // show form
   const [show, setShow] = useState(false);
   const showForm = () => {
@@ -113,8 +112,6 @@ function Notes() {
             </p>
           )}
 
-          {/* show edit */}
-          {isEditedNote && <EditNote />}
           {notes && <NoteList />}
         </section>
       </main>
