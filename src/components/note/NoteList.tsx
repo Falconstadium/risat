@@ -1,15 +1,18 @@
-import { useContext } from "react";
+import { NoteProps } from "../../context/Note";
+import { useNotes } from "../../hooks/useNotes";
 import NoteItem from "./NoteItem";
-import { Note } from "../../context/Note";
 
 const NoteList = () => {
-  const { note } = useContext(Note);
+  const { notes } = useNotes();
 
   return (
     <ul className="grid gap-4 dark:text-light lg:gap-5">
-      {note
-        .sort((a: { time: number }, b: { time: number }) => b.time - a.time)
-        .map((takeNote) => (
+      {notes
+        .sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        )
+        .map((takeNote: NoteProps) => (
           <NoteItem key={takeNote.id} takeNote={takeNote} />
         ))}
     </ul>
