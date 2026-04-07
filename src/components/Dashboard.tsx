@@ -36,7 +36,7 @@ const Dashbord = () => {
   ];
 
   return (
-    <main className="grid place-content-center bg-white dark:bg-black-500">
+    <main className="grid place-content-center dark:bg-zinc-950">
       <section className="mx-auto grid w-full max-w-4xl animate-fadeIn place-content-center place-items-center gap-8 px-8 py-10 dark:text-light lg:grid-cols-2 lg:gap-12 lg:px-0 lg:py-0">
         {tools.map((tool) => {
           return (
