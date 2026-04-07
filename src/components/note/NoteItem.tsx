@@ -17,10 +17,9 @@ const NoteItem = ({ takeNote }: { takeNote: NoteProps }) => {
             ? new Date(takeNote.updatedAt).toLocaleDateString()
             : new Date(takeNote.createdAt).toLocaleDateString()}
           <span> </span>
-          {takeNote.desc.length < 40
-            ? takeNote.desc
-            : takeNote.desc.slice(0, 40)}
-          ...
+          {takeNote.desc.length > 20
+            ? `${takeNote.desc.slice(0, 20)}...`
+            : takeNote.desc}
         </p>
       </li>
     </Link>
