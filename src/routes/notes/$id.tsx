@@ -65,7 +65,7 @@ function NoteContent() {
           <div className="flex items-center gap-2 px-4 text-neutral-100">
             <button
               type="button"
-              className="flex items-center gap-2 rounded bg-lime-700 px-2 py-1 text-zinc-100 transition-colors duration-200 ease-in-out hover:bg-lime-600 active:bg-lime-600"
+              className="flex items-center gap-2 rounded bg-lime-800 px-2 py-1 text-zinc-100 transition-colors duration-200 ease-in-out hover:bg-lime-700 active:bg-lime-700"
               title="Edit"
               aria-label={`edit ${note.title}`}
               onClick={() => showEditForm(note)}
@@ -136,7 +136,7 @@ function NoteContent() {
             {note.title}
           </h3>
           <p
-            className="animate-fadeIn break-all text-sm dark:text-neutral-300"
+            className="animate-fadeIn break-all text-sm dark:text-neutral-300 xl:text-base"
             style={{ whiteSpace: "pre-wrap" }}
           >
             {note.desc}
