@@ -56,7 +56,7 @@ function Notes() {
       </header>
 
       <main className="bg-white dark:bg-zinc-950">
-        <section className="mx-auto w-full max-w-xl px-4 pt-10">
+        <section className="mx-auto w-full max-w-3xl px-4 pt-10">
           {show && <NoteForm showForm={showForm} />}
           <button
             type="button"
