@@ -27,7 +27,7 @@ function NoteContent() {
     setTimeout(() => {
       deleteNote(note.id);
       navigate({ to: "/notes" });
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -119,16 +119,8 @@ function NoteContent() {
         <div className="flex items-center justify-center">
           <p className="text-xs font-medium text-gray-500 dark:text-gray-500">
             {note.updatedAt
-              ? new Date(note.updatedAt).toLocaleTimeString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })
-              : new Date(note.createdAt).toLocaleTimeString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })}
+              ? new Date(note.updatedAt).toLocaleString()
+              : new Date(note.createdAt).toLocaleString()}
           </p>
         </div>
         <div className="grid gap-2">
@@ -136,7 +128,7 @@ function NoteContent() {
             {note.title}
           </h3>
           <p
-            className="animate-fadeIn break-all text-sm dark:text-neutral-300 xl:text-base"
+            className="animate-fadeIn break-all text-sm dark:text-neutral-200 xl:text-base"
             style={{ whiteSpace: "pre-wrap" }}
           >
             {note.desc}
