@@ -17,6 +17,7 @@ const NoteForm = ({ showForm }: { showForm: () => void }) => {
       title,
       desc,
       createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
       time: new Date(),
     });
     setTitle("");

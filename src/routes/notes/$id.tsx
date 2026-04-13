@@ -20,7 +20,11 @@ function NoteContent() {
   const navigate = useNavigate();
 
   if (!note) {
-    return <div>Note not found</div>;
+    return (
+      <div className="flex min-h-dvh w-full items-center justify-center dark:bg-zinc-950">
+        Note not found
+      </div>
+    );
   }
 
   const removeNote = () => {

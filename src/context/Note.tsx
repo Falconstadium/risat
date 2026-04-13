@@ -14,7 +14,7 @@ export type NoteProps = {
   desc: string;
   time: Date;
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
 };
 interface NoteTypes {
   notes: NoteProps[];
