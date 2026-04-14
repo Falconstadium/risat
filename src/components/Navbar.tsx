@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full px-6 py-4 text-black-100 dark:bg-zinc-950 dark:text-light lg:py-5 ${color ? "bg-white/75 shadow-dark backdrop-blur dark:bg-zinc-950/75 dark:shadow-lightWhite" : ""}`}
+      className={`fixed top-0 z-50 w-full px-6 py-4 font-Fancy text-black-100 dark:bg-zinc-950 dark:text-light lg:py-5 ${color ? "bg-white/75 shadow-dark backdrop-blur dark:bg-zinc-950/75 dark:shadow-lightWhite" : ""}`}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between">
         <div>

@@ -25,7 +25,7 @@ function Todo() {
   return (
     <article className="grid min-h-dvh w-full grid-rows-[auto_1fr]">
       {/* Navbar */}
-      <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 text-light">
+      <header className="bg-gradient-to-br from-indigo-700 to-indigo-500 px-4 py-4 font-Fancy text-light">
         <nav className="mx-auto flex max-w-3xl items-center justify-between">
           <Link to="/dashboard" className="flex items-center gap-3">
             <svg
