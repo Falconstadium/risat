@@ -12,6 +12,6 @@ Risat is my personal project, it's a website containing some different tools tha
 - Tanstack Router
 - Framer motion
 - Aceternity ui
-- Email JS
-- i18next
+- Email JS (For contact)
+- i18next (For translation)
 - sonner (for toast notification)
