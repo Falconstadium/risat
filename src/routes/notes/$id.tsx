@@ -39,7 +39,7 @@ function NoteContent() {
       {/* Navbar */}
       <header className="px-2 py-4 dark:text-neutral-100">
         <nav className="mx-auto flex max-w-3xl items-center justify-between">
-          <Link to="/notes" className="flex items-center gap-1">
+          <Link to="/notes" className="flex items-center gap-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -119,7 +119,7 @@ function NoteContent() {
         </nav>
       </header>
 
-      <section className="mx-auto grid max-w-xl gap-4 px-4 pt-8" key={id}>
+      <section className="mx-auto grid max-w-lg gap-4 px-4 pt-8" key={id}>
         <div className="flex items-center justify-center">
           <p className="text-xs font-medium text-gray-500 dark:text-gray-500">
             {note.updatedAt
@@ -128,7 +128,7 @@ function NoteContent() {
           </p>
         </div>
         <div className="grid gap-2">
-          <h3 className="animate-fadeIn break-words rounded text-lg font-semibold dark:text-neutral-100 xl:text-xl">
+          <h3 className="animate-fadeIn break-words rounded text-lg font-semibold dark:text-neutral-50 xl:text-xl">
             {note.title}
           </h3>
           <p
