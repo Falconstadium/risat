@@ -37,7 +37,7 @@ function NoteContent() {
   return (
     <article className="min-h-dvh w-full dark:bg-zinc-950">
       {/* Navbar */}
-      <header className="px-2 py-4 dark:text-neutral-100">
+      <header className="px-2 py-4 dark:text-neutral-50">
         <nav className="mx-auto flex max-w-3xl items-center justify-between">
           <Link to="/notes" className="flex items-center gap-3">
             <svg
@@ -128,11 +128,11 @@ function NoteContent() {
           </p>
         </div>
         <div className="grid gap-2">
-          <h3 className="animate-fadeIn break-words rounded text-lg font-semibold dark:text-neutral-50 xl:text-xl">
+          <h3 className="animate-fadeIn break-words rounded text-lg font-semibold dark:text-white xl:text-xl">
             {note.title}
           </h3>
           <p
-            className="animate-fadeIn break-all text-sm dark:text-neutral-200 xl:text-base"
+            className="animate-fadeIn break-all text-sm dark:text-neutral-200"
             style={{ whiteSpace: "pre-wrap" }}
           >
             {note.desc}
