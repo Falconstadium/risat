@@ -21,7 +21,7 @@ function NoteContent() {
 
   if (!note) {
     return (
-      <div className="flex min-h-dvh w-full items-center justify-center dark:bg-zinc-950">
+      <div className="flex min-h-dvh w-full items-center justify-center dark:bg-zinc-950 dark:text-neutral-100">
         Note not found
       </div>
     );
@@ -128,7 +128,7 @@ function NoteContent() {
           </p>
         </div>
         <div className="grid gap-2">
-          <h3 className="animate-fadeIn break-words rounded text-lg font-semibold dark:text-white xl:text-xl">
+          <h3 className="animate-fadeIn break-words rounded text-lg font-semibold first-letter:capitalize dark:text-white xl:text-xl">
             {note.title}
           </h3>
           <p

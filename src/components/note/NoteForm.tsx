@@ -55,7 +55,7 @@ const NoteForm = ({ showForm }: { showForm: () => void }) => {
           required
         />
         <textarea
-          rows={5}
+          rows={10}
           cols={30}
           placeholder={t("Note.note_desc")}
           className="w-full rounded bg-slate-950 px-2 py-1 text-sm font-medium text-white shadow-[0_0_2px] shadow-slate-400 transition-all duration-200 ease-in focus:shadow-[0_0_8px] focus:outline-none lg:px-3 lg:py-2"
