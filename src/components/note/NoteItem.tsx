@@ -10,7 +10,9 @@ const NoteItem = ({ takeNote }: { takeNote: NoteProps }) => {
       params={{ id: takeNote.id }}
     >
       <li className="grid gap-1">
-        <h4 className="text-sm font-semibold">{takeNote.title}</h4>
+        <h4 className="text-sm font-semibold first-letter:capitalize">
+          {takeNote.title}
+        </h4>
         <p className="text-xs font-medium text-gray-500 dark:text-gray-500">
           {takeNote.updatedAt
             ? new Date(takeNote.updatedAt).toLocaleDateString()
