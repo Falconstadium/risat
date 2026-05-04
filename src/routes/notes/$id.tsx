@@ -127,12 +127,12 @@ function NoteContent() {
               : new Date(note.createdAt).toLocaleString()}
           </p>
         </div>
-        <div className="grid gap-2">
+        <div className="grid gap-4">
           <h3 className="animate-fadeIn break-words rounded text-lg font-semibold first-letter:capitalize dark:text-white xl:text-xl">
             {note.title}
           </h3>
           <p
-            className="animate-fadeIn break-all text-sm dark:text-neutral-200"
+            className="animate-fadeIn break-all text-sm leading-normal dark:text-neutral-200"
             style={{ whiteSpace: "pre-wrap" }}
           >
             {note.desc}
