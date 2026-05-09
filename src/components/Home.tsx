@@ -14,7 +14,7 @@ const Home = () => {
             <h1 className="bg-gradient-to-br from-neutral-700 to-neutral-500 bg-clip-text text-center font-Fancy text-4xl font-bold uppercase text-transparent dark:from-neutral-400 dark:to-neutral-600 lg:text-5xl xl:text-6xl">
               {t("hero.title")}
             </h1>
-            <p className="z-30 text-center font-Fancy font-medium text-neutral-700 dark:text-neutral-400 lg:text-lg xl:text-xl">
+            <p className="z-30 text-center font-Fancy font-medium text-neutral-700 dark:text-neutral-400 lg:text-lg">
               {t("hero.parag")}
             </p>
           </div>
